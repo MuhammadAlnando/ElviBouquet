@@ -144,7 +144,7 @@
                     </div>
                     <div class="col-sm-8">						
                         <a href="" class="btn btn-primary"><i class="material-icons">&#xE863;</i> <span>Refresh List</span></a>
-                        <a href="#" onclick="window.print()" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Print</span></a>
+
                     </div>
                 </div>
             </div>
@@ -160,53 +160,81 @@
             <th>Order Date</th>
             <th>Status</th>						
             <th>Items</th>
+            <th>Items</th>
         </tr>
     </thead>
     <tbody>
-        <?php
-            $sql = "SELECT * FROM `orders` WHERE `userId`= $userId";
-            $result = mysqli_query($conn, $sql);
-            $counter = 0;
-            while($row = mysqli_fetch_assoc($result)){
-                $orderId = $row['orderId'];
-                $address = $row['address'];
-                $zipCode = $row['zipCode'];
-                $phoneNo = $row['phoneNo'];
-                $amount = $row['amount'];
-                $orderDate = $row['orderDate'];
-                $paymentMode = $row['paymentMode'];
-                $deliveryMethod = $row['deliveryMethod'];
+    <?php
+                $sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC";
+                $result = mysqli_query($conn, $sql);
+                $counter = 0;
+                while ($row = mysqli_fetch_assoc($result)) {                
+                    $Id = $row['userId'];
+                    $orderId = $row['orderId'];
+                    $address = $row['address'];
+                    $message = $row['message']; // Added message
+                    $phoneNo = $row['phoneNo'];
+                    $amount = $row['amount'];
+                    $orderDate = $row['orderDate'];
+                    $deliveryDate = $row['deliveryDate'];
+                    $deliveryTime = $row['deliveryTime'];
+                    $paymentMethod = $row['paymentMethod'];
+                    $deliveryMethod = $row['deliveryMethod'];
 
-                if ($deliveryMethod === 'delivery') {
-                    $amount += 15000; // Tambahkan biaya tambahan untuk delivery
-                }
+    if ($deliveryMethod === 'delivery') {
+        $amount += 15000; // Tambahkan biaya tambahan untuk delivery
+    }
 
-                if($paymentMode == 0) {
-                    $paymentMode = "Cash on Delivery";
-                }
-                else {
-                    $paymentMode = "Online";
-                }
-                $orderStatus = $row['orderStatus'];
+    $counter++;
 
-                $counter++;
+    echo '<tr>
+            <td>' . $orderId . '</td>
+            <td>' . substr($address, 0, 20) . '</td>
+            <td>' . $phoneNo . '</td>
+            <td>' . $amount . '</td>
+            <td>' . $paymentMethod . '</td>
+            <td>' . $orderDate . '</td>
+            <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
+            <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+                            <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i> View</a></td>
+        </tr>';
 
-                echo '<tr>
-                        <td>' . $orderId . '</td>
-                        <td>' . substr($address, 0, 20) . '</td>
-                        <td>' . $phoneNo . '</td>
-                        <td>' . $amount . '</td>
-                        <td>' . $paymentMode . '</td>
-                        <td>' . $orderDate . '</td>
-                        <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
-                        <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
-                    </tr>';
-            }
+    // Modal Detail Pesanan
+    echo '<div id="orderDetailModal' . $orderId . '" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order Detail</h5>                 
+                        <a href="#" onclick="window.print()" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Print</span></a>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                                <p><strong>Order ID:</strong> ' . $orderId . '</p>
+                                <p><strong>User ID:</strong> ' . $Id . '</p>
+                                <p><strong>Address:</strong> ' . $address . '</p>
+                                <p><strong>Message:</strong> ' . $message . '</p>
+                                <p><strong>Phone Number:</strong> ' . $phoneNo . '</p>
+                                <p><strong>Amount:</strong> ' . $amount . '</p>
+                                <p><strong>Payment Method:</strong> ' . $paymentMethod . '</p>
+                                <p><strong>Order Date:</strong> ' . $orderDate . '</p>
+                                <p><strong>Delivery Date:</strong> ' . $deliveryDate . '</p>
+                                <p><strong>Delivery Time:</strong> ' . $deliveryTime . '</p>
+                                <p><strong>Delivery Method:</strong> ' . $deliveryMethod . '</p>
+                               
+                            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>';
+}
 
-            if($counter==0) {
-                ?><script> document.getElementById("empty").innerHTML = '<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>You have not ordered any items.</strong></h3><h4>Please order to make me happy :)</h4> <a href="index.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a> </div></div></div></div>';</script> <?php
-            }
-        ?>
+if($counter==0) {
+    echo '<script> document.getElementById("empty").innerHTML = \'<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>You have not ordered any items.</strong></h3><h4>Please order to make me happy :)</h4> <a href="index.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a> </div></div></div></div>\';</script>';
+}
+?>
+
     </tbody>
 </table>
 

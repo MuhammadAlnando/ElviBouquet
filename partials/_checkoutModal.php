@@ -65,6 +65,14 @@
                             <option value="14:00 - 17.00">14:00 - 17.00</option>
                         </select>
                     </div>
+                    <div class="form-group">
+    <label for="paymentMethod"><b>Payment Method:</b></label>
+    <select class="form-control" id="paymentMethod" name="paymentMethod" required>
+        <option value="cash">Cash on Delivery</option>
+        <option value="transfer">Bank Transfer</option>
+    </select>
+</div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <input type="hidden" name="amount" value="<?php echo $totalPrice ?>">

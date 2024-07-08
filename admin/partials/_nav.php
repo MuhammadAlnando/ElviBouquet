@@ -2,11 +2,16 @@
     <div class="header__toggle">
         <i class='bx bx-menu' id="header-toggle"></i>
     </div>
-    
-    <div class="header__img">
-        <img src="assetsForSideBar/img/perfil.jpg" alt="">
-    </div>
-</header>
+
+    <!-- Form Logout -->
+    <form action="partials/_logout.php" method="POST" id="logoutForm">
+        <a href="#" onclick="document.getElementById('logoutForm').submit();">
+            <i class='bx bx-log-out nav__icon' style="color: red;"></i>
+            <span class="nav__name"></span>
+        </a>
+    </form>
+</header> 
+
 
 <div class="l-navbar" id="nav-bar">
     <nav class="nav">
@@ -45,10 +50,7 @@
                   <i class="fas fa-cogs"></i>
                   <span class="nav__name">Site Settings</span>
                 </a>
-                <a href="partials/_logout.php" class="nav__link">
-                  <i class='bx bx-log-out nav__icon' ></i>
-                  <span class="nav__name">Log Out</span>
-                </a>
+                
             </div>
         </div>
     </nav>

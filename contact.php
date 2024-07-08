@@ -153,57 +153,63 @@
                           $phone = $passRow['phone'];
                           
                       ?>
-                      <form action="partials/_manageContactUs.php" method="POST">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="form-group mt-3">
-                                <b><label for="email">Email:</label></b>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required value="<?php echo $email ?>">
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="form-group mt-3">
-                                <b><label for="phone">Phone No:</label></b>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text" id="basic-addon">+62</span>
-                                    </div>
-                                    <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="basic-addon" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" value="<?php echo $phone ?>">
-                                </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="form-group mt-3">
-                              <b><label for="orderId">Order Id:</label></b>
-                              <input class="form-control" type="text" id="orderId" name="orderId" placeholder="Order Id" value="0">
-                              <small id="orderIdHelp" class="form-text text-muted">If your problem is not related to the order(order id = 0).</small>
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="form-group mt-3">
-                              <b><label for="password">Password:</label></b>
-                              <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" placeholder="Enter Your Password" required data-toggle="password">
-                            </div>
-                          </div>
-                          <div class="col-lg-12">
-                            <div class="form-group  mt-3">
-                                <textarea class="form-control" id="message" name="message" rows="2" required minlength="6" placeholder="How May We Help You ?"></textarea>
-                            </div>
-                          </div>
-                          <?php if($loggedin){ ?>
-    <div class="col-lg-12">
-        <button type="submit" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3" style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-        <button type="button" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #DCC0FF;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
-    </div>
-<?php }else { ?>
-    <div class="col-lg-12">
-        <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-        <small class="form-text text-muted">First login to Contact with Us.</small>
-    </div>
-<?php } ?>
+                   <form action="partials/_manageContactUs.php" method="POST" enctype="multipart/form-data">
 
-                        </div>
-                      </form>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group mt-3">
+                <b><label for="email">Email:</label></b>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required value="<?php echo $email ?>">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group mt-3">
+                <b><label for="phone">Phone No:</label></b>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon">+62</span>
+                    </div>
+                    <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="basic-addon" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" value="<?php echo $phone ?>">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group mt-3">
+                <b><label for="orderId">Order Id:</label></b>
+                <input class="form-control" type="text" id="orderId" name="orderId" placeholder="Order Id" value="0">
+                <small id="orderIdHelp" class="form-text text-muted">If your problem is not related to the order(order id = 0).</small>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group mt-3">
+                <b><label for="password">Password:</label></b>
+                <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" placeholder="Enter Your Password" required data-toggle="password">
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group  mt-3">
+                <textarea class="form-control" id="message" name="message" rows="2" required minlength="6" placeholder="How May We Help You ?"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+								<label for="image" class="control-label">Image</label>
+								<input type="file" name="image" id="image" accept=".jpg" class="form-control" required style="border:none;">
+								<small id="Info" class="form-text text-muted mx-3">Please .jpg file upload.</small>
+							</div>  
+        <?php if($loggedin){ ?>
+        <div class="col-lg-12">
+            <button type="submit" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3" style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+            <button type="button" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #DCC0FF;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
+        </div>
+        <?php }else { ?>
+        <div class="col-lg-12">
+            <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+            <small class="form-text text-muted">First login to Contact with Us.</small>
+        </div>
+        <?php } ?>
+    </div>
+</form>
+
                     </div>
                   </div>
                   <?php

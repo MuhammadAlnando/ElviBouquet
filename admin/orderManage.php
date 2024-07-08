@@ -18,7 +18,7 @@
                     <th>Order Id</th>
                     <th>User Id</th>
                     <th>Amount</th>
-                    <th>Payment Mode</th>
+                    <th>Payment Method</th> <!-- Added Payment Method -->
                     <th>Order Date</th>
                     <th>Delivery Date</th>
                     <th>Delivery Time</th>
@@ -43,19 +43,16 @@
                     $orderDate = $row['orderDate'];
                     $deliveryDate = $row['deliveryDate'];
                     $deliveryTime = $row['deliveryTime'];
-                    $paymentMode = $row['paymentMode'];
+                    $paymentMethod = $row['paymentMethod'];
                     $deliveryMethod = $row['deliveryMethod'];
+
+                    
                 
                     // Check delivery method and add additional fee if applicable
                     if ($deliveryMethod == 'delivery') {
                         $amount += 15000;
                     }
                 
-                    if ($paymentMode == 0) {
-                        $paymentMode = "Cash on Delivery";
-                    } else {
-                        $paymentMode = "Online";
-                    }
                     $orderStatus = $row['orderStatus'];
                     $counter++;
                 
@@ -74,7 +71,7 @@
                                 <p><strong>Message:</strong> ' . $message . '</p>
                                 <p><strong>Phone Number:</strong> ' . $phoneNo . '</p>
                                 <p><strong>Amount:</strong> ' . $amount . '</p>
-                                <p><strong>Payment Mode:</strong> ' . $paymentMode . '</p>
+                                <p><strong>Payment Method:</strong> ' . $paymentMethod . '</p>
                                 <p><strong>Order Date:</strong> ' . $orderDate . '</p>
                                 <p><strong>Delivery Date:</strong> ' . $deliveryDate . '</p>
                                 <p><strong>Delivery Time:</strong> ' . $deliveryTime . '</p>
@@ -93,7 +90,7 @@
                             <td>' . $orderId . '</td>
                             <td>' . $Id . '</td>
                             <td>' . $amount . '</td>
-                            <td>' . $paymentMode . '</td>
+                            <td>' . $paymentMethod . '</td> <!-- Display Payment Method -->
                             <td>' . $orderDate . '</td>
                             <td>' . $deliveryDate . '</td>
                             <td>' . $deliveryTime . '</td>
