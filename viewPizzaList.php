@@ -66,16 +66,16 @@
                                     if($quaExistRows == 0) {
                                         echo '<form action="partials/_manageCart.php" method="POST">
                                               <input type="hidden" name="itemId" value="'.$pizzaId. '">
-                                              <button type="submit" name="addToCart" class="btn btn-primary mx-2">Add to Cart</button>';
+                                              <button type="submit" name="addToCart" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">Add to Cart</button>';
                                     }else {
-                                        echo '<a href="viewCart.php"><button class="btn btn-primary mx-2">Go to Cart</button></a>';
+                                        echo '<a href="viewCart.php"><button class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">Go to Cart</button></a>';
                                     }
                                 }
                                 else{
-                                    echo '<button class="btn btn-primary mx-2" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
+                                    echo '<button class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
                                 }
                             echo '</form>                            
-                                <a href="viewPizza.php?pizzaid=' . $pizzaId . '" class="mx-2"><button class="btn btn-primary">Quick View</button></a> 
+                                <a href="viewPizza.php?pizzaid=' . $pizzaId . '" class="mx-2"><button class="btn btn-primary" style="background-color: #DCC0FF; border:none; color: black;">Quick View</button></a> 
                                 </div>
                             </div>
                         </div>

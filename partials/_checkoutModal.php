@@ -1,4 +1,5 @@
 <!-- Checkout Modal -->
+<!-- Checkout Modal -->
 <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -38,20 +39,32 @@
                         <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required minlength="4" maxlength="21" data-toggle="password">
                     </div>
                     <div class="form-group">
-                        <label for="deliveryDate"><b>Delivery Date:</b></label>
-                        <input type="date" class="form-control" id="deliveryDate" name="deliveryDate" required>
-                    </div>
+    <label for="deliveryMethod"><b>Delivery Method:</b></label>
+    <select class="form-control" id="deliveryMethod" name="deliveryMethod" required>
+        <?php
+        $deliveryMethod = isset($_SESSION['deliveryMethod']) ? $_SESSION['deliveryMethod'] : 'pickup';
+        ?>
+        <option value="pickup" <?php echo ($deliveryMethod === 'pickup') ? 'selected' : ''; ?>>Pickup</option>
+        <option value="delivery" <?php echo ($deliveryMethod === 'delivery') ? 'selected' : ''; ?>>Delivery (+Rp. 15,000)</option>
+    </select>
+</div>
+
+
+
+
+<div class="form-group">
+    <label for="deliveryDate"><b>Delivery/Pickup Date:</b></label>
+    <input type="date" class="form-control" id="deliveryDate" name="deliveryDate" required min="<?php echo date('Y-m-d'); ?>">
+</div>
+
                     <div class="form-group">
                         <label for="deliveryTime"><b>Delivery Time:</b></label>
                         <select class="form-control" id="deliveryTime" name="deliveryTime" required>
                             <option value="">Select Delivery Time</option>
-                           
-                                <option value="09:00">09:00 - 12.00</option>
-                                <option value="10:00">14:00 - 17.00</option>
-
+                            <option value="09:00 - 12.00">09:00 - 12.00</option>
+                            <option value="14:00 - 17.00">14:00 - 17.00</option>
                         </select>
                     </div>
-                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <input type="hidden" name="amount" value="<?php echo $totalPrice ?>">

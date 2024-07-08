@@ -191,16 +191,17 @@
                             </div>
                           </div>
                           <?php if($loggedin){ ?>
-                            <div class="col-lg-12">
-                              <button type="submit" class="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-                              <button type="button" class="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
-                            </div>
-                          <?php }else { ?>
-                            <div class="col-lg-12">
-                              <button type="submit" class="btn btn-danger-gradiant mt-3 text-white border-0 py-2 px-3" disabled><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-                              <small class="form-text text-muted">First login to Contct with Us.</small>
-                            </div>
-                          <?php } ?>
+    <div class="col-lg-12">
+        <button type="submit" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3" style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+        <button type="button" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #DCC0FF;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
+    </div>
+<?php }else { ?>
+    <div class="col-lg-12">
+        <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+        <small class="form-text text-muted">First login to Contact with Us.</small>
+    </div>
+<?php } ?>
+
                         </div>
                       </form>
                     </div>
@@ -227,7 +228,7 @@
       <div class="modal fade" id="adminReply" tabindex="-1" role="dialog" aria-labelledby="adminReply" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(187 188 189);">
+            <div class="modal-header" style="background-color: #DCC0FF;">
               <h5 class="modal-title" id="adminReply">Admin Reply</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -235,7 +236,7 @@
             </div>
             <div class="modal-body" id="messagebd">
               <table class="table-striped table-bordered col-md-12 text-center">
-                <thead style="background-color: rgb(111 202 203);">
+                <thead style="background-color: #DCC0FF; border-radius: 10px">
                     <tr>
                         <th>Contact Id</th>
                         <th>Reply Message</th>
@@ -274,7 +275,7 @@
       <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(187 188 189);">
+            <div class="modal-header" style="background-color: #DCC0FF">
               <h5 class="modal-title" id="history">Your Sent Message</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -282,7 +283,7 @@
             </div>
             <div class="modal-body" id="bd">
               <table class="table-striped table-bordered col-md-12 text-center">
-                <thead style="background-color: rgb(111 202 203);">
+                <thead style="background-color: #DCC0FF; border-radius: 50px;">
                     <tr>
                         <th>Contact Id</th>
                         <th>Order Id</th>

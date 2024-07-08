@@ -46,28 +46,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>";
     }
 
-    // Checkout process
-    if (isset($_POST['checkout'])) {
+     // Checkout process
+     if (isset($_POST['checkout'])) {
+        // Proses checkout
         $amount = $_POST["amount"];
         $address1 = $_POST["address"];
-        $address2 = $_POST["address1"];
         $phone = $_POST["phone"];
         $zipcode = $_POST["zipcode"];
         $password = $_POST["password"];
-        $address = $address1 . ", " . $address2;
+        $message = $_POST["message"];
+        $deliveryDate = $_POST["deliveryDate"];
+        $deliveryTime = $_POST["deliveryTime"];
+        $deliveryMethod = $_POST["deliveryMethod"]; // Menyimpan metode pengiriman yang dipilih
 
-        // Verify password
+        // Gabungkan alamat dan kode pos
+        $address = $address1 . "," . $zipcode;
+
+        // Verifikasi password
         $passSql = "SELECT * FROM users WHERE id='$userId'";
         $passResult = mysqli_query($conn, $passSql);
         $passRow = mysqli_fetch_assoc($passResult);
         if (password_verify($password, $passRow['password'])) {
-            // Insert order details
-            $sql = "INSERT INTO `orders` (`userId`, `address`, `zipCode`, `phoneNo`, `amount`, `paymentMode`, `orderStatus`, `orderDate`) 
-                    VALUES ('$userId', '$address', '$zipcode', '$phone', '$amount', '0', '0', current_timestamp())";
+            // Insert detail pesanan ke tabel orders
+            $sql = "INSERT INTO `orders` (`userId`, `address`, `zipCode`, `phoneNo`, `amount`, `paymentMode`, `orderStatus`, `orderDate`, `message`, `deliveryDate`, `deliveryTime`, `deliveryMethod`) 
+                    VALUES ('$userId', '$address', '$zipcode', '$phone', '$amount', '0', '0', current_timestamp(), '$message', '$deliveryDate', '$deliveryTime', '$deliveryMethod')";
             $result = mysqli_query($conn, $sql);
             $orderId = $conn->insert_id;
             if ($result) {
-                // Insert order items
+                // Insert item pesanan ke tabel orderitems
                 $addSql = "SELECT * FROM `viewcart` WHERE userId='$userId'";
                 $addResult = mysqli_query($conn, $addSql);
                 while ($addrow = mysqli_fetch_assoc($addResult)) {
@@ -78,25 +84,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $itemResult = mysqli_query($conn, $itemSql);
                 }
 
-                // Clear cart after checkout
+                // Kosongkan keranjang setelah checkout
                 $deletesql = "DELETE FROM `viewcart` WHERE `userId`='$userId'";
                 $deleteresult = mysqli_query($conn, $deletesql);
 
-                // Redirect or show success message
+                // Redirect atau tampilkan pesan sukses
                 echo '<script>alert("Thanks for ordering with us. Your order id is ' . $orderId . '.");
                     window.location.href="http://localhost/OnlinePizzaDelivery/index.php";
                     </script>';
                 exit();
+            } else {
+                echo "<script>alert('Failed to place order.'); window.history.back(1); </script>";
+                exit();
             }
         } else {
-            echo '<script>alert("Incorrect Password! Please enter correct Password.");
-                    window.history.back(1);
-                    </script>';
+            echo '<script>alert("Incorrect Password! Please enter correct Password."); window.history.back(1); </script>';
             exit();
         }
     }
 
-    // Update cart item quantity via AJAX
+    // Update jumlah item di keranjang melalui AJAX
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
         $pizzaId = $_POST['pizzaId'];
         $qty = $_POST['quantity'];
@@ -104,5 +111,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $updateresult = mysqli_query($conn, $updatesql);
     }
 }
-
 ?>
