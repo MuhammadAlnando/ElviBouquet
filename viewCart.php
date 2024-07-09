@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+include 'partials/_dbconnect.php';
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,8 +24,8 @@
 </head>
 
 <body>
-    <?php include 'partials/_dbconnect.php'; ?>
     <?php require 'partials/_nav.php'; ?>
+
     <?php
     if ($loggedin) {
         // Fetch user ID from session
@@ -33,13 +36,13 @@
         $result = mysqli_query($conn, $sql);
         $counter = 0;
         $totalPrice = 0;
-        ?>
 
+        // Variable to disable checkout button if cart is empty
+        $checkoutDisabled = false;
+
+        ?>
         <div class="container" id="cont">
             <div class="row">
-                <div class="alert alert-info mb-0" style="width: -webkit-fill-available;">
-                    <strong>Info!</strong> Online payments are currently disabled, so please choose cash on delivery.
-                </div>
                 <div class="col-lg-12 text-center border rounded bg-light my-3">
                     <h1>My Cart</h1>
                 </div>
@@ -93,6 +96,7 @@
                                 // Display message if cart is empty
                                 if ($counter == 0) {
                                     echo '<tr><td colspan="6" class="text-center">Your cart is empty</td></tr>';
+                                    $checkoutDisabled = true;
                                 }
                                 ?>
                             </tbody>
@@ -134,8 +138,24 @@
                                 </label>
                             </div>
                             <br>
-                            <button type="button" class="btn btn-primary btn-block" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();">Go to Checkout</button>
+                            <button type="button" class="btn btn-primary btn-block" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
 
+                            <?php
+                            // JavaScript to display alert if cart is empty
+                            if ($checkoutDisabled) {
+                                echo '<script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            Swal.fire({
+                                                icon: "warning",
+                                                title: "Your cart is empty",
+                                                text: "Please add items to your cart before proceeding to checkout.",
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            });
+                                        });
+                                    </script>';
+                            }
+                            ?>
 
                         </div>
                     </div>
@@ -177,30 +197,29 @@
             })
         }
 
-function setDeliveryMethod() {
-    var deliveryOption = $('input[name=deliveryOption]:checked').val();
-    $('#deliveryMethod').val(deliveryOption);
-}
-
+        function setDeliveryMethod() {
+            var deliveryOption = $('input[name=deliveryOption]:checked').val();
+            $('#deliveryMethod').val(deliveryOption);
+        }
 
         $(document).ready(function () {
-    // Function to update total price based on delivery option
-    $('input[type=radio][name=deliveryOption]').change(function () {
-        if (this.value == 'delivery') {
-            var deliveryCharge = 15000; // Delivery charge
-            var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
-            var newTotalPrice = totalPrice + deliveryCharge;
-            $('#totalPriceDisplay').text('Rp. ' + newTotalPrice);
-            $('#shippingCharge').text('+Rp. 15,000');
-            $('#totalAmountDisplay').text('Rp. ' + newTotalPrice);
-        } else {
-            var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
-            $('#totalPriceDisplay').text('Rp. ' + totalPrice);
-            $('#shippingCharge').text('');
-            $('#totalAmountDisplay').text('Rp. ' + totalPrice);
-        }
-    });
-});
+            // Function to update total price based on delivery option
+            $('input[type=radio][name=deliveryOption]').change(function () {
+                if (this.value == 'delivery') {
+                    var deliveryCharge = 15000; // Delivery charge
+                    var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
+                    var newTotalPrice = totalPrice + deliveryCharge;
+                    $('#totalPriceDisplay').text('Rp. ' + newTotalPrice);
+                    $('#shippingCharge').text('+Rp. 15,000');
+                    $('#totalAmountDisplay').text('Rp. ' + newTotalPrice);
+                } else {
+                    var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
+                    $('#totalPriceDisplay').text('Rp. ' + totalPrice);
+                    $('#shippingCharge').text('');
+                    $('#totalAmountDisplay').text('Rp. ' + totalPrice);
+                }
+            });
+        });
     </script>
 </body>
 

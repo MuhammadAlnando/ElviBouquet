@@ -68,6 +68,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
             right: 0;
             left: auto;
         }
+        
     </style>
     <a class="navbar-brand" style="color: #000000;" href="index.php"><b>Elvi Bouquet</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

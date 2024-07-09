@@ -137,14 +137,12 @@
 
     <div class="container">
         <div class="table-wrapper" id="empty">
-            <div class="table-title">
+            <div class="table-title" style="background-color: #6F42C1;">
                 <div class="row">
                     <div class="col-sm-4">
                         <h2>Order <b>Details</b></h2>
                     </div>
                     <div class="col-sm-8">						
-                        <a href="" class="btn btn-primary"><i class="material-icons">&#xE863;</i> <span>Refresh List</span></a>
-
                     </div>
                 </div>
             </div>
@@ -160,7 +158,7 @@
             <th>Order Date</th>
             <th>Status</th>						
             <th>Items</th>
-            <th>Items</th>
+            <th>Detail</th>
         </tr>
     </thead>
     <tbody>
@@ -194,9 +192,9 @@
             <td>' . $amount . '</td>
             <td>' . $paymentMethod . '</td>
             <td>' . $orderDate . '</td>
-            <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
-            <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
-                            <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i> View</a></td>
+            <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
+            <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#6F42C1;" title="View Details"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
+                            <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i> View</a></td>
         </tr>';
 
     // Modal Detail Pesanan
