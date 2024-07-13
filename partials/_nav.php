@@ -108,8 +108,9 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
         <a href="viewCart.php" class="text-decoration-none text-dark mx-2">
             <i class="fas fa-shopping-cart"></i>(<?= $count ?>)
         </a>
-
-        <?php if ($loggedin): ?>
+<!-- Tautan untuk Navbar -->
+<?php if ($loggedin): ?>
+    <!-- Jika sudah login, tampilkan dropdown menu profil -->
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
@@ -127,9 +128,10 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
         </li>
     </ul>
 <?php else: ?>
+    <!-- Jika belum login, tampilkan tautan ke halaman login -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">
+            <a class="nav-link" href="login.php">
                 <i class="fas fa-user mr-1"></i> Login
             </a>
         </li>

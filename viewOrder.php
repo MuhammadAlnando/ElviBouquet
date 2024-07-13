@@ -129,12 +129,10 @@
 
 </head>
 <body>
-    <?php include 'partials/_dbconnect.php';?>
-    <?php include 'partials/_nav.php';?>
-    <?php 
-    if($loggedin){
-    ?>
-
+    <?php include 'partials/_dbconnect.php'; ?>
+    <?php include 'partials/_nav.php'; ?>
+    
+    <?php if ($loggedin): ?>
     <div class="container">
         <div class="table-wrapper" id="empty">
             <div class="table-title" style="background-color: #6F42C1;">
@@ -142,112 +140,149 @@
                     <div class="col-sm-4">
                         <h2>Order <b>Details</b></h2>
                     </div>
-                    <div class="col-sm-8">						
-                    </div>
+                    <div class="col-sm-8"></div>
                 </div>
             </div>
-            
+            <div id="notifContainer"></div>
+            <!-- Tabel -->
             <table class="table table-striped table-hover text-center">
-    <thead>
-        <tr>
-            <th>Order Id</th>
-            <th>Greatings</th>
-            <th>Phone No</th>
-            <th>Amount</th>						
-            <th>Payment Mode</th>
-            <th>Order Date</th>
-            <th>Status</th>						
-            <th>Items</th>
-            <th>Detail</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-                $sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC";
-                $result = mysqli_query($conn, $sql);
-                $counter = 0;
-                while ($row = mysqli_fetch_assoc($result)) {                
-                    $Id = $row['userId'];
-                    $orderId = $row['orderId'];
-                    $address = $row['address'];
-                    $message = $row['message']; // Added message
-                    $phoneNo = $row['phoneNo'];
-                    $amount = $row['amount'];
-                    $orderDate = $row['orderDate'];
-                    $deliveryDate = $row['deliveryDate'];
-                    $deliveryTime = $row['deliveryTime'];
-                    $paymentMethod = $row['paymentMethod'];
-                    $deliveryMethod = $row['deliveryMethod'];
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Address</th>
+                        <th>Phone No</th>
+                        <th>Amount</th>   
+                        <th>Delivery Date</th>     
+                        <th>Proof Upload</th>
+                        <th>Status</th>                      
+                        <th>Items</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC";
+                    $result = mysqli_query($conn, $sql);
+                    $counter = 0;
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $orderId = $row['orderId'];
+                        $address = $row['address'];
+                        $phoneNo = $row['phoneNo'];
+                        $amount = $row['amount'];
+                        $orderDate = $row['orderDate'];
+                        $deliveryDate = $row['deliveryDate'];
+                        $deliveryTime = $row['deliveryTime'];
+                        $paymentMethod = $row['paymentMethod'];
+                        $deliveryMethod = $row['deliveryMethod'];
 
-    if ($deliveryMethod === 'delivery') {
-        $amount += 15000; // Tambahkan biaya tambahan untuk delivery
-    }
+                        // Example code to define $Id and $message (modify according to your data structure)
+                        $Id = isset($row['userId']) ? $row['userId'] : ''; // Example variable, modify as per your database structure
+                        $message = isset($row['message']) ? $row['message'] : ''; // Example variable, modify as per your database structure
 
-    $counter++;
+                        if ($deliveryMethod === 'delivery') {
+                            $amount += 15000; // Additional delivery fee
+                        }
 
-    echo '<tr>
-            <td>' . $orderId . '</td>
-            <td>' . substr($address, 0, 20) . '</td>
-            <td>' . $phoneNo . '</td>
-            <td>' . $amount . '</td>
-            <td>' . $paymentMethod . '</td>
-            <td>' . $orderDate . '</td>
-            <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
-            <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#6F42C1;" title="View Details"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
+                        $counter++;
+
+                        echo '<tr>
+                            <td>' . $orderId . '</td>
+                            <td>' . substr($address, 0, 20) . '</td>
+                            <td>' . $phoneNo . '</td>
+                            <td>' . $amount . '</td>
+                            
+    <td>' . $deliveryDate . ' ' . $deliveryTime . '</td>
+                            <td>';
+
+                        // Di dalam loop while untuk menampilkan data order
+                        if (!empty($row['proofFile'])) {
+                            echo '<img src="' . $row['proofFile'] . '" width="100" height="100" alt="Proof Image">';
+                        } else {
+                            // Tampilkan form upload jika belum ada bukti pembayaran
+                            echo '<form id="uploadForm' . $orderId . '" class="uploadForm" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="proofFile">Select Proof Image:</label>
+                                        <input type="file" class="form-control-file" id="proofFile' . $orderId . '" name="proofFile">
+                                    </div>
+                                    <input type="hidden" name="orderId" value="' . $orderId . '">
+                                    <button type="submit" class="btn btn-primary uploadProofBtn">Upload Proof</button>
+                                </form>';
+                        }
+
+                        echo '</td>
+                            <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
+                            <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#6F42C1;" title="View Details"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
                             <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i> View</a></td>
-        </tr>';
+                        </tr>';
 
-    // Modal Detail Pesanan
-    echo '<div id="orderDetailModal' . $orderId . '" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Order Detail</h5>                 
-                        <a href="#" onclick="window.print()" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Print</span></a>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                                <p><strong>Order ID:</strong> ' . $orderId . '</p>
-                                <p><strong>User ID:</strong> ' . $Id . '</p>
-                                <p><strong>Address:</strong> ' . $address . '</p>
-                                <p><strong>Message:</strong> ' . $message . '</p>
-                                <p><strong>Phone Number:</strong> ' . $phoneNo . '</p>
-                                <p><strong>Amount:</strong> ' . $amount . '</p>
-                                <p><strong>Payment Method:</strong> ' . $paymentMethod . '</p>
-                                <p><strong>Order Date:</strong> ' . $orderDate . '</p>
-                                <p><strong>Delivery Date:</strong> ' . $deliveryDate . '</p>
-                                <p><strong>Delivery Time:</strong> ' . $deliveryTime . '</p>
-                                <p><strong>Delivery Method:</strong> ' . $deliveryMethod . '</p>
-                               
-                            </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>';
-}
+                        // Modal Detail Pesanan
+                        echo '<div id="orderDetailModal' . $orderId . '" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Order Detail</h5>                 
+                                            <a href="#" onclick="window.print()" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Print</span></a>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Order ID:</strong> ' . $orderId . '</p>
+                                            <p><strong>User ID:</strong> ' . $Id . '</p>
+                                            <p><strong>Address:</strong> ' . $address . '</p>
+                                            <p><strong>Message:</strong> ' . $message . '</p>
+                                            <p><strong>Phone Number:</strong> ' . $phoneNo . '</p>
+                                            <p><strong>Amount:</strong> ' . $amount . '</p>
+                                            <p><strong>Payment Method:</strong> ' . $paymentMethod . '</p>
+                                            <p><strong>Order Date:</strong> ' . $orderDate . '</p>
+                                            <p><strong>Delivery Date:</strong> ' . $deliveryDate . '</p>
+                                            <p><strong>Delivery Time:</strong> ' . $deliveryTime . '</p>
+                                            <p><strong>Delivery Method:</strong> ' . $deliveryMethod . '</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
 
-if($counter==0) {
-    echo '<script> document.getElementById("empty").innerHTML = \'<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>You have not ordered any items.</strong></h3><h4>Please order to make me happy :)</h4> <a href="index.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a> </div></div></div></div>\';</script>';
-}
-?>
-
-    </tbody>
-</table>
-
+                        // Modal Upload Proof
+                        echo '<div id="uploadProofModal' . $orderId . '" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Upload Proof for Order ID: ' . $orderId . '</h5>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Form upload proof here -->
+                                            <form action="upload_proof.php" method="POST" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label for="proofFile">Select Proof Image:</label>
+                                                    <input type="file" class="form-control-file" id="proofFile" name="proofFile">
+                                                </div>
+                                                <input type="hidden" name="orderId" value="' . $orderId . '">
+                                                <button type="submit" class="btn btn-primary">Upload Proof</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
-    </div> 
-
-    <?php 
-    }
-    else {
-        echo '<div class="container" style="min-height : 610px;">
-        <div class="alert alert-info my-3">
-            <font style="font-size:22px"><center>Check your Order. You need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
-        </div></div>';
-    }
-    ?>
+    </div>
+    <?php else: ?>
+        <!-- Tampilkan pesan jika belum login -->
+        <div class="container">
+            <div class="alert alert-danger" role="alert">
+                Anda harus login untuk melihat halaman ini. <a href="login.php" class="alert-link">Login disini.</a>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <?php 
     include 'partials/_orderItemModal.php';
@@ -260,5 +295,33 @@ if($counter==0) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>         
     <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+$(document).ready(function() {
+    $('.uploadForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            type: 'POST',
+            url: 'upload_proof.php', // Ganti dengan URL yang sesuai
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                $('#notifContainer').html('<div class="alert alert-success">Bukti pembayaran berhasil diunggah. Silahkan refresh halaman.</div>');
+                // Tambahkan kode untuk update UI lainnya jika diperlukan
+            },
+            error: function(xhr, status, error) {
+                $('#notifContainer').html('<div class="alert alert-danger">Error: ' + xhr.responseText + '</div>');
+                // Tambahkan kode untuk menangani error lainnya jika diperlukan
+            }
+        });
+    });
+});
+</script>
+
+</body>
 </html>

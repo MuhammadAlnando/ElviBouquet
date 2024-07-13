@@ -34,10 +34,7 @@
                             <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="xxxxxx" required pattern="[0-9]{6}" maxlength="6">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password"><b>Password:</b></label>
-                        <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required minlength="4" maxlength="21" data-toggle="password">
-                    </div>
+                    
                     <div class="form-group">
     <label for="deliveryMethod"><b>Delivery Method:</b></label>
     <select class="form-control" id="deliveryMethod" name="deliveryMethod" required>
@@ -72,6 +69,10 @@
         <option value="transfer">Bank Transfer</option>
     </select>
 </div>
+<div class="form-group">
+                        <label for="password"><b>Password:</b></label>
+                        <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required minlength="4" maxlength="21" data-toggle="password">
+                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

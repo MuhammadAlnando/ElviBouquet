@@ -17,15 +17,15 @@
                 <tr>
                     <th>Order Id</th>
                     <th>User Id</th>
+                    <th>Address</th>
+                    <th>Phone</th>
                     <th>Amount</th>
-                    <th>Payment Method</th> <!-- Added Payment Method -->
-                    <th>Order Date</th>
+                    
                     <th>Delivery Date</th>
-                    <th>Delivery Time</th>
-                    <th>Delivery Method</th>
+                    <th>Proof</th>
                     <th>Status</th>
                     <th>Items</th>
-                    <th>Action</th> <!-- Added Action -->
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +33,7 @@
                 $sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC";
                 $result = mysqli_query($conn, $sql);
                 $counter = 0;
-                while ($row = mysqli_fetch_assoc($result)) {                
+                while ($row = mysqli_fetch_assoc($result)) {
                     $Id = $row['userId'];
                     $orderId = $row['orderId'];
                     $address = $row['address'];
@@ -45,64 +45,78 @@
                     $deliveryTime = $row['deliveryTime'];
                     $paymentMethod = $row['paymentMethod'];
                     $deliveryMethod = $row['deliveryMethod'];
+                    $proofFile = $row['proofFile']; // Added proofFile
 
-                    
-                
                     // Check delivery method and add additional fee if applicable
                     if ($deliveryMethod == 'delivery') {
                         $amount += 15000;
                     }
-                
+
                     $orderStatus = $row['orderStatus'];
                     $counter++;
-                
+
                     // Modal Detail Order
-                    echo '<div id="orderDetailModal' . $orderId . '" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="background-color: #f0f0f0;">
-                            <div class="modal-header" style="background-color: #4b5366; color: #fff; border-bottom: none;">
-                                <h4 class="modal-title">Order Detail</h4>
-                                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <p><strong>Order ID:</strong> ' . $orderId . '</p>
-                                <p><strong>User ID:</strong> ' . $Id . '</p>
-                                <p><strong>Address:</strong> ' . $address . '</p>
-                                <p><strong>Message:</strong> ' . $message . '</p>
-                                <p><strong>Phone Number:</strong> ' . $phoneNo . '</p>
-                                <p><strong>Amount:</strong> ' . $amount . '</p>
-                                <p><strong>Payment Method:</strong> ' . $paymentMethod . '</p>
-                                <p><strong>Order Date:</strong> ' . $orderDate . '</p>
-                                <p><strong>Delivery Date:</strong> ' . $deliveryDate . '</p>
-                                <p><strong>Delivery Time:</strong> ' . $deliveryTime . '</p>
-                                <p><strong>Delivery Method:</strong> ' . $deliveryMethod . '</p>
-                                <p><strong>Status:</strong> ' . $orderStatus . '</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    ?>
+                    <div id="orderDetailModal<?php echo $orderId; ?>" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="background-color: #f0f0f0;">
+                                <div class="modal-header" style="background-color: #4b5366; color: #fff; border-bottom: none;">
+                                    <h4 class="modal-title">Order Detail</h4>
+                                    <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Order ID:</strong> <?php echo $orderId; ?></p>
+                                    <p><strong>User ID:</strong> <?php echo $Id; ?></p>
+                                    <p><strong>Address:</strong> <?php echo $address; ?></p>
+                                    <p><strong>Message:</strong> <?php echo $message; ?></p>
+                                    <p><strong>Phone Number:</strong> <?php echo $phoneNo; ?></p>
+                                    <p><strong>Amount:</strong> <?php echo $amount; ?></p>
+                                    <p><strong>Payment Method:</strong> <?php echo $paymentMethod; ?></p>
+                                    <p><strong>Order Date:</strong> <?php echo $orderDate; ?></p>
+                                    <p><strong>Delivery Date:</strong> <?php echo $deliveryDate; ?></p>
+                                    <p><strong>Delivery Time:</strong> <?php echo $deliveryTime; ?></p>
+                                    <p><strong>Delivery Method:</strong> <?php echo $deliveryMethod; ?></p>
+                                    <p><strong>Status:</strong> <?php echo $orderStatus; ?></p>
+                                    <p><strong>Proof:</strong></p>
+                                    <?php if ($proofFile != ''): ?>
+                                        <img src="../<?php echo $proofFile; ?>" alt="Proof Image" style="max-width: 100%; max-height: 200px;">
+                                    <?php else: ?>
+                                        <p>No Proof Image</p>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>';
-                
-                
+                    <?php
+
                     echo '<tr>
-                            <td>' . $orderId . '</td>
-                            <td>' . $Id . '</td>
-                            <td>' . $amount . '</td>
-                            <td>' . $paymentMethod . '</td> <!-- Display Payment Method -->
-                            <td>' . $orderDate . '</td>
-                            <td>' . $deliveryDate . '</td>
-                            <td>' . $deliveryTime . '</td>
-                            <td>' . $deliveryMethod . '</td> <!-- Added delivery method -->
-                            <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
-                            <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
-                            <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i> View</a></td>
-                          </tr>';
+                        <td>' . $orderId . '</td>
+                        <td>' . $Id . '</td>
+                        <td>' . $address . '</td>
+                        <td>' . $phoneNo . '</td>
+                        <td>' . $amount . '</td>
+                        
+    <td>' . $deliveryDate . ' ' . $deliveryTime . '</td>
+                        <td>';
+                    if ($proofFile != '') {
+                        echo '<img src="../' . $proofFile . '" alt="Proof Image" style="max-width: 100px; max-height: 100px;">';
+                    } else {
+                        echo 'No Proof Image';
+                    }
+                    echo '</td>
+                        <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
+                        <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+                        <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i> View</a></td>
+                    </tr>';
                 }
-                
+
                 if ($counter == 0) {
-                    ?><script> document.getElementById("NoOrder").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> You have not received any Order! </div>';</script> <?php
+                    ?>
+                    <script>document.getElementById("NoOrder").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> You have not received any Order! </div>';</script>
+                    <?php
                 }
                 ?>
             </tbody>
