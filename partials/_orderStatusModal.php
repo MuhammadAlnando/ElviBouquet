@@ -54,7 +54,7 @@
     }
 
     .track .step.active:before {
-        background: #FF5722
+        background: #B9A6D2
     }
 
     .track .step::before {
@@ -67,7 +67,7 @@
     }
 
     .track .step.active .icon {
-        background: #ee5435;
+        background: #B9A6D2;
         color: #fff
     }
 

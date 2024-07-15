@@ -1,3 +1,9 @@
+<?php
+header("Cache-Control: no-cache, must-revalidate");
+    $catsql = "SELECT * FROM `categories`";
+    $catResult = mysqli_query($conn, $catsql);
+?>
+
 <div class="container-fluid" style="margin-top:98px">
     <div class="col-lg-12">
         <div class="row">
@@ -50,12 +56,10 @@
                         </thead>
                         <tbody>
                         <?php 
-                            $sql = "SELECT * FROM `categories`"; 
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_assoc($result)){
-                                $catId = $row['categorieId'];
-                                $catName = $row['categorieName'];
-                                $catDesc = $row['categorieDesc'];
+                            while($catRow = mysqli_fetch_assoc($catResult)){
+                                $catId = $catRow['categorieId'];
+                                $catName = $catRow['categorieName'];
+                                $catDesc = $catRow['categorieDesc'];
 
                                 echo '<tr>
                                         <td class="text-center"><b>' .$catId. '</b></td>
@@ -85,16 +89,14 @@
     </div>	    
 </div>
 
-
-<?php 
-    $catsql = "SELECT * FROM `categories`";
-    $catResult = mysqli_query($conn, $catsql);
+<?php
+    // Modal untuk mengupdate kategori
+    mysqli_data_seek($catResult, 0); // Kembali ke awal data
     while($catRow = mysqli_fetch_assoc($catResult)){
         $catId = $catRow['categorieId'];
         $catName = $catRow['categorieName'];
         $catDesc = $catRow['categorieDesc'];
 ?>
-
 <!-- Modal -->
 <div class="modal fade" id="updateCat<?php echo $catId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateCat<?php echo $catId; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -136,7 +138,6 @@
     </div>
   </div>
 </div>
-
 <?php
     }
 ?>

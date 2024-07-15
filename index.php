@@ -20,7 +20,7 @@
 <!-- Image section -->
 <div class="row my-4">
       <div class="col-md-12 text-center">
-        <img src="img/About.png" alt="Description of image" width="100%" height="auto">
+        <img src="img/index.jpg" alt="Description of image" width="900px" height="300px;">
       </div>
     </div>
     <!-- Reasons section starts here -->

@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = mysqli_query($conn, $sql);
         if ($result){
             if (file_exists($filename)) {
-                unlink($filename);
+                unlink($filename); // Hapus gambar terkait jika ada
             }
             echo "<script>alert('Removed');
                 window.location=document.referrer;
@@ -55,6 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </script>";
         }
     }
+    
     if(isset($_POST['updateCategory'])) {
         $catId = $_POST["catId"];
         $catName = $_POST["name"];

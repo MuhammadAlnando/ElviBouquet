@@ -98,9 +98,9 @@
                             Swal.fire({
                                 icon: "success",
                                 title: "Success!",
-                                text: "Thanks for ordering with us. Your order id is ' . $orderId . '"
+                                text: "Thanks for ordering with us. Your order id is ' . $orderId . '. Please upload proof of payment soon."
                             }).then(function() {
-                                window.location.href = "http://localhost/OnlinePizzaDelivery/index.php";
+                                window.location.href = "http://localhost/OnlinePizzaDelivery/viewOrder.php";
                             });
                         </script>';
                     exit();

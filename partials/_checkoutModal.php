@@ -1,5 +1,4 @@
 <!-- Checkout Modal -->
-<!-- Checkout Modal -->
 <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -10,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="partials/_manageCart.php" method="post">
+                <form id="checkoutForm" action="partials/_manageCart.php" method="post">
                     <div class="form-group">
                         <label for="address"><b>Address:</b></label>
                         <input class="form-control" id="address" name="address" placeholder="1234 Main St" type="text" required minlength="3" maxlength="500">
@@ -65,8 +64,8 @@
                     <div class="form-group">
     <label for="paymentMethod"><b>Payment Method:</b></label>
     <select class="form-control" id="paymentMethod" name="paymentMethod" required>
-        <option value="cash">Cash on Delivery</option>
-        <option value="transfer">Bank Transfer</option>
+        <option value="cash">BANK BCA = </option>
+        <option value="transfer">VIA DANA =</option>
     </select>
 </div>
 <div class="form-group">
@@ -75,12 +74,32 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <input type="hidden" name="amount" value="<?php echo $totalPrice ?>">
-                        <button type="submit" name="checkout" class="btn btn-success">Order</button>
-                    </div>
-                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <input type="hidden" name="amount" value="<?php echo $totalPrice ?>">
+                <button type="submit" form="checkoutForm" name="checkout" class="btn btn-success">Order</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#checkoutForm').submit(function(e) {
+            e.preventDefault(); // Hindari submit default
+
+            // Kirim form menggunakan AJAX untuk memproses order
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Jika sukses, redirect ke halaman viewOrder.php
+                    window.location.href = 'viewOrder.php';
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Handle error jika diperlukan
+                }
+            });
+        });
+    });
+</script>

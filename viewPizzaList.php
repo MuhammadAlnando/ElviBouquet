@@ -51,43 +51,45 @@
                 $pizzaDesc = $row['pizzaDesc'];
 
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="img/pizza-' . $pizzaId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
-                            <div class="card-body">
-                                <h5 class="card-title">' . substr($pizzaName, 0, 20) . '</h5>
-                                <h6 style="color: #ff0000">Rp. ' . $pizzaPrice . '</h6>
-                                <p class="card-text">' . substr($pizzaDesc, 0, 29) . '</p>
-                                <div class="row justify-content-center">';
-                if ($loggedin) {
-                    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE pizzaId = '$pizzaId' AND `userId`='$userId'";
-                    $quaresult = mysqli_query($conn, $quaSql);
-                    $quaExistRows = mysqli_num_rows($quaresult);
-                    if ($quaExistRows == 0) {
-                        echo '<form action="partials/_manageCart.php" method="POST">
-                              <input type="hidden" name="itemId" value="' . $pizzaId . '">
-                              <button type="submit" name="addToCart" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">Add to Cart</button>';
-                    } else {
-                        echo '<a href="viewCart.php"><button class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">Go to Cart</button></a>';
-                    }
-                } else {
-                    echo '<button class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
-                }
-                echo '</form>
-                                <button class="btn btn-primary quick-view-btn mx-2" 
-                                        style="background-color: #DCC0FF; border:none; color: black;"
-                                        data-toggle="modal" 
-                                        data-target="#quickViewModal"
-                                        data-id="' . $pizzaId . '"
-                                        data-name="' . $pizzaName . '"
-                                        data-price="Rp. ' . $pizzaPrice . '"
-                                        data-desc="' . $pizzaDesc . '"
-                                        data-img="img/pizza-' . $pizzaId . '.jpg">
-                                  Quick View
-                                </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
+        <div class="card" style="width: 18rem;">
+            <img src="img/pizza-' . $pizzaId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+            <div class="card-body">
+                <h5 class="card-title">' . substr($pizzaName, 0, 20) . '</h5>
+                <h6 style="color: #ff0000">Rp. ' . $pizzaPrice . '</h6>
+                <p class="card-text">' . substr($pizzaDesc, 0, 29) . '</p>
+                <div class="row justify-content-center">';
+
+if ($loggedin) {
+    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE pizzaId = '$pizzaId' AND `userId`='$userId'";
+    $quaresult = mysqli_query($conn, $quaSql);
+    $quaExistRows = mysqli_num_rows($quaresult);
+    if ($quaExistRows == 0) {
+        echo '<form action="partials/_manageCart.php" method="POST">
+              <input type="hidden" name="itemId" value="' . $pizzaId . '">
+              <button type="submit" name="addToCart" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">Add to Cart</button>';
+    } else {
+        // Tidak perlu tampilkan tombol "Go to Cart" di sini
+    }
+} else {
+    echo '<button class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
+}
+
+echo '<button class="btn btn-primary quick-view-btn mx-2" 
+        style="background-color: #DCC0FF; border:none; color: black;"
+        data-toggle="modal" 
+        data-target="#quickViewModal"
+        data-id="' . $pizzaId . '"
+        data-name="' . $pizzaName . '"
+        data-price="Rp. ' . $pizzaPrice . '"
+        data-desc="' . $pizzaDesc . '"
+        data-img="img/pizza-' . $pizzaId . '.jpg">
+          Detail
+      </button>
+    </div>
+  </div>
+</div>
+</div>';
+
             }
             if ($noResult) {
                 echo '<div class="jumbotron jumbotron-fluid">

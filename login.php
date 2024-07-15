@@ -11,20 +11,25 @@
     <!-- Gaya kustom Anda -->
     <style>
         /* CSS untuk form login */
+        body, html {
+            height: 100%;
+        }
         .container {
-            max-width: 1000px; /* Lebar maksimum container */
-            margin: auto;
-            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Menggunakan viewport height untuk mengisi tinggi layar */
+            background-color: #f8f9fa; /* Warna latar belakang untuk contoh */
+        }
+        .content {
+            text-align: center;
+            max-width: 600px; /* Lebar maksimum konten */
             padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 20px;
         }
         .login-form {
-            background: #fff;
+            width: 400px;
             padding: 30px;
             border-radius: 8px;
-           
         }
         .login-form h2 {
             margin-bottom: 20px;
@@ -42,17 +47,15 @@
     </style>
 </head>
 <body>
-    <?php include 'partials/_dbconnect.php';?>
-    <?php require 'partials/_nav.php' ?>
+    <?php include 'partials/_dbconnect.php'; ?>
+    <?php require 'partials/_nav.php'; ?>
+    
     <div class="container">
-        <div>
-            <!-- Bagian kiri kosong -->
+        <div class="content">
             <h2>Welcome to Elvi Bouquet!</h2>
-            <p>Join us and start your floral journey with us today.</p>
-        </div>
-        <div class="login-form">
-            <!-- Bagian kanan dengan form login -->
-            <h2>Login</h2>
+            
+            <div class="login-form">
+                <h2>Login</h2>
             <?php if (isset($loginError)): ?>
                 <div class="alert alert-danger"><?= $loginError ?></div>
             <?php endif; ?>
@@ -64,12 +67,14 @@
                     <input type="password" name="loginpassword" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #DCC0FF; border:none; color: black;">Login</button>
                 </div>
             </form>
-            <p class="text-center mb-0">Don't have an account? <a href="signup.php">Sign up now</a>.</p>
+            <p class="text-center mb-0">Don't have an account? <a href="signup.php" style="color: #DCC0FF;">Sign up now</a>.</p>
+            </div>
         </div>
     </div>
-    <?php require 'partials/_footer.php' ?>
+    
+    <?php require 'partials/_footer.php'; ?>
 </body>
 </html>
