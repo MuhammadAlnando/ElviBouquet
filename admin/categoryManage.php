@@ -11,7 +11,7 @@ header("Cache-Control: no-cache, must-revalidate");
             <div class="col-md-4">
                 <form action="partials/_categoryManage.php" method="post" enctype="multipart/form-data">
                     <div class="card">
-                        <div class="card-header" style="background-color: rgb(111 202 203);">
+                        <div class="card-header" style="background-color: #DCC0FF;">
                             Create New Category
                         </div>
                         <div class="card-body">
@@ -46,7 +46,7 @@ header("Cache-Control: no-cache, must-revalidate");
                 <div class="card">
                     <div class="card-body">
                     <table class="table table-bordered table-hover mb-0">
-                        <thead style="background-color: rgb(111 202 203);">
+                        <thead style="background-color: #DCC0FF;">
                         <tr>
                             <th class="text-center" style="width:7%;">Id</th>
                             <th class="text-center">Img</th>
@@ -101,7 +101,7 @@ header("Cache-Control: no-cache, must-revalidate");
 <div class="modal fade" id="updateCat<?php echo $catId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateCat<?php echo $catId; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: rgb(111 202 203);">
+      <div class="modal-header" style="background-color: #DCC0FF;">
         <h5 class="modal-title" id="updateCat<?php echo $catId; ?>">Category Id: <b><?php echo $catId; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

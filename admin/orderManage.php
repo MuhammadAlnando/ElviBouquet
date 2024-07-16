@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 98px; background: aliceblue;">
+<div class="container" style="margin-top: 98px; background: white;">
     <div class="table-wrapper">
         <div class="table-title" style="border-radius: 14px;">
             <div class="row">
@@ -6,14 +6,13 @@
                     <h2>Order <b>Details</b></h2>
                 </div>
                 <div class="col-sm-8">
-                    <a href="" class="btn btn-primary"><i class="material-icons">&#xE863;</i> <span>Refresh List</span></a>
-                    <a href="#" onclick="window.print()" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Print</span></a>
-                </div>
+                    <a href="" class="btn btn-primary" style=" background-color: #DCC0FF; color: black;"><i class="material-icons">&#xE863;</i> <span>Refresh List</span></a>
+                   </div>
             </div>
         </div>
 
         <table class="table table-striped table-hover text-center" id="NoOrder">
-            <thead style="background-color: rgb(111, 202, 203);">
+            <thead style="background-color: #DCC0FF;">
                 <tr>
                     <th>Order Id</th>
                     <th>User Id</th>
@@ -107,15 +106,15 @@
                         echo 'No Proof Image';
                     }
                     echo '</td>
-                        <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
-                        <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
-                        <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i> View</a></td>
+                        <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons">&#xE5C8;</i></a></td>
+                        <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#6F42C1;" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+                        <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons">&#xE5C8;</i></a></td>
                     </tr>';
                 }
 
                 if ($counter == 0) {
                     ?>
-                    <script>document.getElementById("NoOrder").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> You have not received any Order! </div>';</script>
+                    <script>document.getElementById("NoOrder").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%; background-color: #DCC0FF; border: none;"> You have not received any Order! </div>';</script>
                     <?php
                 }
                 ?>

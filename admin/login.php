@@ -27,7 +27,7 @@
 		right:0;
 		width:40%;
 		height: calc(100%);
-		background:white;
+		background: grey;
 		display: flex;
 		align-items: center;
 	}
@@ -36,23 +36,14 @@
 		left:0;
 		width:60%;
 		height: calc(100%);
-		background:#00000061;
+		background-image: url('/OnlinePizzaDelivery/img/backgroundhome.jpg');
 		display: flex;
 		align-items: center;
 	}
 	#login-right .card{
 		margin: auto
 	}
-	.logo {
-	    margin: auto;
-	    font-size: 8rem;
-	    background: white;
-	    border-radius: 50% 50%;
-	    height: 29vh;
-	    width: 13vw;
-	    display: flex;
-	    align-items: center;
-	}
+	
 	.logo img{
 		height: 80%;
 		width: 80%;
@@ -63,15 +54,15 @@
 <body>
     <main id="main" class=" bg-dark">
         <div id="login-left">
-        <div class="logo">
-            <img src="/OnlinePizzaDelivery/img/sample_logo.png" alt="">
-        </div>
+        
         </div>
         <div id="login-right">
         <div class="card col-md-8">
             <div class="card-body">
             <form action="partials/_handleLogin.php" method="post">
                 <div class="form-group">
+                    <h3><strong> Admin</strong> Panel</h3>
+                    <hr>
                 <label for="username" class="control-label"><b>Username</b></label>
                 <input type="text" id="username" name="username" class="form-control">
                 </div>

@@ -35,12 +35,7 @@
         require 'partials/_dbconnect.php';
         require 'partials/_nav.php';
 
-        if(isset($_GET['loginsuccess']) && $_GET['loginsuccess']=="true"){
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert" style="width:100%">
-                    <strong>Success!</strong> You are logged in
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
-                  </div>';
-        }
+       
     ?>
 
     <?php $page = isset($_GET['page']) ? $_GET['page'] :'home'; ?>

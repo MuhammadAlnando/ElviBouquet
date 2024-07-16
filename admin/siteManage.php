@@ -11,7 +11,7 @@
 
 echo '<div class="container-fluid" style="padding-left: 470px;margin-top:98px">
 	<div class="card col-lg-6 p-0">
-        <div class="title" style="background-color: rgb(111 202 203);">
+        <div class="title" style="background-color: #DCC0FF;">
             <em><h2 class="text-center" style="margin-top: 11px;">' .$systemName. '</h2></em>
         </div>
 		<div class="card-body">

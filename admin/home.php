@@ -36,6 +36,13 @@ $result_categories = mysqli_query($conn, $sql_categories);
 $row_categories = mysqli_fetch_assoc($result_categories);
 $total_categories = $row_categories['total_categories'];
 
+// Query untuk mengambil jumlah total kontak
+$sql_contact = "SELECT COUNT(*) AS total_contact FROM contact";
+$result_contact = mysqli_query($conn, $sql_contact);
+$row_contact = mysqli_fetch_assoc($result_contact);
+$total_contact = $row_contact['total_contact'];
+
+
 ?>
 
 <!doctype html>
@@ -57,13 +64,7 @@ $total_categories = $row_categories['total_categories'];
 
     <?php
         require 'partials/_nav.php';
-
-        if(isset($_GET['loginsuccess']) && $_GET['loginsuccess']=="true"){
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert" style="width:100%">
-                    <strong>Success!</strong> You are logged in
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
-                  </div>';
-        }
+        
     ?>
 
 <div class="container-fluid mt-4">
@@ -108,6 +109,17 @@ $total_categories = $row_categories['total_categories'];
                 </div>
             </div>
         </div>
+        <div class="col-md-4 mb-4">
+    <div class="card bg-secondary text-white">
+        <div class="card-header">
+            <h5 class="card-title">Total Message</h5>
+        </div>
+        <div class="card-body">
+            <h3 class="card-text"><?php echo $total_contact; ?></h3>
+        </div>
+    </div>
+</div>
+
     </div>
 </div>
 

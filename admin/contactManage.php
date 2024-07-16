@@ -18,7 +18,7 @@
         <div class="card col-lg-12">
             <div class="card-body">
                 <table class="table-striped table-bordered col-md-12 text-center">
-                    <thead style="background-color: rgb(111 202 203);">
+                    <thead style="background-color: #DCC0FF;">
                         <tr>
                             <th>Id</th>
                             <th>UserId</th>
@@ -103,7 +103,7 @@
 <div class="modal fade" id="reply<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="reply<?php echo $contactId; ?>" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(111 202 203);">
+            <div class="modal-header" style="background-color: #DCC0FF;">
                 <h5 class="modal-title" id="reply<?php echo $contactId; ?>">Reply (Contact Id: <?php echo $contactId; ?>)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -128,7 +128,7 @@
 <div class="modal fade" id="viewMessage<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="viewMessage<?php echo $contactId; ?>" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(111 202 203);">
+            <div class="modal-header" style="background-color: #DCC0FF;">
                 <h5 class="modal-title" id="viewMessage<?php echo $contactId; ?>">View Message (Contact Id: <?php echo $contactId; ?>)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -151,7 +151,7 @@
 <div class="modal fade" id="viewImage<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="viewImage<?php echo $contactId; ?>" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(111 202 203);">
+            <div class="modal-header" style="background-color: #DCC0FF;">
                 <h5 class="modal-title" id="viewImage<?php echo $contactId; ?>">Zoom Image</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -180,7 +180,7 @@
             </div>
             <div class="modal-body" id="notReply">
                 <table class="table-striped table-bordered col-md-12 text-center">
-                    <thead style="background-color: rgb(111 202 203);">
+                    <thead style="background-color: #DCC0FF;">
                         <tr>
                             <th>Contact Id</th>
                             <th>Reply Message</th>
