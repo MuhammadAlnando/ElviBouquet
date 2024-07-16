@@ -49,7 +49,7 @@ include 'partials/_dbconnect.php';
                 <div class="col-lg-8">
                     <div class="card wish-list mb-3">
                         <table class="table text-center">
-                            <thead class="thead-light">
+                            <thead class="thead" style="background-color: #DCC0FF;">
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Item Name</th>

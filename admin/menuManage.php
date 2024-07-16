@@ -11,7 +11,7 @@ header("Content-Type: text/html; charset=UTF-8");
 			<div class="col-md-4">
 				<form action="partials/_menuManage.php" method="post" enctype="multipart/form-data">
 					<div class="card mb-3">
-						<div class="card-header" style="background-color: rgb(111, 202, 203);">
+						<div class="card-header" style="background-color: #DCC0FF;">
 							Create New Item
 						</div>
 						<div class="card-body">
@@ -65,7 +65,7 @@ header("Content-Type: text/html; charset=UTF-8");
 				<div class="card">
 					<div class="card-body">
 						<table class="table table-bordered table-hover mb-0">
-							<thead style="background-color: rgb(111, 202, 203);">
+							<thead style="background-color: #DCC0FF;">
 								<tr>
 									<th class="text-center" style="width: 7%;">Cat. Id</th>
 									<th class="text-center">Img</th>
