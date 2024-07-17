@@ -56,7 +56,7 @@
                     <form action="partials/_manageProfile.php" method="POST">
                         <small>Remove Image: </small><button type="submit" class="btn btn-primary"
                             name="removeProfilePic"
-                            style="font-size: 12px; padding: 3px 8px; border-radius: 9px;">remove</button>
+                            style="font-size: 12px; padding: 3px 8px; border-radius: 9px; background-color:#748B6F; color:C3CBD6; border: none;">remove</button>
                     </form>
                     <form action="partials/_manageProfile.php" method="POST" enctype="multipart/form-data">
                         <div class="upload-btn-wrapper">
@@ -65,7 +65,7 @@
                             <input type="file" name="image" id="image" accept="image/*">
                         </div>
                         <button type="submit" name="updateProfilePic" class="btn btn-primary"
-                            style="font-size: 15px; padding: 3px 8px;">Update</button>
+                            style="font-size: 15px; padding: 3px 8px; background-color:#748B6F; color:C3CBD6; border: none;">Update</button>
                     </form>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                                     type="password" required minlength="4" maxlength="21" data-toggle="password">
                             </div>
                         </div>
-                        <button type="submit" name="updateProfileDetail" class="btn btn-primary">Update</button>
+                        <button type="submit" name="updateProfileDetail" class="btn btn-primary" style="background-color:#748B6F; color:C3CBD6; border:none;">Update</button>
                     </form>
                 </div>
             </div>

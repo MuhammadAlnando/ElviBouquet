@@ -124,6 +124,7 @@
         content: counter(section);
     }
     
+    
 
 </style>
 
@@ -135,7 +136,7 @@
     <?php if ($loggedin): ?>
     <div class="container">
         <div class="table-wrapper" id="empty">
-            <div class="table-title" style="background-color: #DCC0FF;">
+            <div class="table-title" style="background-color: #748B6F;">
                 <div class="row">
                     <div class="col-sm-4">
                         <h2>Order <b>Details</b></h2>
@@ -197,18 +198,18 @@ if (!empty($row['proofFile'])) {
     // Tampilkan form upload jika belum ada bukti pembayaran
     echo '<form id="uploadForm' . $orderId . '" class="uploadForm" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="proofFile">Select Proof Image:</label>
+                <label for="proofFile"></label>
                 <input type="file" class="form-control-file" id="proofFile' . $orderId . '" name="proofFile">
             </div>
             <input type="hidden" name="orderId" value="' . $orderId . '">
-            <button type="submit" class="btn btn-primary uploadProofBtn" disabled>Upload Proof</button>
+            <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #748B6F;" disabled>Upload Proof</button>
         </form>';
 }
 
 echo '</td>
-    <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
-    <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#6F42C1;" title="View Details"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
-    <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#6F42C1;"><i class="material-icons" style="color:#6F42C1;">&#xE5C8;</i></a></td>
+    <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#748B6F;"><i class="material-icons" style="color:#748B6F;">&#xE5C8;</i></a></td>
+    <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#748B6F;" title="View Details"><i class="material-icons" style="color:#748B6F;">&#xE5C8;</i></a></td>
+    <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#748B6F;"><i class="material-icons" style="color:#748B6F;">&#xE5C8;</i></a></td>
 </tr>';
 
 // Modal Detail Pesanan
@@ -276,16 +277,17 @@ echo '<div id="uploadProofModal' . $orderId . '" class="modal fade" role="dialog
     <?php else: ?>
         <!-- Tampilkan pesan jika belum login -->
         <div class="container">
-            <div class="alert alert-danger" role="alert">
-                Anda harus login untuk melihat halaman ini. <a href="login.php" class="alert-link">Login disini.</a>
+            <div class="alert alert-danger" style="background-color:#E44E5D; color:white;" role="alert">
+                Anda harus login untuk melihat halaman ini. <a href="login.php" class="alert-link" style="color:white;">Login disini.</a>
             </div>
         </div>
     <?php endif; ?>
+  
 
     <?php 
     include 'partials/_orderItemModal.php';
-    include 'partials/_orderStatusModal.php';
-    require 'partials/_footer.php';?> 
+    include 'partials/_orderStatusModal.php';?> 
+    <?php require 'partials/_footer.php';?> 
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

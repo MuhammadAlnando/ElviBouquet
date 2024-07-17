@@ -54,7 +54,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><a href="viewPizzaList.php?catid=' . $id . '" style="color: black;">' . $cat . '</a></h5>
                   <p class="card-text">' . substr($desc, 0, 50) . '...</p>
-                  <a href="viewPizzaList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #DCC0FF; border: none; color: black;">View All</a>
+                  <a href="viewPizzaList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #748B6F; border: none; color: white">View All</a>
                 </div>
               </div>';
       }
@@ -63,7 +63,7 @@
 
     <div class="row mt-5">
       <div class="col-md-12 text-center">
-        <h2>Why Choose Us?</h2>
+        <h2 style="color:#2A403D;">Why Choose Us?</h2>
         <p>Here are three compelling reasons:</p>
       </div>
     </div>
@@ -71,17 +71,17 @@
     <div class="row mt-3">
       <div class="col-md-4 text-center">
         <i class="fas fa-heart fa-3x mb-3" style="color: #FF4D7E;"></i>
-        <h5>Quality Products</h5>
+        <h5 style="color:#2A403D;">Quality Products</h5>
         <p>We pride ourselves on offering high-quality products made from the finest ingredients.</p>
       </div>
       <div class="col-md-4 text-center">
         <i class="fas fa-truck fa-3x mb-3" style="color: #3E4555;"></i>
-        <h5>Fast Delivery</h5>
+        <h5 style="color:#2A403D;">Fast Delivery</h5>
         <p>Enjoy quick and reliable delivery services to your doorstep.</p>
       </div>
       <div class="col-md-4 text-center">
         <i class="fas fa-users fa-3x mb-3" style="color: #6C757D;"></i>
-        <h5>Excellent Customer Service</h5>
+        <h5 style="color:#2A403D;">Excellent Customer Service</h5>
         <p>Our dedicated support team is always ready to assist you with any inquiries or issues.</p>
       </div>
     </div>

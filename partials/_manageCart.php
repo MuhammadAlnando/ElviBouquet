@@ -9,82 +9,40 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-    <?php
-    include '_dbconnect.php';
-    session_start();
+<?php
+include '_dbconnect.php';
+session_start();
 
-    // Check if user is logged in
-    if (!isset($_SESSION['userId'])) {
-        echo '<script>
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "You must be logged in to perform this action."
-                }).then(function() {
-                    window.location.href = "login.php";
-                });
-              </script>';
-        exit();
+if (!isset($_SESSION['userId'])) {
+    echo json_encode(["status" => "error", "message" => "You must be logged in to perform this action."]);
+    exit();
+}
+
+$userId = $_SESSION['userId'];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
+    $itemId = $_POST["itemId"];
+    error_log("Adding to cart: User ID: $userId, Item ID: $itemId"); // Debug log
+
+    $existSql = "SELECT * FROM `viewcart` WHERE pizzaId = '$itemId' AND `userId`='$userId'";
+    $result = mysqli_query($conn, $existSql);
+    if (!$result) {
+        die("Query Failed: " . mysqli_error($conn));
     }
 
-    $userId = $_SESSION['userId'];
-
-    // Add item to cart
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
-        $itemId = $_POST["itemId"];
-
-        // Check if item already exists in cart
-        $existSql = "SELECT * FROM `viewcart` WHERE pizzaId = '$itemId' AND `userId`='$userId'";
-        $result = mysqli_query($conn, $existSql);
-        if (!$result) {
-            die("Query Failed: " . mysqli_error($conn));
-        }
-
-        $numExistRows = mysqli_num_rows($result);
-        if ($numExistRows > 0) {
-            // Item already in cart
-            echo '<script>
-                    Swal.fire({
-                        icon: "warning",
-                        title: "Item Already Added",
-                        text: "This item is already in your cart."
-                    }).then(function() {
-                        window.history.back();
-                    });
-                  </script>';
-            exit();
+    $numExistRows = mysqli_num_rows($result);
+    if ($numExistRows > 0) {
+        echo json_encode(["status" => "warning", "message" => "This item is already in your cart."]);
+    } else {
+        $sql = "INSERT INTO `viewcart` (`pizzaId`, `itemQuantity`, `userId`, `addedDate`) VALUES ('$itemId', '1', '$userId', current_timestamp())";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            echo json_encode(["status" => "success", "message" => "Item added to your cart."]);
         } else {
-            // Add item to cart
-            $sql = "INSERT INTO `viewcart` (`pizzaId`, `itemQuantity`, `userId`, `addedDate`) 
-                    VALUES ('$itemId', '1', '$userId', current_timestamp())";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                // Item successfully added to cart
-                echo '<script>
-                        Swal.fire({
-                            icon: "success",
-                            title: "Item Added",
-                            text: "Item added to your cart."
-                        }).then(function() {
-                            window.history.back();
-                        });
-                      </script>';
-                exit();
-            } else {
-                // Error adding item to cart
-                echo '<script>
-                        Swal.fire({
-                            icon: "error",
-                            title: "Error",
-                            text: "Failed to add item to your cart."
-                        }).then(function() {
-                            window.history.back();
-                        });
-                      </script>';
-                exit();
-            }
+            echo json_encode(["status" => "error", "message" => "Failed to add item to your cart."]);
         }
     }
+}
 
     // Remove item from cart
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['removeItem'])) {

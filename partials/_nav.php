@@ -21,46 +21,46 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
 
 <!-- Tambahkan link ke Font Awesome di bagian <head> dokumen HTML Anda -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #DCC0FF;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #748B6F;">
     <style>
         /* CSS untuk navbar */
         .navbar-dark .navbar-nav .nav-link:hover {
             background-color: #ffffff; /* Warna ungu yang lebih gelap */
         }
         .navbar-dark .navbar-nav .nav-link {
-            color: #000000; /* Warna teks hitam */
+            color: white; /* Warna teks hitam */
         }
         .navbar-dark .navbar-nav .nav-link:hover {
-            color: #6F42C1; /* Warna teks putih saat hover */
+            color: #748B6F; /* Warna teks putih saat hover */
         }
         .navbar-brand, .navbar-toggler-icon {
-            color: #000000; /* Warna teks dan ikon navbar */
+            color: white; /* Warna teks dan ikon navbar */
         }
         .navbar-toggler {
-            border-color: #000000; /* Warna border toggler */
+            border-color: white; /* Warna border toggler */
         }
         .navbar-dark .navbar-nav .nav-item.active .nav-link,
         .navbar-dark .navbar-nav .nav-link {
-            color: #000000; /* Warna teks hitam */
+            color: white; /* Warna teks hitam */
         }
 
         .navbar-dark .navbar-nav .nav-link:hover {
-            color: #6F42C1; /* Warna teks putih saat hover */
+            color: #748B6F; /* Warna teks putih saat hover */
             border-radius: 50px;
         }
 
         /* CSS untuk form pencarian */
         .btn-outline-success {
             color: #000000; /* Warna teks default */
-            border-color: #BAA8E0; /* Warna border default */
+            border-color: #C3CBD6; /* Warna border default */
         }
         .btn-outline-success:hover {
             color: #ffffff; /* Warna teks saat hover */
-            background-color: #6F42C1; /* Warna latar belakang saat hover */
-            border-color: #6F42C1; /* Warna border saat hover */
+            background-color: #748B6F; /* Warna latar belakang saat hover */
+            border-color: #748B6F; /* Warna border saat hover */
         }
         .btn-outline-success:focus {
-            box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.5); /* Efek focus saat tombol ditekan */
+            box-shadow: 0 0 0 0.2rem #2A403D; /* Efek focus saat tombol ditekan */
         }
 
         /* Penyesuaian dropdown */
@@ -70,7 +70,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
         }
         
     </style>
-    <a class="navbar-brand" style="color: #000000;" href="index.php"><b>Elvi Bouquet</b></a>
+    <a class="navbar-brand" style="color: white" href="index.php"><b>Elvi Bouquet</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -99,15 +99,17 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
                     <input class="form-control" type="search" name="search" id="search" placeholder="Search" aria-label="Search" required>
                     <div class="input-group-append">
                         <button class="btn btn" type="submit">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search"style="color: white"></i>
                         </button>
                     </div>
                 </div>
             </form>
         </div>
-        <a href="viewCart.php" class="text-decoration-none text-dark mx-2">
-            <i class="fas fa-shopping-cart"></i>(<?= $count ?>)
-        </a>
+        <a href="viewCart.php" class="text-decoration-none text-dark mx-2" style="color: white;">
+    <i class="fas fa-shopping-cart" style="color: white;"></i> (<?= $count ?>)
+</a>
+
+
 <!-- Tautan untuk Navbar -->
 <?php if ($loggedin): ?>
     <!-- Jika sudah login, tampilkan dropdown menu profil -->

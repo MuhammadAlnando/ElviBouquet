@@ -49,7 +49,7 @@ include 'partials/_dbconnect.php';
                 <div class="col-lg-8">
                     <div class="card wish-list mb-3">
                         <table class="table text-center">
-                            <thead class="thead" style="background-color: #DCC0FF;">
+                            <thead class="thead" style="background-color: #748B6F; color:white">
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Item Name</th>
@@ -138,7 +138,7 @@ include 'partials/_dbconnect.php';
                                 </label>
                             </div>
                             <br>
-                            <button type="button" class="btn btn-primary btn-block" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
+                            <button type="button" class="btn btn-primary btn-block" style="background-color: #748B6F; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
 
                             <?php
                             // JavaScript to display alert if cart is empty

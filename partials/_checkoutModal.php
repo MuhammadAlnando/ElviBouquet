@@ -23,7 +23,7 @@
                             <label for="phone"><b>Phone No:</b></label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon">+62</span>
+                                    <span class="input-group-text" style="background-color:#C3CBD6; id="basic-addon">+62</span>
                                 </div>
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="xxxxxxxxxx" required pattern="[0-9]{10}" maxlength="10">
                             </div>
@@ -74,9 +74,9 @@
                     </div>
 
                     <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#C3CBD6; color:black">Cancel</button>
                 <input type="hidden" name="amount" value="<?php echo $totalPrice ?>">
-                <button type="submit" form="checkoutForm" name="checkout" class="btn btn-success">Order</button>
+                <button type="submit" form="checkoutForm" name="checkout" class="btn btn-success" style="background-color:#748B6F; color:white;">Order</button>
             </div>
         </div>
     </div>

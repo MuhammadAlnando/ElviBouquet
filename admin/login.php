@@ -27,7 +27,7 @@
 		right:0;
 		width:40%;
 		height: calc(100%);
-		background-color: #DCC0FF;
+		background-color: #748B6F;
 		display: flex;
 		align-items: center;
 	}
@@ -70,7 +70,7 @@
                 <label for="password" class="control-label"><b>Password</b></label>
                 <input type="password" id="password" name="password" class="form-control">
                 </div>
-                <center><button type="submit" class="btn-sm btn-block btn-wave col-md-4 btn-primary" style="background-color: #DCC0FF; border: none; color: black;">Login</button></center>
+                <center><button type="submit" class="btn-sm btn-block btn-wave col-md-4 btn-primary" style="background-color: #748B6F; border: none; color: white;">Login</button></center>
             </form>
             </div>
         </div>

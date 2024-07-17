@@ -12,9 +12,9 @@
 <div class="modal fade" id="orderStatus<?php echo $orderid; ?>" tabindex="-1" role="dialog" aria-labelledby="orderStatus<?php echo $orderid; ?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #DCC0FF;">
-        <h5 class="modal-title" id="orderStatus<?php echo $orderid; ?>">Order Status and Delivery Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header" style="background-color: #748B6F;">
+        <h5 class="modal-title" style="color: white;" id="orderStatus<?php echo $orderid; ?>">Order Status and Delivery Details</h5>
+        <button type="button" class="close" style="color: white;" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <input type="hidden" id="orderId" name="orderId" value="<?php echo $orderid; ?>">
-            <button type="submit" class="btn btn-success mb-2" name="updateStatus">Update</button>
+            <button type="submit" class="btn btn-success mb-2" style="background-color: #748B6F;" name="updateStatus">Update</button>
         </form>
         <?php 
             $deliveryDetailSql = "SELECT * FROM `deliverydetails` WHERE `orderId`= $orderid";

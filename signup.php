@@ -65,7 +65,7 @@
                     <label for="phone" class="font-weight-bold">Phone No</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" style="background-color: #DCC0FF;" id="basic-addon">+62</span>
+                            <span class="input-group-text" style="background-color: #748B6F;" id="basic-addon">+62</span>
                         </div>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" maxlength="10">
                     </div>
@@ -78,9 +78,9 @@
                     <label for="cpassword" class="font-weight-bold">Re-enter Password</label>
                     <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Re-enter Password" required minlength="4" maxlength="21">
                 </div>
-                <button type="submit" class="btn btn-success btn-block" style="background-color: #DCC0FF; border:none; color: black;">Submit</button>
+                <button type="submit" class="btn btn-success btn-block" style="background-color: #748B6F; border:none; color: white;">Submit</button>
             </form>
-            <p class="text-center mb-0 mt-3">Already have an account? <a href="login.php" style="color: #DCC0FF;">Login here</a>.</p>
+            <p class="text-center mb-0 mt-3">Already have an account? <a href="login.php" style="color: #748B6F;">Login here</a>.</p>
         </div>
     </div>
 <?php require 'partials/_footer.php' ?>

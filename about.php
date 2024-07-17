@@ -12,7 +12,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <style>
         .btn-how-to-order, .btn-delivery, .btn-cancel-refund {
-            background-color: #DCC0FF;
+            background-color: #748B6F;
             color: #fff;
             padding: 10px 20px;
             border-radius: 5px;
@@ -24,7 +24,7 @@
         }
 
         .btn-how-to-order:hover, .btn-delivery:hover, .btn-cancel-refund:hover {
-            background-color: #C39BFF;
+            background-color: #C3CBD6;
         }
 
         .btn-how-to-order.collapsed:before, .btn-delivery.collapsed:before, .btn-cancel-refund.collapsed:before {
@@ -74,7 +74,7 @@
 
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <button class="btn btn-how-to-order collapsed" style="color: black; width:40rem;" type="button" data-toggle="collapse" data-target="#howToOrder" aria-expanded="false" aria-controls="howToOrder">
+                    <button class="btn btn-how-to-order collapsed" style="color: white; width:40rem;" type="button" data-toggle="collapse" data-target="#howToOrder" aria-expanded="false" aria-controls="howToOrder">
                         How To Order
                     </button>
                     <div class="collapse" id="howToOrder">
@@ -98,7 +98,7 @@
 
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <button class="btn btn-delivery collapsed" style="color: black; width:40rem;" type="button" data-toggle="collapse" data-target="#delivery" aria-expanded="false" aria-controls="delivery">
+                    <button class="btn btn-delivery collapsed" style="color: white; width:40rem;" type="button" data-toggle="collapse" data-target="#delivery" aria-expanded="false" aria-controls="delivery">
                         Delivery
                     </button>
                     <div class="collapse" id="delivery">
@@ -136,7 +136,7 @@
 
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <button class="btn btn-cancel-refund collapsed" style="color: black; width:40rem;" type="button" data-toggle="collapse" data-target="#cancelRefund" aria-expanded="false" aria-controls="cancelRefund">
+                    <button class="btn btn-cancel-refund collapsed" style="color: white; width:40rem;" type="button" data-toggle="collapse" data-target="#cancelRefund" aria-expanded="false" aria-controls="cancelRefund">
                         Cancel & Refund
                     </button>
                     <div class="collapse" id="cancelRefund">

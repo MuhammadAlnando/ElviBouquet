@@ -132,7 +132,7 @@
   <?php include 'partials/_dbconnect.php'; ?>
   <?php include 'partials/_nav.php'; ?>
   <div class="contact2" style="background-color: white; width: 100%" id="contact">
-    <div class="container" style="height: 850px;">
+    <div class="container" style="height: 630px;">
       <div class="row justify-content-center contact-container">
         <div class="col-lg-8">
           <div class="card mb-4">
@@ -205,12 +205,12 @@
                       </div>
                       <?php if ($loggedin) { ?>
                         <div class="col-lg-12">
-                          <button type="submit" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3" style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-                          <button type="button" class="btn btn-danger mt-3 mb-3 text-dark border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #DCC0FF;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
+                          <button type="submit" class="btn btn-danger mt-3 mb-3  border-0 py-2 px-3" style="background-color: #748B6F; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                          <button type="button" class="btn btn-danger mt-3 mb-3 border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #748B6F; color:white;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
                         </div>
                       <?php } else { ?>
                         <div class="col-lg-12">
-                          <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #DCC0FF;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                          <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #748B6F; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
                           <small class="form-text text-muted">First login to Contact with Us.</small>
                         </div>
                       <?php } ?>
@@ -240,47 +240,7 @@
 
         </div>
         
-        <div class="container">
-    <hr>
-    <div class="row mt-4 d-flex justify-content-center">
-        <div class="col-lg-2" style="text-align: center;">
-            <ul class="list-unstyled">
-                <li><a href="index.php" style="color:black; font-weight: bold;"><strong>Elvi Bouquet</strong></a></li>
-            </ul>
-        </div>
-        <div class="col-lg-2" style="text-align: center;">
-            <ul class="list-unstyled">
-            <li style="color:black; font-weight: bold;">Services</li>
-                <li><a href="index.php" style="color:black;">Home</a></li>
-                <li><a href="viewOrder.php" style="color:black;"><strong>Orders</strong></a></li>
-
-                <li><a href="about.php" style="color:black;"><strong>About Us</strong></a></li>
-                <li><a href="contact.php" style="color:black;"><strong>Contact Us</strong></a></li>
-                
-                
-            </ul>
-        </div>
         
-        <div class="col-lg-2" style="text-align: center;">
-            <ul class="list-unstyled">
-                
-            <li style="color:black; font-weight: bold;">Work Hours</li>
-                <li style="color:black;">Monday - Saturday</li>
-                <li style="color:black;">8am - 5pm</li>
-            </ul>
-        </div>
-        <div class="col-lg-2" style="text-align: center;">
-        <ul class="list-unstyled">
-            <li style="color:black; font-weight: bold;">Social Media</li>
-            <li class="social-icons">
-                <a href="https://www.facebook.com/elvi.paonganan.1"><i class="fab fa-facebook"  style="color:#3e4555; font-size: 32px;"></i></a>
-                <a href="https://www.instagram.com/elvi_bouquet/"><i class="fab fa-instagram"  style="color:#3e4555; font-size: 32px;"></i></a>
-            </li>
-        </ul>
-        </div>
-    </div>
-</div>
-
       </div>
     </div>
   </div>
@@ -289,19 +249,19 @@
   <div class="modal fade" id="adminReply" tabindex="-1" role="dialog" aria-labelledby="adminReply" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #DCC0FF;">
-          <h5 class="modal-title" id="adminReply">Admin Reply</h5>
+        <div class="modal-header" style="background-color: #748B6F;">
+          <h5 class="modal-title" id="adminReply" style="color:white;">Admin Reply</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body" id="messagebd">
           <table class="table-striped table-bordered col-md-12 text-center">
-            <thead style="background-color: #DCC0FF; border-radius: 10px">
+            <thead style="background-color: #748B6F; border-radius: 10px; color:white;">
               <tr>
                 <th>Contact Id</th>
                 <th>Reply Message</th>
-                <th>datetime</th>
+                <th>Date Time</th>
               </tr>
             </thead>
             <tbody>
@@ -338,7 +298,7 @@
   <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #DCC0FF">
+        <div class="modal-header" style="background-color: #748B6F">
           <h5 class="modal-title" id="history">Your Sent Message</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -346,7 +306,7 @@
         </div>
         <div class="modal-body" id="bd">
           <table class="table-striped table-bordered col-md-12 text-center">
-            <thead style="background-color: #DCC0FF; border-radius: 50px;">
+            <thead style="background-color: #748B6F; border-radius: 50px;">
               <tr>
                 <th>Contact Id</th>
                 <th>Order Id</th>

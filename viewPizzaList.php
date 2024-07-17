@@ -55,7 +55,7 @@
                             <img src="img/pizza-' . $pizzaId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                             <div class="card-body">
                                 <h5 class="card-title">' . substr($pizzaName, 0, 20) . '</h5>
-                                <h6 style="color: #ff0000">Rp. ' . $pizzaPrice . '</h6>
+                                <h6 style="color: #2A403D;">Rp. ' . $pizzaPrice . '</h6>
                                 <p class="card-text">' . substr($pizzaDesc, 0, 29) . '</p>
                                 <div class="row justify-content-center">';
 
@@ -64,39 +64,33 @@
                     $quaresult = mysqli_query($conn, $quaSql);
                     $quaExistRows = mysqli_num_rows($quaresult);
                     if ($quaExistRows == 0) {
-                        echo '<button type="button" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#quickViewModal"
-                              data-id="' . $pizzaId . '"
-                              data-name="' . $pizzaName . '"
-                              data-price="Rp. ' . $pizzaPrice . '"
-                              data-desc="' . $pizzaDesc . '"
-                              data-img="img/pizza-' . $pizzaId . '.jpg">
-                                Add to Cart
-                              </button>';
+                        echo '';
                     } else {
                         // Already in cart
-                        echo '<span class="text-success mx-2">Added to Cart</span>';
+                        echo '';
                     }
+                    echo '<button type="button" class="btn btn-primary quick-view-btn mx-2" 
+                            style="background-color: #748B6F; border:none; color: white; width: 150px;"
+                            data-toggle="modal" 
+                            data-target="#quickViewModal"
+                            data-id="' . $pizzaId . '"
+                            data-name="' . $pizzaName . '"
+                            data-price="Rp. ' . $pizzaPrice . '"
+                            data-desc="' . $pizzaDesc . '"
+                            data-img="img/pizza-' . $pizzaId . '.jpg">
+                              Detail
+                          </button>
+                          ';
                 } else {
-                    echo '<button type="button" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#loginModal">
+                    echo '<button type="button" class="btn btn-primary mx-2" style="background-color: #748B6F; border:none; color: white;" data-toggle="modal" data-target="#loginModal">
                             Add to Cart
                           </button>';
                 }
 
-                echo '<button type="button" class="btn btn-primary quick-view-btn mx-2" 
-                        style="background-color: #DCC0FF; border:none; color: black;"
-                        data-toggle="modal" 
-                        data-target="#quickViewModal"
-                        data-id="' . $pizzaId . '"
-                        data-name="' . $pizzaName . '"
-                        data-price="Rp. ' . $pizzaPrice . '"
-                        data-desc="' . $pizzaDesc . '"
-                        data-img="img/pizza-' . $pizzaId . '.jpg">
-                          Detail
-                      </button>
+                echo '</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>';
+                  </div>';
 
             }
             if ($noResult) {
@@ -118,54 +112,38 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="quickViewName"></h5>
+                    <h3>Detail</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <a id="quickViewLinkImg" href="" data-lightbox="image-1">
-                                    <img id="quickViewImage" src="" class="img-fluid" alt="Product Image">
+                                    <img style="width: 500px;" id="quickViewImage" src="" class="img-fluid" alt="Product Image">
                                 </a>
-                            </div>
-                            <div class="col-md-6">
+                                <h5 class="modal-title" id="quickViewName"></h5>
                                 <h5 id="quickViewPrice" style="color: #ff0000;"></h5>
                                 <p id="quickViewDesc"></p>
+                                <div class="row justify-content-center">
+                                    <button id="addToCartBtn" type="button" class="btn btn-primary mx-2" style="background-color: #748B6F; border:none; color: white;">
+                                        Add to Cart
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="container-fluid">
-                        <div class="row justify-content-center">
-                            <?php
-                            if ($loggedin) {
-                                // Check if item is already in cart
-                                if ($quaExistRows == 0) {
-                                    echo '<button id="addToCartBtn" type="button" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">
-                                            Add to Cart
-                                          </button>';
-                                } else {
-                                    echo '<a href="viewCart.php"><button class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;">
-                                            Go to Cart
-                                          </button></a>';
-                                }
-                            } else {
-                                echo '<button type="button" class="btn btn-primary mx-2" style="background-color: #DCC0FF; border:none; color: black;" data-toggle="modal" data-target="#loginModal">
-                                        Add to Cart
-                                      </button>';
-                            }
-                            ?>
-                        </div>
+                        <!-- Optional Footer Content -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -173,7 +151,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+    $(document).ready(function() {
         $('.quick-view-btn').on('click', function() {
             var pizzaId = $(this).data('id');
             var pizzaName = $(this).data('name');
@@ -198,16 +178,48 @@
                     url: 'partials/_manageCart.php',
                     data: { addToCart: true, itemId: pizzaId },
                     success: function(response) {
-                        // Handle success, e.g., show message or update UI
-                        alert('Item added to cart successfully!');
+                        console.log('Success:', response); // Debug log for success
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Item added to cart successfully!',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
                     },
                     error: function(xhr, status, error) {
-                        // Handle error
-                        console.error('Error:', error);
+                        console.error('Error:', error); // Debug log for error
                     }
                 });
             });
         });
+
+        // Handle Add to Cart button click outside modal
+        $('.add-to-cart-btn').on('click', function() {
+            var pizzaId = $(this).data('id');
+
+            // AJAX request to add item to cart
+            $.ajax({
+                type: 'POST',
+                url: 'partials/_manageCart.php',
+                data: { addToCart: true, itemId: pizzaId },
+                success: function(response) {
+                    console.log('Success:', response); // Debug log for success
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Item added to cart successfully!',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error); // Debug log for error
+                }
+            });
+        });
+    });
     </script>
+
 </body>
 </html>

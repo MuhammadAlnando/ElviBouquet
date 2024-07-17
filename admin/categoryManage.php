@@ -1,7 +1,7 @@
 <?php
 header("Cache-Control: no-cache, must-revalidate");
-    $catsql = "SELECT * FROM `categories`";
-    $catResult = mysqli_query($conn, $catsql);
+$catsql = "SELECT * FROM `categories`";
+$catResult = mysqli_query($conn, $catsql);
 ?>
 
 <div class="container-fluid" style="margin-top:98px">
@@ -11,7 +11,7 @@ header("Cache-Control: no-cache, must-revalidate");
             <div class="col-md-4">
                 <form action="partials/_categoryManage.php" method="post" enctype="multipart/form-data">
                     <div class="card">
-                        <div class="card-header" style="background-color: #DCC0FF;">
+                        <div class="card-header" style="background-color: #748B6F; color: white;">
                             Create New Category
                         </div>
                         <div class="card-body">
@@ -24,10 +24,10 @@ header("Cache-Control: no-cache, must-revalidate");
                                 <input type="text" class="form-control" name="desc" required>
                             </div> 
                             <div class="form-group">
-								<label for="image" class="control-label">Image</label>
-								<input type="file" name="image" id="image" accept=".jpg" class="form-control" required style="border:none;">
-								<small id="Info" class="form-text text-muted mx-3">Please .jpg file upload.</small>
-							</div>  
+                                <label for="image" class="control-label">Image</label>
+                                <input type="file" name="image" id="image" accept=".jpg" class="form-control" required style="border:none;">
+                                <small id="Info" class="form-text text-muted mx-3">Please upload a .jpg file.</small>
+                            </div>  
                         </div>  
                         <div class="card-footer">
                             <div class="row">
@@ -46,7 +46,7 @@ header("Cache-Control: no-cache, must-revalidate");
                 <div class="card">
                     <div class="card-body">
                     <table class="table table-bordered table-hover mb-0">
-                        <thead style="background-color: #DCC0FF;">
+                        <thead style="background-color: #748B6F; color: white;">
                         <tr>
                             <th class="text-center" style="width:7%;">Id</th>
                             <th class="text-center">Img</th>
@@ -101,7 +101,7 @@ header("Cache-Control: no-cache, must-revalidate");
 <div class="modal fade" id="updateCat<?php echo $catId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateCat<?php echo $catId; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #DCC0FF;">
+      <div class="modal-header" style="background-color: #748B6F;">
         <h5 class="modal-title" id="updateCat<?php echo $catId; ?>">Category Id: <b><?php echo $catId; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -112,17 +112,14 @@ header("Cache-Control: no-cache, must-revalidate");
 		    <div class="text-left my-2 row" style="border-bottom: 2px solid #dee2e6;">
 		   		<div class="form-group col-md-8">
 					<b><label for="image">Image</label></b>
-					<input type="file" name="catimage" id="catimage" accept=".jpg" class="form-control" required style="border:none;" onchange="document.getElementById('itemPhoto').src = window.URL.createObjectURL(this.files[0])">
-					<small id="Info" class="form-text text-muted mx-3">Please .jpg file upload.</small>
+					<input type="file" name="catimage" id="catimage" accept=".jpg" class="form-control" style="border:none;" onchange="document.getElementById('itemPhoto').src = window.URL.createObjectURL(this.files[0])">
+					<small id="Info" class="form-text text-muted mx-3">Please upload a .jpg file.</small>
 					<input type="hidden" id="catId" name="catId" value="<?php echo $catId; ?>">
-					<button type="submit" class="btn btn-success my-1" name="updateCatPhoto">Update Img</button>
 				</div>
 				<div class="form-group col-md-4">
 					<img src="/OnlinePizzaDelivery/img/card-<?php echo $catId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="Category image" width="100" height="100">
 				</div>
 			</div>
-		</form>
-        <form action="partials/_categoryManage.php" method="post">
             <div class="text-left my-2">
                 <b><label for="name">Name</label></b>
                 <input class="form-control" id="name" name="name" value="<?php echo $catName; ?>" type="text" required>

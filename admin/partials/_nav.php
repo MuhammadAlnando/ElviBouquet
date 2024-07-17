@@ -13,43 +13,43 @@
 </header> 
 
 
-<div class="l-navbar" id="nav-bar" style="background-color: #DCC0FF;">
+<div class="l-navbar" id="nav-bar" style="background-color: #748B6F;">
     <nav class="nav">
         <div>
             <a href="index.php" class="nav__logo">
-                <i class='bx bx-layer nav__logo-icon' style="color: black"></i>
-                <span class="nav__logo-name" style="color: black">Elvi Bouquet</span>
+                <i class='bx bx-layer nav__logo-icon' style="color: white"></i>
+                <span class="nav__logo-name" style="color: white">Elvi Bouquet</span>
             </a>
 
             <div class="nav__list">
                 <a href="index.php" class="nav__link nav-home">
-                  <i class='bx bx-grid-alt nav__icon'  style="color: black"></i>
-                  <span class="nav__name" style="color: black">Home</span>
+                  <i class='bx bx-grid-alt nav__icon'  style="color: white"></i>
+                  <span class="nav__name" style="color: white">Home</span>
                 </a>
                 <a href="index.php?page=orderManage" class="nav-orderManage nav__link ">
-                  <i class='bx bx-bar-chart-alt-2 nav__icon' style="color: black"></i>
-                  <span class="nav__name" style="color: black">Orders</span>
+                  <i class='bx bx-bar-chart-alt-2 nav__icon' style="color: white"></i>
+                  <span class="nav__name" style="color: white">Orders</span>
                 </a>
                 <a href="index.php?page=categoryManage" class="nav__link nav-categoryManage">
-                  <i class='bx bx-folder nav__icon' style="color: black"></i>
-                  <span class="nav__name" style="color: black">Category List</span>
+                  <i class='bx bx-folder nav__icon' style="color: white"></i>
+                  <span class="nav__name" style="color: white">Category List</span>
                 </a>
                 <a href="index.php?page=menuManage" class="nav__link nav-menuManage">
-                  <i class='bx bx-message-square-detail nav__icon' style="color: black"></i>
-                  <span class="nav__name" style="color: black">Menu</span>
+                  <i class='bx bx-message-square-detail nav__icon' style="color: white"></i>
+                  <span class="nav__name" style="color: white">Menu</span>
                 </a>
                 <a href="index.php?page=contactManage" class="nav__link nav-contactManage">
-                  <i class="fas fa-hands-helping" style="color: black"></i>
-                  <span class="nav__name" style="color: black">contact Info</span>
+                  <i class="fas fa-hands-helping" style="color: white"></i>
+                  <span class="nav__name" style="color: white">contact Info</span>
                 </a>
                 <a href="index.php?page=userManage" class="nav__link nav-userManage">
-                  <i class='bx bx-user nav__icon' style="color: black"></i>
-                  <span class="nav__name" style="color: black">Users</span>
+                  <i class='bx bx-user nav__icon' style="color: white"></i>
+                  <span class="nav__name" style="color: white">Users</span>
                 </a>
-                <a href="index.php?page=siteManage" class="nav__link nav-siteManage">
+                <!-- <a href="index.php?page=siteManage" class="nav__link nav-siteManage">
                   <i class="fas fa-cogs" style="color: black"></i>
                   <span class="nav__name" style="color: black">Site Settings</span>
-                </a>
+                </a> -->
                 
             </div>
         </div>
