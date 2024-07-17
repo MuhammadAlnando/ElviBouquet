@@ -75,31 +75,31 @@ header("Content-Type: text/html; charset=UTF-8");
 							</thead>
 							<tbody>
 								<?php
-								$sql = "SELECT * FROM `pizza`";
+								$sql = "SELECT * FROM `bouquet`";
 								$result = mysqli_query($conn, $sql);
 								while($row = mysqli_fetch_assoc($result)){
-									$pizzaId = $row['pizzaId'];
-									$pizzaName = $row['pizzaName'];
-									$pizzaPrice = $row['pizzaPrice'];
-									$pizzaDesc = $row['pizzaDesc'];
-									$pizzaCategorieId = $row['pizzaCategorieId'];
+									$bouquetId = $row['bouquetId'];
+									$bouquetName = $row['bouquetName'];
+									$bouquetPrice = $row['bouquetPrice'];
+									$bouquetDesc = $row['bouquetDesc'];
+									$bouquetCategorieId = $row['bouquetCategorieId'];
 
 									echo '<tr>
-											<td class="text-center">' .$pizzaCategorieId. '</td>
+											<td class="text-center">' .$bouquetCategorieId. '</td>
 											<td>
-												<img src="/OnlinePizzaDelivery/img/pizza-'.$pizzaId. '.jpg" alt="image for this item" width="150px" height="150px">
+												<img src="/bouquetElviOnline/img/pizza-'.$bouquetId. '.jpg" alt="image for this item" width="150px" height="150px">
 											</td>
 											<td>
-												<p>Name : <b>' .$pizzaName. '</b></p>
-												<p>Description : <b class="truncate">' .$pizzaDesc. '</b></p>
-												<p>Price : <b>' .$pizzaPrice. '</b></p>
+												<p>Name : <b>' .$bouquetName. '</b></p>
+												<p>Description : <b class="truncate">' .$bouquetDesc. '</b></p>
+												<p>Price : <b>' .$bouquetPrice. '</b></p>
 											</td>
 											<td class="text-center">
 												<div class="row mx-auto" style="width: 112px;">
-													<button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#updateItem' .$pizzaId. '">Edit</button>
+													<button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#updateItem' .$bouquetId. '">Edit</button>
 													<form action="partials/_menuManage.php" method="POST">
 														<button name="removeItem" class="btn btn-sm btn-danger" style="margin-left: 9px;">Delete</button>
-														<input type="hidden" name="pizzaId" value="'.$pizzaId. '">
+														<input type="hidden" name="bouquetId" value="'.$bouquetId. '">
 													</form>
 												</div>
 											</td>
@@ -117,21 +117,21 @@ header("Content-Type: text/html; charset=UTF-8");
 </div>
 
 <?php
-$pizzasql = "SELECT * FROM `pizza`";
+$pizzasql = "SELECT * FROM `bouquet`";
 $pizzaResult = mysqli_query($conn, $pizzasql);
 while($pizzaRow = mysqli_fetch_assoc($pizzaResult)){
-	$pizzaId = $pizzaRow['pizzaId'];
-	$pizzaName = $pizzaRow['pizzaName'];
-	$pizzaPrice = $pizzaRow['pizzaPrice'];
-	$pizzaCategorieId = $pizzaRow['pizzaCategorieId'];
-	$pizzaDesc = $pizzaRow['pizzaDesc'];
+	$bouquetId = $pizzaRow['bouquetId'];
+	$bouquetName = $pizzaRow['bouquetName'];
+	$bouquetPrice = $pizzaRow['bouquetPrice'];
+	$bouquetCategorieId = $pizzaRow['bouquetCategorieId'];
+	$bouquetDesc = $pizzaRow['bouquetDesc'];
 ?>
 <!-- Modal -->
-<div class="modal fade" id="updateItem<?php echo $pizzaId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateItem<?php echo $pizzaId; ?>" aria-hidden="true">
+<div class="modal fade" id="updateItem<?php echo $bouquetId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateItem<?php echo $bouquetId; ?>" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="background-color: rgb(111, 202, 203);">
-				<h5 class="modal-title" id="updateItem<?php echo $pizzaId; ?>">Item Id: <?php echo $pizzaId; ?></h5>
+				<h5 class="modal-title" id="updateItem<?php echo $bouquetId; ?>">Item Id: <?php echo $bouquetId; ?></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -143,34 +143,34 @@ while($pizzaRow = mysqli_fetch_assoc($pizzaResult)){
 							<b><label for="image">Image</label></b>
 							<input type="file" name="itemimage" id="itemimage" accept=".jpg" class="form-control" required style="border:none;" onchange="document.getElementById('itemPhoto').src = window.URL.createObjectURL(this.files[0])">
 							<small id="Info" class="form-text text-muted mx-3">Please upload .jpg file.</small>
-							<input type="hidden" id="pizzaId" name="pizzaId" value="<?php echo $pizzaId; ?>">
+							<input type="hidden" id="bouquetId" name="bouquetId" value="<?php echo $bouquetId; ?>">
 							<button type="submit" class="btn btn-success my-1" name="updateItemPhoto">Update Img</button>
 						</div>
 						<div class="form-group col-md-4">
-							<img src="/OnlinePizzaDelivery/img/pizza-<?php echo $pizzaId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="item image" width="100" height="100">
+							<img src="/bouquetElviOnline/img/pizza-<?php echo $bouquetId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="item image" width="100" height="100">
 						</div>
 					</div>
 				</form>
 				<form action="partials/_menuManage.php" method="post">
 					<div class="text-left my-2">
 						<b><label for="name">Name</label></b>
-						<input class="form-control" id="name" name="name" value="<?php echo $pizzaName; ?>" type="text" required>
+						<input class="form-control" id="name" name="name" value="<?php echo $bouquetName; ?>" type="text" required>
 					</div>
 					<div class="text-left my-2 row">
 						<div class="form-group col-md-6">
 							<b><label for="price">Price</label></b>
-							<input class="form-control" id="price" name="price" value="<?php echo $pizzaPrice; ?>" type="number" min="1" required>
+							<input class="form-control" id="price" name="price" value="<?php echo $bouquetPrice; ?>" type="number" min="1" required>
 						</div>
 						<div class="form-group col-md-6">
 							<b><label for="catId">Category Id</label></b>
-							<input class="form-control" id="catId" name="catId" value="<?php echo $pizzaCategorieId; ?>" type="number" min="1" required>
+							<input class="form-control" id="catId" name="catId" value="<?php echo $bouquetCategorieId; ?>" type="number" min="1" required>
 						</div>
 					</div>
 					<div class="text-left my-2">
 						<b><label for="desc">Description</label></b>
-						<textarea class="form-control" id="desc" name="desc" rows="2" required minlength="6"><?php echo $pizzaDesc; ?></textarea>
+						<textarea class="form-control" id="desc" name="desc" rows="2" required minlength="6"><?php echo $bouquetDesc; ?></textarea>
 					</div>
-					<input type="hidden" id="pizzaId" name="pizzaId" value="<?php echo $pizzaId; ?>">
+					<input type="hidden" id="bouquetId" name="bouquetId" value="<?php echo $bouquetId; ?>">
 					<button type="submit" class="btn btn-success" name="updateItem">Update</button>
 				</form>
 			</div>

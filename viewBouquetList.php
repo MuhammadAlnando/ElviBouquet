@@ -40,27 +40,27 @@
         <div class="row">
             <?php
             $id = $_GET['catid'];
-            $sql = "SELECT * FROM `pizza` WHERE pizzaCategorieId = $id";
+            $sql = "SELECT * FROM `bouquet` WHERE bouquetCategorieId = $id";
             $result = mysqli_query($conn, $sql);
             $noResult = true;
             while ($row = mysqli_fetch_assoc($result)) {
                 $noResult = false;
-                $pizzaId = $row['pizzaId'];
-                $pizzaName = $row['pizzaName'];
-                $pizzaPrice = $row['pizzaPrice'];
-                $pizzaDesc = $row['pizzaDesc'];
+                $bouquetId = $row['bouquetId'];
+                $bouquetName = $row['bouquetName'];
+                $bouquetPrice = $row['bouquetPrice'];
+                $bouquetDesc = $row['bouquetDesc'];
 
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="card" style="width: 18rem;">
-                            <img src="img/pizza-' . $pizzaId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+                            <img src="img/pizza-' . $bouquetId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                             <div class="card-body">
-                                <h5 class="card-title">' . substr($pizzaName, 0, 20) . '</h5>
-                                <h6 style="color: #2A403D;">Rp. ' . $pizzaPrice . '</h6>
-                                <p class="card-text">' . substr($pizzaDesc, 0, 29) . '</p>
+                                <h5 class="card-title">' . substr($bouquetName, 0, 20) . '</h5>
+                                <h6 style="color: #2A403D;">Rp. ' . $bouquetPrice . '</h6>
+                                <p class="card-text">' . substr($bouquetDesc, 0, 29) . '</p>
                                 <div class="row justify-content-center">';
 
                 if ($loggedin) {
-                    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE pizzaId = '$pizzaId' AND `userId`='$userId'";
+                    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE bouquetId = '$bouquetId' AND `userId`='$userId'";
                     $quaresult = mysqli_query($conn, $quaSql);
                     $quaExistRows = mysqli_num_rows($quaresult);
                     if ($quaExistRows == 0) {
@@ -73,11 +73,11 @@
                             style="background-color: #748B6F; border:none; color: white; width: 150px;"
                             data-toggle="modal" 
                             data-target="#quickViewModal"
-                            data-id="' . $pizzaId . '"
-                            data-name="' . $pizzaName . '"
-                            data-price="Rp. ' . $pizzaPrice . '"
-                            data-desc="' . $pizzaDesc . '"
-                            data-img="img/pizza-' . $pizzaId . '.jpg">
+                            data-id="' . $bouquetId . '"
+                            data-name="' . $bouquetName . '"
+                            data-price="Rp. ' . $bouquetPrice . '"
+                            data-desc="' . $bouquetDesc . '"
+                            data-img="img/pizza-' . $bouquetId . '.jpg">
                               Detail
                           </button>
                           ';
@@ -155,18 +155,18 @@
     <script>
     $(document).ready(function() {
         $('.quick-view-btn').on('click', function() {
-            var pizzaId = $(this).data('id');
-            var pizzaName = $(this).data('name');
-            var pizzaPrice = $(this).data('price');
-            var pizzaDesc = $(this).data('desc');
+            var bouquetId = $(this).data('id');
+            var bouquetName = $(this).data('name');
+            var bouquetPrice = $(this).data('price');
+            var bouquetDesc = $(this).data('desc');
             var pizzaImg = $(this).data('img');
 
             // Set data to modal fields
             $('#quickViewImage').attr('src', pizzaImg);
             $('#quickViewLinkImg').attr('href', pizzaImg);
-            $('#quickViewName').text(pizzaName);
-            $('#quickViewPrice').text(pizzaPrice);
-            $('#quickViewDesc').text(pizzaDesc);
+            $('#quickViewName').text(bouquetName);
+            $('#quickViewPrice').text(bouquetPrice);
+            $('#quickViewDesc').text(bouquetDesc);
             $('#quickViewModal').modal('show');
 
             // Handle Add to Cart button click
@@ -176,7 +176,7 @@
                 $.ajax({
                     type: 'POST',
                     url: 'partials/_manageCart.php',
-                    data: { addToCart: true, itemId: pizzaId },
+                    data: { addToCart: true, itemId: bouquetId },
                     success: function(response) {
                         console.log('Success:', response); // Debug log for success
                         Swal.fire({
@@ -196,13 +196,13 @@
 
         // Handle Add to Cart button click outside modal
         $('.add-to-cart-btn').on('click', function() {
-            var pizzaId = $(this).data('id');
+            var bouquetId = $(this).data('id');
 
             // AJAX request to add item to cart
             $.ajax({
                 type: 'POST',
                 url: 'partials/_manageCart.php',
-                data: { addToCart: true, itemId: pizzaId },
+                data: { addToCart: true, itemId: bouquetId },
                 success: function(response) {
                     console.log('Success:', response); // Debug log for success
                     Swal.fire({

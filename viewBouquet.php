@@ -25,34 +25,34 @@
     <div class="container my-4" id="cont">
         <div class="row jumbotron">
             <?php
-            $pizzaId = $_GET['pizzaid'];
-            $sql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
+            $bouquetId = $_GET['bouquetId'];
+            $sql = "SELECT * FROM `bouquet` WHERE bouquetId = $bouquetId";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
-            $pizzaName = $row['pizzaName'];
-            $pizzaPrice = $row['pizzaPrice'];
-            $pizzaDesc = $row['pizzaDesc'];
-            $pizzaCategorieId = $row['pizzaCategorieId'];
+            $bouquetName = $row['bouquetName'];
+            $bouquetPrice = $row['bouquetPrice'];
+            $bouquetDesc = $row['bouquetDesc'];
+            $bouquetCategorieId = $row['bouquetCategorieId'];
             ?>
             <script>
-                document.getElementById("title").innerHTML = "<?php echo $pizzaName; ?>";
+                document.getElementById("title").innerHTML = "<?php echo $bouquetName; ?>";
             </script>
             <?php
             echo '<div class="col-md-4">
-                <img src="img/pizza-' . $pizzaId . '.jpg" width="249px" height="262px">
+                <img src="img/pizza-' . $bouquetId . '.jpg" width="249px" height="262px">
             </div>
             <div class="col-md-8 my-4">
-                <h3>' . $pizzaName . '</h3>
-                <h5 style="color: #ff0000">Rp. ' . $pizzaPrice . '</h5>
-                <p class="mb-0">' . $pizzaDesc . '</p>';
+                <h3>' . $bouquetName . '</h3>
+                <h5 style="color: #ff0000">Rp. ' . $bouquetPrice . '</h5>
+                <p class="mb-0">' . $bouquetDesc . '</p>';
 
             if ($loggedin) {
-                $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE pizzaId = '$pizzaId' AND `userId`='$userId'";
+                $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE bouquetId = '$bouquetId' AND `userId`='$userId'";
                 $quaresult = mysqli_query($conn, $quaSql);
                 $quaExistRows = mysqli_num_rows($quaresult);
                 if ($quaExistRows == 0) {
                     echo '<form action="partials/_manageCart.php" method="POST">
-                              <input type="hidden" name="itemId" value="' . $pizzaId . '">
+                              <input type="hidden" name="itemId" value="' . $bouquetId . '">
                               <button type="submit" name="addToCart" class="btn btn-primary my-2" style="background-color: #748B6F; border:none; color: black;">Add to Cart</button>';
                 } else {
                     echo '<a href="viewCart.php"><button class="btn btn-primary my-2" style="background-color: #748B6F; border:none; color: black;">Go to Cart</button></a>';

@@ -52,9 +52,9 @@
         echo '<div class="card">
                 <img src="img/card-' . $id . '.jpg" class="card-img-top" alt="image for this category">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="viewPizzaList.php?catid=' . $id . '" style="color: black;">' . $cat . '</a></h5>
+                  <h5 class="card-title"><a href="viewBouquetList.php?catid=' . $id . '" style="color: black;">' . $cat . '</a></h5>
                   <p class="card-text">' . substr($desc, 0, 50) . '...</p>
-                  <a href="viewPizzaList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #748B6F; border: none; color: white">View All</a>
+                  <a href="viewBouquetList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #748B6F; border: none; color: white">View All</a>
                 </div>
               </div>';
       }

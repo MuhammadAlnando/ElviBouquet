@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $contactId = $conn->insert_id;
                 
                 echo '<script>alert("Thanks for Contact us. Your contact id is ' .$contactId. '. We will contact you very soon.");
-                            window.location.href="http://localhost/OnlinePizzaDelivery/index.php";  
+                            window.location.href="http://localhost/bouquetElviOnline/index.php";  
                             </script>';
                 exit();
             } else {

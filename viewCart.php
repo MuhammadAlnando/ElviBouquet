@@ -62,32 +62,32 @@ include 'partials/_dbconnect.php';
                             <tbody>
                                 <?php
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    $pizzaId = $row['pizzaId'];
+                                    $bouquetId = $row['bouquetId'];
                                     $Quantity = $row['itemQuantity'];
-                                    $mysql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
+                                    $mysql = "SELECT * FROM `bouquet` WHERE bouquetId = $bouquetId";
                                     $myresult = mysqli_query($conn, $mysql);
                                     $myrow = mysqli_fetch_assoc($myresult);
-                                    $pizzaName = $myrow['pizzaName'];
-                                    $pizzaPrice = $myrow['pizzaPrice'];
-                                    $total = $pizzaPrice * $Quantity;
+                                    $bouquetName = $myrow['bouquetName'];
+                                    $bouquetPrice = $myrow['bouquetPrice'];
+                                    $total = $bouquetPrice * $Quantity;
                                     $counter++;
                                     $totalPrice += $total;
 
                                     echo '<tr>
                                             <td>' . $counter . '</td>
-                                            <td>' . $pizzaName . '</td>
-                                            <td>' . $pizzaPrice . '</td>
+                                            <td>' . $bouquetName . '</td>
+                                            <td>' . $bouquetPrice . '</td>
                                             <td>
-                                                <form id="frm' . $pizzaId . '">
-                                                    <input type="hidden" name="pizzaId" value="' . $pizzaId . '">
-                                                    <input type="number" name="quantity" value="' . $Quantity . '" class="text-center" onchange="updateCart(' . $pizzaId . ')" style="width:60px" min="1" oninput="check(this)">
+                                                <form id="frm' . $bouquetId . '">
+                                                    <input type="hidden" name="bouquetId" value="' . $bouquetId . '">
+                                                    <input type="number" name="quantity" value="' . $Quantity . '" class="text-center" onchange="updateCart(' . $bouquetId . ')" style="width:60px" min="1" oninput="check(this)">
                                                 </form>
                                             </td>
                                             <td>' . $total . '</td>
                                             <td>
                                                 <form action="partials/_manageCart.php" method="POST">
                                                     <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                                    <input type="hidden" name="itemId" value="' . $pizzaId . '">
+                                                    <input type="hidden" name="itemId" value="' . $bouquetId . '">
                                                 </form>
                                             </td>
                                         </tr>';

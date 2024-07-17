@@ -38,23 +38,23 @@
                                     $mysql = "SELECT * FROM `orderitems` WHERE orderId = $orderid";
                                     $myresult = mysqli_query($conn, $mysql);
                                     while($myrow = mysqli_fetch_assoc($myresult)){
-                                        $pizzaId = $myrow['pizzaId'];
+                                        $bouquetId = $myrow['bouquetId'];
                                         $itemQuantity = $myrow['itemQuantity'];
                                         
-                                        $itemsql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
+                                        $itemsql = "SELECT * FROM `bouquet` WHERE bouquetId = $bouquetId";
                                         $itemresult = mysqli_query($conn, $itemsql);
                                         $itemrow = mysqli_fetch_assoc($itemresult);
-                                        $pizzaName = $itemrow['pizzaName'];
-                                        $pizzaPrice = $itemrow['pizzaPrice'];
-                                        $pizzaDesc = $itemrow['pizzaDesc'];
-                                        $pizzaCategorieId = $itemrow['pizzaCategorieId'];
+                                        $bouquetName = $itemrow['bouquetName'];
+                                        $bouquetPrice = $itemrow['bouquetPrice'];
+                                        $bouquetDesc = $itemrow['bouquetDesc'];
+                                        $bouquetCategorieId = $itemrow['bouquetCategorieId'];
 
                                         echo '<tr>
                                                 <th scope="row">
                                                     <div class="p-2">
-                                                    <img src="img/pizza-'.$pizzaId. '.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                    <img src="img/pizza-'.$bouquetId. '.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                                     <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">'.$pizzaName. '</a></h5><span class="text-muted font-weight-normal font-italic d-block">Rp. ' .$pizzaPrice. '</span>
+                                                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">'.$bouquetName. '</a></h5><span class="text-muted font-weight-normal font-italic d-block">Rp. ' .$bouquetPrice. '</span>
                                                     </div>
                                                     </div>
                                                 </th>

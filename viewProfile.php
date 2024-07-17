@@ -49,7 +49,7 @@
 
     <div class="container mt-5"> <!-- Tambahkan class mt-5 untuk margin atas -->
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="content-panel mb-3 text-center">
                     <img class="rounded-circle mb-3 bg-dark" src="img/person-<?php echo $userId; ?>.jpg"
                         onError="this.src = 'img/profilePic.jpg'" style="width: 215px; height: 215px; padding: 1px;">
@@ -68,8 +68,8 @@
                             style="font-size: 15px; padding: 3px 8px; background-color:#748B6F; color:C3CBD6; border: none;">Update</button>
                     </form>
                 </div>
-            </div>
-            <div class="col-md-8">
+            </div> -->
+            <div class="col-md-12">
                 <div class="content-panel mb-3">
                     <h2 class="title text-center">Profile <span
                             class="pro-label label label-warning">(<?php echo $userType ?>)</span></h2>

@@ -41,9 +41,9 @@
                     <div class="card" style="width: 18rem;">
                         <img src="img/card-'.$catId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="viewPizzaList.php?catid=' . $catId . '">' . $catname . '</a></h5>
+                            <h5 class="card-title"><a href="viewBouquetList.php?catid=' . $catId . '">' . $catname . '</a></h5>
                             <p class="card-text">' . substr($catdesc, 0, 29). '</p>
-                            <a href="viewPizzaList.php?catid=' . $catId . '" class="btn btn-primary">View All</a>
+                            <a href="viewBouquetList.php?catid=' . $catId . '" class="btn btn-primary">View All</a>
                         </div>
                     </div>
                 </div>';
@@ -57,32 +57,32 @@
         <div class="row">
         <?php 
             $query = $_GET["search"];
-            $sql = "SELECT * FROM `pizza` WHERE MATCH(pizzaName, pizzaDesc) against('$query')"; 
+            $sql = "SELECT * FROM `bouquet` WHERE MATCH(bouquetName, bouquetDesc) against('$query')"; 
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($result)){
                 ?><script> document.getElementById("iteam").innerHTML = "Items: ";</script> <?php
                 $noResult = false;
-                $pizzaId = $row['pizzaId'];
-                $pizzaName = $row['pizzaName'];
-                $pizzaPrice = $row['pizzaPrice'];
-                $pizzaDesc = $row['pizzaDesc'];
-                $pizzaCategorieId = $row['pizzaCategorieId'];
+                $bouquetId = $row['bouquetId'];
+                $bouquetName = $row['bouquetName'];
+                $bouquetPrice = $row['bouquetPrice'];
+                $bouquetDesc = $row['bouquetDesc'];
+                $bouquetCategorieId = $row['bouquetCategorieId'];
                 
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="img/pizza-'.$pizzaId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+                        <img src="img/pizza-'.$bouquetId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                         <div class="card-body">
-                            <h5 class="card-title">' . substr($pizzaName, 0, 20). '</h5>
-                            <h6 style="color: #ff0000">Rp. '.$pizzaPrice. '</h6>
-                            <p class="card-text">' . substr($pizzaDesc, 0, 29). '</p>
+                            <h5 class="card-title">' . substr($bouquetName, 0, 20). '</h5>
+                            <h6 style="color: #ff0000">Rp. '.$bouquetPrice. '</h6>
+                            <p class="card-text">' . substr($bouquetDesc, 0, 29). '</p>
                             <div class="row justify-content-center">';
                                 if($loggedin){
-                                    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE pizzaId = '$pizzaId' AND `userId`='$userId'";
+                                    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE bouquetId = '$bouquetId' AND `userId`='$userId'";
                                     $quaresult = mysqli_query($conn, $quaSql);
                                     $quaExistRows = mysqli_num_rows($quaresult);
                                     if($quaExistRows == 0) {
                                         echo '<form action="partials/_manageCart.php" method="POST">
-                                              <input type="hidden" name="itemId" value="'.$pizzaId. '">
+                                              <input type="hidden" name="itemId" value="'.$bouquetId. '">
                                               <button type="submit" name="addToCart" class="btn btn-primary mx-2">Add to Cart</button>';
                                     }else {
                                         echo '<a href="viewCart.php"><button class="btn btn-primary mx-2">Go to Cart</button></a>';
@@ -92,7 +92,7 @@
                                     echo '<button class="btn btn-primary mx-2" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
                                 }
                                 echo '</form>
-                                <a href="viewPizza.php?pizzaid=' . $pizzaId . '"><button class="btn btn-primary">Quick View</button></a>
+                                <a href="viewBouquet.php?bouquetId=' . $bouquetId . '"><button class="btn btn-primary">Quick View</button></a>
                             </div>
                         </div>
                     </div>

@@ -114,7 +114,7 @@ CREATE TABLE `deliverydetails` (
 CREATE TABLE `orderitems` (
   `id` int(21) NOT NULL,
   `orderId` int(21) NOT NULL,
-  `pizzaId` int(21) NOT NULL,
+  `bouquetId` int(21) NOT NULL,
   `itemQuantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -122,7 +122,7 @@ CREATE TABLE `orderitems` (
 -- Dumping data untuk tabel `orderitems`
 --
 
-INSERT INTO `orderitems` (`id`, `orderId`, `pizzaId`, `itemQuantity`) VALUES
+INSERT INTO `orderitems` (`id`, `orderId`, `bouquetId`, `itemQuantity`) VALUES
 (1, 1, 12, 1),
 (2, 2, 14, 1),
 (3, 2, 12, 1),
@@ -203,19 +203,19 @@ INSERT INTO `orders` (`orderId`, `userId`, `address`, `zipCode`, `phoneNo`, `amo
 --
 
 CREATE TABLE `pizza` (
-  `pizzaId` int(12) NOT NULL,
-  `pizzaName` varchar(255) NOT NULL,
-  `pizzaPrice` int(12) NOT NULL,
-  `pizzaDesc` text NOT NULL,
-  `pizzaCategorieId` int(12) NOT NULL,
-  `pizzaPubDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `bouquetId` int(12) NOT NULL,
+  `bouquetName` varchar(255) NOT NULL,
+  `bouquetPrice` int(12) NOT NULL,
+  `bouquetDesc` text NOT NULL,
+  `bouquetCategorieId` int(12) NOT NULL,
+  `bouquetPubDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pizza`
 --
 
-INSERT INTO `pizza` (`pizzaId`, `pizzaName`, `pizzaPrice`, `pizzaDesc`, `pizzaCategorieId`, `pizzaPubDate`) VALUES
+INSERT INTO `pizza` (`bouquetId`, `bouquetName`, `bouquetPrice`, `bouquetDesc`, `bouquetCategorieId`, `bouquetPubDate`) VALUES
 (12, 'Purple Flower', 85000, 'This one belongs to sprecial person\r\n\r\n', 1, '2021-03-17 21:29:41'),
 (14, 'Money 100 x 30', 3150000, 'Money total 3000000', 2, '2021-03-17 21:35:31');
 
@@ -278,7 +278,7 @@ INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `email`, `phone`
 
 CREATE TABLE `viewcart` (
   `cartItemId` int(11) NOT NULL,
-  `pizzaId` int(11) NOT NULL,
+  `bouquetId` int(11) NOT NULL,
   `itemQuantity` int(100) NOT NULL,
   `userId` int(11) NOT NULL,
   `addedDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -288,7 +288,7 @@ CREATE TABLE `viewcart` (
 -- Dumping data untuk tabel `viewcart`
 --
 
-INSERT INTO `viewcart` (`cartItemId`, `pizzaId`, `itemQuantity`, `userId`, `addedDate`) VALUES
+INSERT INTO `viewcart` (`cartItemId`, `bouquetId`, `itemQuantity`, `userId`, `addedDate`) VALUES
 (6, 14, 1, 1, '2024-07-02 09:40:18');
 
 --
@@ -337,8 +337,8 @@ ALTER TABLE `orders`
 -- Indeks untuk tabel `pizza`
 --
 ALTER TABLE `pizza`
-  ADD PRIMARY KEY (`pizzaId`);
-ALTER TABLE `pizza` ADD FULLTEXT KEY `pizzaName` (`pizzaName`,`pizzaDesc`);
+  ADD PRIMARY KEY (`bouquetId`);
+ALTER TABLE `pizza` ADD FULLTEXT KEY `bouquetName` (`bouquetName`,`bouquetDesc`);
 
 --
 -- Indeks untuk tabel `sitedetail`
@@ -403,7 +403,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT untuk tabel `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `pizzaId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `bouquetId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `sitedetail`

@@ -175,7 +175,7 @@
                     </form>         
                 </div>
                 <div class="form-group col-md-4">
-                    <img src="/OnlinePizzaDelivery/img/person-<?php echo $Id; ?>.jpg" alt="Profile Photo" width="100" height="100" onError="this.src ='/OnlinePizzaDelivery/img/profilePic.jpg'">
+                    <img src="/bouquetElviOnline/img/person-<?php echo $Id; ?>.jpg" alt="Profile Photo" width="100" height="100" onError="this.src ='/bouquetElviOnline/img/profilePic.jpg'">
                     <form action="partials/_userManage.php" method="post">
                         <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
                         <button type="submit" class="btn btn-success mt-2" name="removeProfilePhoto">Remove Img</button>

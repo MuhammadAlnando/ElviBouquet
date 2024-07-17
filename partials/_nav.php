@@ -84,7 +84,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Bouquet</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php while($row = mysqli_fetch_assoc($categoriesResult)): ?>
-                        <a class="dropdown-item" href="viewPizzaList.php?catid=<?= $row['categorieId'] ?>"><?= $row['categorieName'] ?></a>
+                        <a class="dropdown-item" href="viewBouquetList.php?catid=<?= $row['categorieId'] ?>"><?= $row['categorieName'] ?></a>
                     <?php endwhile; ?>
                 </div>
             </li>
@@ -94,7 +94,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
         </ul>
         <!-- Form pencarian dalam collapse navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form method="get" action="/OnlinePizzaDelivery/search.php" class="form-inline my-2 my-lg-0 ml-auto">
+            <form method="get" action="/bouquetElviOnline/search.php" class="form-inline my-2 my-lg-0 ml-auto">
                 <div class="input-group">
                     <input class="form-control" type="search" name="search" id="search" placeholder="Search" aria-label="Search" required>
                     <div class="input-group-append">
@@ -106,7 +106,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
             </form>
         </div>
         <a href="viewCart.php" class="text-decoration-none text-dark mx-2" style="color: white;">
-    <i class="fas fa-shopping-cart" style="color: white;"></i> (<?= $count ?>)
+    <i class="fas fa-shopping-cart" style="color: white; "> ( <?= $count ?> )</i> 
 </a>
 
 
@@ -116,7 +116,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                <img src="img/person-<?= $userId ?>.jpg" class="rounded-circle" onError="this.src = 'img/profilePic.jpg'" style="width:30px; height:30px; margin-right: 5px;">
+                <!-- <img src="img/person-<?= $userId ?>.jpg" class="rounded-circle" onError="this.src = 'img/profilePic.jpg'" style="width:30px; height:30px; margin-right: 5px;"> -->
                 <?= $username ?>
             </a>    
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

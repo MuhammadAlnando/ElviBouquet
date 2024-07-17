@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
     $itemId = $_POST["itemId"];
     error_log("Adding to cart: User ID: $userId, Item ID: $itemId"); // Debug log
 
-    $existSql = "SELECT * FROM `viewcart` WHERE pizzaId = '$itemId' AND `userId`='$userId'";
+    $existSql = "SELECT * FROM `viewcart` WHERE bouquetId = '$itemId' AND `userId`='$userId'";
     $result = mysqli_query($conn, $existSql);
     if (!$result) {
         die("Query Failed: " . mysqli_error($conn));
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
     if ($numExistRows > 0) {
         echo json_encode(["status" => "warning", "message" => "This item is already in your cart."]);
     } else {
-        $sql = "INSERT INTO `viewcart` (`pizzaId`, `itemQuantity`, `userId`, `addedDate`) VALUES ('$itemId', '1', '$userId', current_timestamp())";
+        $sql = "INSERT INTO `viewcart` (`bouquetId`, `itemQuantity`, `userId`, `addedDate`) VALUES ('$itemId', '1', '$userId', current_timestamp())";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo json_encode(["status" => "success", "message" => "Item added to your cart."]);
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
     // Remove item from cart
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['removeItem'])) {
         $itemId = $_POST["itemId"];
-        $sql = "DELETE FROM `viewcart` WHERE `pizzaId`='$itemId' AND `userId`='$userId'";
+        $sql = "DELETE FROM `viewcart` WHERE `bouquetId`='$itemId' AND `userId`='$userId'";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             // Item successfully removed from cart
@@ -141,10 +141,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
                 $addSql = "SELECT * FROM `viewcart` WHERE userId='$userId'";
                 $addResult = mysqli_query($conn, $addSql);
                 while ($addrow = mysqli_fetch_assoc($addResult)) {
-                    $pizzaId = $addrow['pizzaId'];
+                    $bouquetId = $addrow['bouquetId'];
                     $itemQuantity = $addrow['itemQuantity'];
-                    $itemSql = "INSERT INTO `orderitems` (`orderId`, `pizzaId`, `itemQuantity`) 
-                                VALUES ('$orderId', '$pizzaId', '$itemQuantity')";
+                    $itemSql = "INSERT INTO `orderitems` (`orderId`, `bouquetId`, `itemQuantity`) 
+                                VALUES ('$orderId', '$bouquetId', '$itemQuantity')";
                     $itemResult = mysqli_query($conn, $itemSql);
                     if (!$itemResult) {
                         die("Query Failed: " . mysqli_error($conn));
@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
                             title: "Success!",
                             text: "Thanks for ordering with us. Your order id is ' . $orderId . '. Please upload proof of payment soon."
                         }).then(function() {
-                            window.location.href = "http://localhost/OnlinePizzaDelivery/viewOrder.php";
+                            window.location.href = "http://localhost/bouquetElviOnline/viewOrder.php";
                         });
                       </script>';
                 exit();
@@ -199,9 +199,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
 
     // Update item quantity in cart via AJAX (if necessary)
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-        $pizzaId = $_POST['pizzaId'];
+        $bouquetId = $_POST['bouquetId'];
         $qty = $_POST['quantity'];
-        $updatesql = "UPDATE `viewcart` SET `itemQuantity`='$qty' WHERE `pizzaId`='$pizzaId' AND `userId`='$userId'";
+        $updatesql = "UPDATE `viewcart` SET `itemQuantity`='$qty' WHERE `bouquetId`='$bouquetId' AND `userId`='$userId'";
         $updateresult = mysqli_query($conn, $updatesql);
         if (!$updateresult) {
             die("Query Failed: " . mysqli_error($conn));
