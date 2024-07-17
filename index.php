@@ -28,7 +28,7 @@
     <!-- Image section -->
     <div class="row my-4">
       <div class="col-md-12 text-center">
-        <img src="img/backgroundhome.jpg" alt="Description of image" class="img-fluid" style="max-width: 100%;">
+        <img src="img/backgroundhome.jpg" alt="Description of image" class="img-fluid" style="max-width: 100%; border-radius: 10px 500px 50px 500px;">
       </div>
     </div>
     <!-- Reasons section starts here -->
@@ -36,6 +36,7 @@
     <div class="row mt-5">
       <div class="col-md-12 text-center">
         <h2>Bouquet Category</h2>
+        <hr>
       </div>
     </div>
     
@@ -49,12 +50,12 @@
         $id = $row['categorieId'];
         $cat = $row['categorieName'];
         $desc = $row['categorieDesc'];
-        echo '<div class="card">
+        echo '<div class="card" style="margin: 5px;">
                 <img src="img/card-' . $id . '.jpg" class="card-img-top" alt="image for this category">
                 <div class="card-body">
                   <h5 class="card-title"><a href="viewBouquetList.php?catid=' . $id . '" style="color: black;">' . $cat . '</a></h5>
                   <p class="card-text">' . substr($desc, 0, 50) . '...</p>
-                  <a href="viewBouquetList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #748B6F; border: none; color: white">View All</a>
+                  <a href="viewBouquetList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #748B6F; border: none; color: white;">View All</a>
                 </div>
               </div>';
       }
