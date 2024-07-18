@@ -54,7 +54,7 @@
     }
 
     .track .step.active:before {
-        background: #748B6F;
+        background: #2A403D;
     }
 
     .track .step::before {
@@ -67,7 +67,7 @@
     }
 
     .track .step.active .icon {
-        background: #748B6F;
+        background: #2A403D;
         color: #fff
     }
 
@@ -102,15 +102,15 @@
 
     .btn-warning {
         color: #ffffff;
-        background-color: #748B6F;
-        border-color: #748B6F;
+        background-color: #2A403D;
+        border-color: #2A403D;
         border-radius: 1px
     }
 
     .btn-warning:hover {
         color: #ffffff;
-        background-color: #748B6F;
-        border-color: #748B6F;
+        background-color: #2A403D;
+        border-color: #2A403D;
         border-radius: 1px
     }
     

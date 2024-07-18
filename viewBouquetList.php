@@ -11,7 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
 
     <title id="title">Category</title>
-    <link rel="icon" href="img/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
     <style>
     .jumbotron {
         padding: 2rem 1rem;
@@ -52,7 +52,7 @@
 
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="card" style="width: 18rem;">
-                            <img src="img/pizza-' . $bouquetId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+                            <img src="img/bouquet-' . $bouquetId . '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                             <div class="card-body">
                                 <h5 class="card-title">' . substr($bouquetName, 0, 20) . '</h5>
                                 <h6 style="color: #2A403D;">Rp. ' . $bouquetPrice . '</h6>
@@ -70,19 +70,19 @@
                         echo '';
                     }
                     echo '<button type="button" class="btn btn-primary quick-view-btn mx-2" 
-                            style="background-color: #748B6F; border:none; color: white; width: 150px;"
+                            style="background-color: #2A403D; border:none; color: white; width: 150px;"
                             data-toggle="modal" 
                             data-target="#quickViewModal"
                             data-id="' . $bouquetId . '"
                             data-name="' . $bouquetName . '"
                             data-price="Rp. ' . $bouquetPrice . '"
                             data-desc="' . $bouquetDesc . '"
-                            data-img="img/pizza-' . $bouquetId . '.jpg">
+                            data-img="img/bouquet-' . $bouquetId . '.jpg">
                               Detail
                           </button>
                           ';
                 } else {
-                    echo '<button type="button" class="btn btn-primary mx-2" style="background-color: #748B6F; border:none; color: white;" data-toggle="modal" data-target="#loginModal">
+                    echo '<button type="button" class="btn btn-primary mx-2" style="background-color: #2A403D; border:none; color: white;" data-toggle="modal" data-target="#loginModal">
                             Add to Cart
                           </button>';
                 }
@@ -128,7 +128,7 @@
                                 <h5 id="quickViewPrice" style="color: #ff0000;"></h5>
                                 <p id="quickViewDesc"></p>
                                 <div class="row justify-content-center">
-                                    <button id="addToCartBtn" type="button" class="btn btn-primary mx-2" style="background-color: #748B6F; border:none; color: white;">
+                                    <button id="addToCartBtn" type="button" class="btn btn-primary mx-2" style="background-color: #2A403D; border:none; color: white;">
                                         Add to Cart
                                     </button>
                                 </div>

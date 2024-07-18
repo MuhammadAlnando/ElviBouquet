@@ -3,7 +3,7 @@
 	
 	<div class="row">
         <div class="col-lg-12">
-            <button class="btn btn-primary float-right btn-sm" style="background-color:#748B6F; border: none;" data-toggle="modal" data-target="#newUser"><i class="fa fa-plus"></i> New user</button>
+            <button class="btn btn-primary float-right btn-sm" style="background-color:#2A403D; border: none;" data-toggle="modal" data-target="#newUser"><i class="fa fa-plus"></i> New user</button>
         </div>
 	</div>
 	    <br>
@@ -11,7 +11,7 @@
 		<div class="card col-lg-12">
 			<div class="card-body">
 				<table class="table-striped table-bordered col-md-12 text-center">
-                    <thead style="background-color: #748B6F; color:white;">
+                    <thead style="background-color: #2A403D; color:white;">
                         <tr>
                             <th>UserId</th>
                             <th>Username</th>
@@ -52,7 +52,7 @@
                                     <td>' .$userType. '</td>
                                     <td class="text-center">
                                         <div class="row mx-auto" style="width:112px">
-                                            <button class="btn btn-sm btn-primary" style="background-color: #748B6F; border: none;" data-toggle="modal" data-target="#editUser' .$Id. '" type="button">Edit</button>';
+                                            <button class="btn btn-sm btn-primary" style="background-color: #2A403D; border: none;" data-toggle="modal" data-target="#editUser' .$Id. '" type="button">Edit</button>';
                                             if($Id == 1) {
                                                 echo '<button class="btn btn-sm btn-danger" disabled style="margin-left:9px;">Delete</button>';
                                             }
@@ -79,7 +79,7 @@
 <div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="newUser" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #748B6F;">
+      <div class="modal-header" style="background-color: #2A403D;">
         <h5 class="modal-title" id="newUser">Create New User</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -156,7 +156,7 @@
 <div class="modal fade" id="editUser<?php echo $Id; ?>" tabindex="-1" role="dialog" aria-labelledby="editUser<?php echo $Id; ?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #748B6F;">
+      <div class="modal-header" style="background-color: #2A403D;">
         <h5 class="modal-title" id="editUser<?php echo $Id; ?>">User Id: <b><?php echo $Id; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

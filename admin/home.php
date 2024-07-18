@@ -25,10 +25,10 @@
         $total_users = $row_users['total_users'];
 
         // Query untuk mengambil jumlah total item
-$sql_pizza = "SELECT COUNT(*) AS total_pizza FROM pizza";
-$result_pizza = mysqli_query($conn, $sql_pizza);
-$row_pizza = mysqli_fetch_assoc($result_pizza);
-$total_pizza = $row_pizza['total_pizza'];
+$sql_bouquet = "SELECT COUNT(*) AS total_bouquet FROM bouquet";
+$result_bouquet = mysqli_query($conn, $sql_bouquet);
+$row_bouquet = mysqli_fetch_assoc($result_bouquet);
+$total_bouquet = $row_bouquet['total_bouquet'];
 
 // Query untuk mengambil jumlah total kategori
 $sql_categories = "SELECT COUNT(*) AS total_categories FROM categories";
@@ -52,7 +52,7 @@ $total_contact = $row_contact['total_contact'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin Page</title>
-    <link rel="icon" href="/bouquetElviOnline/img/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="/bouquetElviOnline/img/logo.png" type="image/x-icon">
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -95,7 +95,7 @@ $total_contact = $row_contact['total_contact'];
                     <h5 class="card-title">Total Items</h5>
                 </div>
                 <div class="card-body">
-                    <h3 class="card-text"><?php echo $total_pizza; ?></h3>
+                    <h3 class="card-text"><?php echo $total_bouquet; ?></h3>
                 </div>
             </div>
         </div>

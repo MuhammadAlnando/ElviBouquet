@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Home</title>
-    <link rel = "icon" href ="img/logo.jpg" type = "image/x-icon">
+    <link rel = "icon" href ="img/logo.png" type = "image/x-icon">
     <style>
     #cont {
         min-height : 515px;
@@ -39,7 +39,7 @@
                 
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="img/card-'.$catId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+                        <img src="img/category/card-'.$catId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                         <div class="card-body">
                             <h5 class="card-title"><a href="viewBouquetList.php?catid=' . $catId . '">' . $catname . '</a></h5>
                             <p class="card-text">' . substr($catdesc, 0, 29). '</p>
@@ -70,7 +70,7 @@
                 
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="img/pizza-'.$bouquetId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+                        <img src="img/bouquet-'.$bouquetId. '.jpg" class="card-img-top" alt="image for this pizza" width="249px" height="270px">
                         <div class="card-body">
                             <h5 class="card-title">' . substr($bouquetName, 0, 20). '</h5>
                             <h6 style="color: #ff0000">Rp. '.$bouquetPrice. '</h6>

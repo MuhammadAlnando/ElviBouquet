@@ -11,7 +11,7 @@
 <div class="modal fade" id="orderItem<?php echo $orderid; ?>" tabindex="-1" role="dialog" aria-labelledby="orderItem<?php echo $orderid; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #748B6F;">
+            <div class="modal-header" style="background-color: #2A403D;">
                 <h5 class="modal-title" id="orderItem<?php echo $orderid; ?>">Order Items (<b>Order Id: <?php echo $orderid; ?></b>)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -53,7 +53,7 @@
                                         echo '<tr>
                                                 <th scope="row">
                                                     <div class="p-2">
-                                                    <img src="/bouquetElviOnline/img/pizza-'.$bouquetId. '.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                    <img src="/bouquetElviOnline/img/bouquet-'.$bouquetId. '.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                                     <div class="ml-3 d-inline-block align-middle">
                                                         <h5 class="mb-0"> '.$bouquetName. '</h5><span class="text-muted font-weight-normal font-italic d-block">Rp. ' .$bouquetPrice. '</span>
                                                     </div>

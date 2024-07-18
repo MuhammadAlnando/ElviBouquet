@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 $newfilename = "card-".$catId.".jpg";
 
-                $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/bouquetElviOnline/img/';
+                $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/bouquetElviOnline/img/category/';
                 $uploadfile = $uploaddir . $newfilename;
 
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Menghapus kategori
     if(isset($_POST['removeCategory'])) {
         $catId = $_POST["catId"];
-        $filename = $_SERVER['DOCUMENT_ROOT']."/bouquetElviOnline/img/card-".$catId.".jpg";
+        $filename = $_SERVER['DOCUMENT_ROOT']."/bouquetElviOnline/img/category/card-".$catId.".jpg";
         $sql = "DELETE FROM `categories` WHERE `categorieId`='$catId'";   
         $result = mysqli_query($conn, $sql);
         if ($result) {
@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $check = getimagesize($_FILES["catimage"]["tmp_name"]);
                 if($check !== false) {
                     $newfilename = "card-".$catId.".jpg";
-                    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/bouquetElviOnline/img/';
+                    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/bouquetElviOnline/img/category/';
                     $uploadfile = $uploaddir . $newfilename;
 
                     if (move_uploaded_file($_FILES['catimage']['tmp_name'], $uploadfile)) {

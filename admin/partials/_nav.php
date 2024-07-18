@@ -13,7 +13,7 @@
 </header> 
 
 
-<div class="l-navbar" id="nav-bar" style="background-color: #748B6F;">
+<div class="l-navbar" id="nav-bar" style="background-color: #2A403D;">
     <nav class="nav">
         <div>
             <a href="index.php" class="nav__logo">

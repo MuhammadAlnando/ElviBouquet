@@ -15,7 +15,7 @@ include 'partials/_dbconnect.php';
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Cart</title>
-    <link rel="icon" href="img/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
     <style>
         #cont {
             min-height: 626px;
@@ -49,7 +49,7 @@ include 'partials/_dbconnect.php';
                 <div class="col-lg-8">
                     <div class="card wish-list mb-3">
                         <table class="table text-center">
-                            <thead class="thead" style="background-color: #748B6F; color:white">
+                            <thead class="thead" style="background-color: #2A403D; color:white">
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Item Name</th>
@@ -138,7 +138,7 @@ include 'partials/_dbconnect.php';
                                 </label>
                             </div>
                             <br>
-                            <button type="button" class="btn btn-primary btn-block" style="background-color: #748B6F; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
+                            <button type="button" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
 
                             <?php
                             // JavaScript to display alert if cart is empty

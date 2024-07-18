@@ -11,7 +11,7 @@ $catResult = mysqli_query($conn, $catsql);
             <div class="col-md-4">
                 <form action="partials/_categoryManage.php" method="post" enctype="multipart/form-data">
                     <div class="card">
-                        <div class="card-header" style="background-color: #748B6F; color: white;">
+                        <div class="card-header" style="background-color: #2A403D; color: white;">
                             Create New Category
                         </div>
                         <div class="card-body">
@@ -46,7 +46,7 @@ $catResult = mysqli_query($conn, $catsql);
                 <div class="card">
                     <div class="card-body">
                     <table class="table table-bordered table-hover mb-0">
-                        <thead style="background-color: #748B6F; color: white;">
+                        <thead style="background-color: #2A403D; color: white;">
                         <tr>
                             <th class="text-center" style="width:7%;">Id</th>
                             <th class="text-center">Img</th>
@@ -63,7 +63,7 @@ $catResult = mysqli_query($conn, $catsql);
 
                                 echo '<tr>
                                         <td class="text-center"><b>' .$catId. '</b></td>
-                                        <td><img src="/bouquetElviOnline/img/card-'.$catId. '.jpg" alt="image for this Category" width="150px" height="150px"></td>
+                                        <td><img src="/bouquetElviOnline/img/category/card-'.$catId. '.jpg" alt="image for this Category" width="150px" height="150px"></td>
                                         <td>
                                             <p>Name : <b>' .$catName. '</b></p>
                                             <p>Description : <b class="truncate">' .$catDesc. '</b></p>
@@ -101,7 +101,7 @@ $catResult = mysqli_query($conn, $catsql);
 <div class="modal fade" id="updateCat<?php echo $catId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateCat<?php echo $catId; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #748B6F;">
+      <div class="modal-header" style="background-color: #2A403D;">
         <h5 class="modal-title" id="updateCat<?php echo $catId; ?>">Category Id: <b><?php echo $catId; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -117,7 +117,7 @@ $catResult = mysqli_query($conn, $catsql);
 					<input type="hidden" id="catId" name="catId" value="<?php echo $catId; ?>">
 				</div>
 				<div class="form-group col-md-4">
-					<img src="/bouquetElviOnline/img/card-<?php echo $catId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="Category image" width="100" height="100">
+					<img src="/bouquetElviOnline/img/category/card-<?php echo $catId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="Category image" width="100" height="100">
 				</div>
 			</div>
             <div class="text-left my-2">

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>About Us</title>
-    <link rel="icon" href="img/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -12,7 +12,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <style>
         .btn-how-to-order, .btn-delivery, .btn-cancel-refund {
-            background-color: #748B6F;
+            background-color: #2A403D;
             color: #fff;
             padding: 10px 20px;
             border-radius: 5px;

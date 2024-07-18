@@ -11,7 +11,7 @@
 
 echo '<div class="container>
 	<div class="card col-lg-6 p-0">
-        <div class="title" style="background-color: #748B6F;">
+        <div class="title" style="background-color: #2A403D;">
             <em><h2 class="text-center" style="margin-top: 11px;">' .$systemName. '</h2></em>
         </div>
 		<div class="card-body">

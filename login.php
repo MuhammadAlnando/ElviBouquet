@@ -67,10 +67,10 @@
                     <input type="password" name="loginpassword" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #748B6F; border:none; color: white;">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;">Login</button>
                 </div>
             </form>
-            <p class="text-center mb-0">Don't have an account? <a href="signup.php" style="color: #748B6F;">Sign up now</a>.</p>
+            <p class="text-center mb-0">Don't have an account? <a href="signup.php" style="color: #2A403D;">Sign up now</a>.</p>
             </div>
         </div>
     </div>

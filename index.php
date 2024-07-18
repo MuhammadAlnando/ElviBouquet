@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <title>Home</title>
-  <link rel="icon" href="img/logo.jpg" type="image/x-icon">
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
   <style>
     .card-img-top {
       object-fit: cover;
@@ -51,23 +51,24 @@
         $cat = $row['categorieName'];
         $desc = $row['categorieDesc'];
         echo '<div class="card" style="margin: 5px;">
-                <img src="img/card-' . $id . '.jpg" class="card-img-top" alt="image for this category">
+                <img src="img/category/card-' . $id . '.jpg" class="card-img-top" alt="image for this category">
                 <div class="card-body">
                   <h5 class="card-title"><a href="viewBouquetList.php?catid=' . $id . '" style="color: black;">' . $cat . '</a></h5>
                   <p class="card-text">' . substr($desc, 0, 50) . '...</p>
-                  <a href="viewBouquetList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #748B6F; border: none; color: white;">View All</a>
+                  <a href="viewBouquetList.php?catid=' . $id . '" class="btn btn-primary btn-sm" style="background-color: #2A403D; border: none; color: white;">View All</a>
                 </div>
               </div>';
       }
       ?>
     </div>
-
+<br><br><br>
     <div class="row mt-5">
       <div class="col-md-12 text-center">
         <h2 style="color:#2A403D;">Why Choose Us?</h2>
         <p>Here are three compelling reasons:</p>
       </div>
     </div>
+    <br><br><br>
 
     <div class="row mt-3">
       <div class="col-md-4 text-center">
@@ -88,6 +89,7 @@
     </div>
 
   </div>
+  <br><br><br>
 
   <?php require 'partials/_footer.php' ?>
   <!-- Optional JavaScript -->

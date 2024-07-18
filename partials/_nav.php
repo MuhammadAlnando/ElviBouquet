@@ -21,7 +21,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
 
 <!-- Tambahkan link ke Font Awesome di bagian <head> dokumen HTML Anda -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #748B6F;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2A403D;">
     <style>
         /* CSS untuk navbar */
         .navbar-dark .navbar-nav .nav-link:hover {
@@ -31,7 +31,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
             color: white; /* Warna teks hitam */
         }
         .navbar-dark .navbar-nav .nav-link:hover {
-            color: #748B6F; /* Warna teks putih saat hover */
+            color: #2A403D; /* Warna teks putih saat hover */
         }
         .navbar-brand, .navbar-toggler-icon {
             color: white; /* Warna teks dan ikon navbar */
@@ -45,7 +45,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
         }
 
         .navbar-dark .navbar-nav .nav-link:hover {
-            color: #748B6F; /* Warna teks putih saat hover */
+            color: #2A403D; /* Warna teks putih saat hover */
             border-radius: 50px;
         }
 
@@ -56,8 +56,8 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
         }
         .btn-outline-success:hover {
             color: #ffffff; /* Warna teks saat hover */
-            background-color: #748B6F; /* Warna latar belakang saat hover */
-            border-color: #748B6F; /* Warna border saat hover */
+            background-color: #2A403D; /* Warna latar belakang saat hover */
+            border-color: #2A403D; /* Warna border saat hover */
         }
         .btn-outline-success:focus {
             box-shadow: 0 0 0 0.2rem #2A403D; /* Efek focus saat tombol ditekan */
@@ -88,7 +88,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
                     <?php endwhile; ?>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="viewOrder.php">Orders</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewOrder.php">History Orders</a></li>
             <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
         </ul>

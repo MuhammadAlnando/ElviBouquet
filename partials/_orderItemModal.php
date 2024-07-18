@@ -52,7 +52,7 @@
                                         echo '<tr>
                                                 <th scope="row">
                                                     <div class="p-2">
-                                                    <img src="img/pizza-'.$bouquetId. '.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                    <img src="img/bouquet-'.$bouquetId. '.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                                     <div class="ml-3 d-inline-block align-middle">
                                                         <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">'.$bouquetName. '</a></h5><span class="text-muted font-weight-normal font-italic d-block">Rp. ' .$bouquetPrice. '</span>
                                                     </div>

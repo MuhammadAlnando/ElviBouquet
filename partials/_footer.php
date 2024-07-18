@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div class="text-center p-2 " style="background-color: #748B6F; color:white;">
+    <div class="text-center p-2 " style="background-color: #2A403D; color:white;">
         <p>Copyright © 2024 by <a href="#" style="color: white;" target="_blank" rel="noopener noreferrer">@KaaChan</a></p>
     </div>
 

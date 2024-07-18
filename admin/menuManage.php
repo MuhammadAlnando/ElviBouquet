@@ -11,7 +11,7 @@ header("Content-Type: text/html; charset=UTF-8");
 			<div class="col-md-4">
 				<form action="partials/_menuManage.php" method="post" enctype="multipart/form-data">
 					<div class="card mb-3">
-						<div class="card-header" style="background-color: #748B6F; color: white;">
+						<div class="card-header" style="background-color: #2A403D; color: white;">
 							Create New Item
 						</div>
 						<div class="card-body">
@@ -65,7 +65,7 @@ header("Content-Type: text/html; charset=UTF-8");
 				<div class="card">
 					<div class="card-body">
 						<table class="table table-bordered table-hover mb-0">
-							<thead style="background-color: #748B6F; color: white;">
+							<thead style="background-color: #2A403D; color: white;">
 								<tr>
 									<th class="text-center" style="width: 7%;">Cat. Id</th>
 									<th class="text-center">Img</th>
@@ -87,7 +87,7 @@ header("Content-Type: text/html; charset=UTF-8");
 									echo '<tr>
 											<td class="text-center">' .$bouquetCategorieId. '</td>
 											<td>
-												<img src="/bouquetElviOnline/img/pizza-'.$bouquetId. '.jpg" alt="image for this item" width="150px" height="150px">
+												<img src="/bouquetElviOnline/img/bouquet-'.$bouquetId. '.jpg" alt="image for this item" width="150px" height="150px">
 											</td>
 											<td>
 												<p>Name : <b>' .$bouquetName. '</b></p>
@@ -117,14 +117,14 @@ header("Content-Type: text/html; charset=UTF-8");
 </div>
 
 <?php
-$pizzasql = "SELECT * FROM `bouquet`";
-$pizzaResult = mysqli_query($conn, $pizzasql);
-while($pizzaRow = mysqli_fetch_assoc($pizzaResult)){
-	$bouquetId = $pizzaRow['bouquetId'];
-	$bouquetName = $pizzaRow['bouquetName'];
-	$bouquetPrice = $pizzaRow['bouquetPrice'];
-	$bouquetCategorieId = $pizzaRow['bouquetCategorieId'];
-	$bouquetDesc = $pizzaRow['bouquetDesc'];
+$bouquetsql = "SELECT * FROM `bouquet`";
+$bouquetResult = mysqli_query($conn, $bouquetsql);
+while($bouquetRow = mysqli_fetch_assoc($bouquetResult)){
+	$bouquetId = $bouquetRow['bouquetId'];
+	$bouquetName = $bouquetRow['bouquetName'];
+	$bouquetPrice = $bouquetRow['bouquetPrice'];
+	$bouquetCategorieId = $bouquetRow['bouquetCategorieId'];
+	$bouquetDesc = $bouquetRow['bouquetDesc'];
 ?>
 <!-- Modal -->
 <div class="modal fade" id="updateItem<?php echo $bouquetId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateItem<?php echo $bouquetId; ?>" aria-hidden="true">
@@ -147,7 +147,7 @@ while($pizzaRow = mysqli_fetch_assoc($pizzaResult)){
 							<button type="submit" class="btn btn-success my-1" name="updateItemPhoto">Update Img</button>
 						</div>
 						<div class="form-group col-md-4">
-							<img src="/bouquetElviOnline/img/pizza-<?php echo $bouquetId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="item image" width="100" height="100">
+							<img src="/bouquetElviOnline/img/bouquet-<?php echo $bouquetId; ?>.jpg" id="itemPhoto" name="itemPhoto" alt="item image" width="100" height="100">
 						</div>
 					</div>
 				</form>

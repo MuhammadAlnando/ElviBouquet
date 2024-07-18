@@ -9,8 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <title id=title>Pizza</title>
-    <link rel="icon" href="img/logo.jpg" type="image/x-icon">
+    <title id=title>Bouquet</title>
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
     <style>
         #cont {
             min-height: 578px;
@@ -39,7 +39,7 @@
             </script>
             <?php
             echo '<div class="col-md-4">
-                <img src="img/pizza-' . $bouquetId . '.jpg" width="249px" height="262px">
+                <img src="img/bouquet-' . $bouquetId . '.jpg" width="249px" height="262px">
             </div>
             <div class="col-md-8 my-4">
                 <h3>' . $bouquetName . '</h3>
@@ -53,12 +53,12 @@
                 if ($quaExistRows == 0) {
                     echo '<form action="partials/_manageCart.php" method="POST">
                               <input type="hidden" name="itemId" value="' . $bouquetId . '">
-                              <button type="submit" name="addToCart" class="btn btn-primary my-2" style="background-color: #748B6F; border:none; color: black;">Add to Cart</button>';
+                              <button type="submit" name="addToCart" class="btn btn-primary my-2" style="background-color: #2A403D; border:none; color: black;">Add to Cart</button>';
                 } else {
-                    echo '<a href="viewCart.php"><button class="btn btn-primary my-2" style="background-color: #748B6F; border:none; color: black;">Go to Cart</button></a>';
+                    echo '<a href="viewCart.php"><button class="btn btn-primary my-2" style="background-color: #2A403D; border:none; color: black;">Go to Cart</button></a>';
                 }
             } else {
-                echo '<button class="btn btn-primary my-2" style="background-color: #748B6F; border:none; color: black;" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
+                echo '<button class="btn btn-primary my-2" style="background-color: #2A403D; border:none; color: black;" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
             }
             echo '</form>
             </div>'

@@ -205,12 +205,12 @@
                       </div>
                       <?php if ($loggedin) { ?>
                         <div class="col-lg-12">
-                          <button type="submit" class="btn btn-danger mt-3 mb-3  border-0 py-2 px-3" style="background-color: #748B6F; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-                          <button type="button" class="btn btn-danger mt-3 mb-3 border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #748B6F; color:white;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
+                          <button type="submit" class="btn btn-danger mt-3 mb-3  border-0 py-2 px-3" style="background-color: #2A403D; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                          <button type="button" class="btn btn-danger mt-3 mb-3 border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history" style="background-color: #2A403D; color:white;"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
                         </div>
                       <?php } else { ?>
                         <div class="col-lg-12">
-                          <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #748B6F; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                          <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #2A403D; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
                           <small class="form-text text-muted">First login to Contact with Us.</small>
                         </div>
                       <?php } ?>
@@ -249,7 +249,7 @@
   <div class="modal fade" id="adminReply" tabindex="-1" role="dialog" aria-labelledby="adminReply" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #748B6F;">
+        <div class="modal-header" style="background-color: #2A403D;">
           <h5 class="modal-title" id="adminReply" style="color:white;">Admin Reply</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -257,7 +257,7 @@
         </div>
         <div class="modal-body" id="messagebd">
           <table class="table-striped table-bordered col-md-12 text-center">
-            <thead style="background-color: #748B6F; border-radius: 10px; color:white;">
+            <thead style="background-color: #2A403D; border-radius: 10px; color:white;">
               <tr>
                 <th>Contact Id</th>
                 <th>Reply Message</th>
@@ -306,7 +306,7 @@
         </div>
         <div class="modal-body" id="bd">
           <table class="table-striped table-bordered col-md-12 text-center">
-            <thead style="background-color: #748B6F; border-radius: 50px;">
+            <thead style="background-color: #2A403D; border-radius: 50px;">
               <tr>
                 <th>Contact Id</th>
                 <th>Order Id</th>

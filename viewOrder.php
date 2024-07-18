@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <title>Your Order</title>
-    <link rel = "icon" href ="img/logo.jpg" type = "image/x-icon">
+    <link rel = "icon" href ="img/logo.png" type = "image/x-icon">
 <style>
     .footer {
       position: fixed;
@@ -136,7 +136,7 @@
     <?php if ($loggedin): ?>
     <div class="container">
         <div class="table-wrapper" id="empty">
-            <div class="table-title" style="background-color: #748B6F;">
+            <div class="table-title" style="background-color: #2A403D;">
                 <div class="row">
                     <div class="col-sm-4">
                         <h2>Order <b>Details</b></h2>
@@ -202,14 +202,14 @@ if (!empty($row['proofFile'])) {
                 <input type="file" class="form-control-file" id="proofFile' . $orderId . '" name="proofFile">
             </div>
             <input type="hidden" name="orderId" value="' . $orderId . '">
-            <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #748B6F;" disabled>Upload Proof</button>
+            <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #2A403D;" disabled>Upload Proof</button>
         </form>';
 }
 
 echo '</td>
-    <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#748B6F;"><i class="material-icons" style="color:#748B6F;">&#xE5C8;</i></a></td>
-    <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#748B6F;" title="View Details"><i class="material-icons" style="color:#748B6F;">&#xE5C8;</i></a></td>
-    <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#748B6F;"><i class="material-icons" style="color:#748B6F;">&#xE5C8;</i></a></td>
+    <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
+    <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#2A403D;" title="View Details"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
+    <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
 </tr>';
 
 // Modal Detail Pesanan
