@@ -2,9 +2,13 @@
     <div class="container">
         <hr>
         <div class="row mt-4 justify-content-center">
-            <div class="col-lg-2 text-center">
+            <div class="col-lg-4 text-left">
                 <ul class="list-unstyled">
                     <li><a href="index.php" style="color:black; font-weight: bold;">Elvi Bouquet</a></li>
+                    <li>Perumahan Cluster Melati Recidence, Blok F #11. Tiban - Sekupang. Kota Batam</li>
+                    <br>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i> elvibouquet@gmail.com</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>   +62-812-7712-4001</li>
                 </ul>
             </div>
             <div class="col-lg-2 text-center">
@@ -34,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="text-center p-2 " style="background-color: #2A403D; color:white;">
-        <p>Copyright © 2024 by <a href="#" style="color: white;" target="_blank" rel="noopener noreferrer">@KaaChan</a></p>
+    <div class="text-right">
+        <p>Copyright © 2024 by <a href="#" style="color: black;" target="_blank" rel="noopener noreferrer">@KaaChan</a></p>
     </div>
 

@@ -132,7 +132,7 @@
   <?php include 'partials/_dbconnect.php'; ?>
   <?php include 'partials/_nav.php'; ?>
   <div class="contact2" style="background-color: white; width: 100%" id="contact">
-    <div class="container" style="height: 630px;">
+    <div class="container" style="height: 700px;">
       <div class="row justify-content-center contact-container">
         <div class="col-lg-8">
           <div class="card mb-4">
@@ -142,6 +142,8 @@
                   <div class="row">
                     <div class="col-lg-8">
                       <h4 class="title">Contact Us</h4>
+                      <p> If you have any requests, suggestions, or complaints, <br>please contact us by filling out the following form.</p>
+                  
                     </div>
                     <?php if ($loggedin) { ?>
                       <div class="col-lg-4">
@@ -210,7 +212,7 @@
                         </div>
                       <?php } else { ?>
                         <div class="col-lg-12">
-                          <button type="submit" class="btn btn-danger mt-3 text-dark border-0 py-2 px-3" disabled style="background-color: #2A403D; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                          <button type="submit" class="btn btn-danger mt-3 border-0 py-2 px-3" disabled style="background-color: #2A403D; color:white;"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
                           <small class="form-text text-muted">First login to Contact with Us.</small>
                         </div>
                       <?php } ?>
