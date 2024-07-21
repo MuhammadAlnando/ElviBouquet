@@ -122,6 +122,27 @@
         </table>
     </div>
 </div>
+<div class="container mt-4">
+    <form action="print_transactions.php" method="get">
+        <div class="row">
+            <div class="col-md-3 mb-2">
+                <button type="submit" name="period" value="today" class="btn btn-danger btn-block">Print Today's Transactions</button>
+            </div>
+            <div class="col-md-3 mb-2">
+                <button type="submit" name="period" value="week" class="btn btn-warning btn-block">Print This Week's Transactions</button>
+            </div>
+            <div class="col-md-3 mb-2">
+                <button type="submit" name="period" value="month" class="btn btn-primary btn-block">Print This Month's Transactions</button>
+            </div>
+            <div class="col-md-3 mb-2">
+                <button type="submit" name="period" value="year" class="btn btn-success btn-block">Print This Year's Transactions</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</div>
+
 
 <?php
 include 'partials/_orderItemModal.php';

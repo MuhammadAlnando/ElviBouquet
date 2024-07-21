@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Gaya kustom Anda -->
     <style>
-        /* CSS untuk form login */
         body, html {
             height: 100%;
         }
@@ -18,63 +17,101 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Menggunakan viewport height untuk mengisi tinggi layar */
-            background-color: #f8f9fa; /* Warna latar belakang untuk contoh */
+            height: auto;
         }
         .content {
             text-align: center;
-            max-width: 600px; /* Lebar maksimum konten */
+            max-width: 700px;
             padding: 20px;
         }
         .login-form {
-            width: 400px;
+            width: 100%;
             padding: 30px;
             border-radius: 8px;
+            background: white;
         }
         .login-form h2 {
             margin-bottom: 20px;
-            text-align: center;
         }
         .form-group {
             margin-bottom: 20px;
         }
         .form-control {
-            height: 50px; /* Tinggi input field */
+            height: 50px;
         }
         .btn-primary {
-            height: 50px; /* Tinggi tombol login */
+            height: 50px;
+            background-color: #2A403D;
+            border: none;
+            color: white;
+            width:350px;
+            margin-right: 10px;
+        }
+        .btn-primary:hover {
+           
+            background-color: #2A403D;
+         
+            color: white;
+        }
+        .btn-admin {
+            height: 50px;
+            background-color: white;
+            border: 1px solid #2A403D;
+            color: #2A403D;
+            
+            
+        }
+        .btn-admin:hover {
+            background-color: #2A403D;
+            color: white;
+        }
+        .login-link {
+            color: #2A403D;
         }
     </style>
 </head>
 <body>
     <?php include 'partials/_dbconnect.php'; ?>
     <?php require 'partials/_nav.php'; ?>
-    
+
     <div class="container">
         <div class="content">
             <h2>Welcome to Elvi Bouquet!</h2>
-            
             <div class="login-form">
                 <h2>Login</h2>
-            <?php if (isset($loginError)): ?>
-                <div class="alert alert-danger"><?= $loginError ?></div>
-            <?php endif; ?>
-            <form action="partials/_handleLogin.php" method="post">
-                <div class="form-group">
-                    <input type="text" name="loginusername" class="form-control" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="loginpassword" class="form-control" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;">Login</button>
-                </div>
-            </form>
-            <p class="text-center mb-0">Don't have an account? <a href="signup.php" style="color: #2A403D;">Sign up now</a>.</p>
-            </div>
-        </div>
+                <?php if (isset($loginError)): ?>
+                    <div class="alert alert-danger"><?= $loginError ?></div>
+                <?php endif; ?>
+                <form action="partials/_handleLogin.php" method="post">
+                    <div class="form-group">
+                        <input type="text" name="loginusername" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="loginpassword" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        
+                    </div>
+                    <div class="d-flex">
+                    <div class="form-group mt-3">
+    <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+    <div class="form-group mt-3 me-2">
+        <a href="admin/login.php" class="btn btn-admin">
+            <i class="fa fa-user-shield" style="margin-top: 10px;"></i>
+        </a>
     </div>
     
+</div>
+
+                </form>
+                <p class="text-center mb-0">Don't have an account? <a href="signup.php" class="login-link">Sign up now</a>.</p>
+                
+            </div>
+        </div>
+        
+    </div>
+
     <?php require 'partials/_footer.php'; ?>
 </body>
 </html>
