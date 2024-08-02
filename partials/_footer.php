@@ -33,6 +33,7 @@
                     <li class="social-icons">
                         <a href="https://www.facebook.com/elvi.paonganan.1"><i class="fab fa-facebook" style="color:#3e4555; font-size: 32px;"></i></a>
                         <a href="https://www.instagram.com/elvi_bouquet/"><i class="fab fa-instagram" style="color:#3e4555; font-size: 32px;"></i></a>
+                        <a href="https://wa.me/6285835403479"><i class="fab fa-whatsapp" style="color:#3e4555; font-size: 32px;"></i></a>
                     </li>
                 </ul>
             </div>

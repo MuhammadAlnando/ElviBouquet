@@ -23,12 +23,16 @@
 
             <div class="nav__list">
                 <a href="index.php" class="nav__link nav-home">
-                  <i class='bx bx-grid-alt nav__icon'  style="color: white"></i>
+                  <i class='bx bx-grid-alt nav__icon' style="color: white"></i>
                   <span class="nav__name" style="color: white">Dashboard</span>
                 </a>
                 <a href="index.php?page=orderManage" class="nav-orderManage nav__link ">
                   <i class='bx bx-bar-chart-alt-2 nav__icon' style="color: white"></i>
-                  <span class="nav__name" style="color: white">Orders</span>
+                  <span class="nav__name" style="color: white">Orders
+                  <?php if ($newOrders > 0) { ?>
+                      <span style="color: red; font-weight: bold;">(new)</span>
+                  <?php } ?>
+                  </span>
                 </a>
                 <a href="index.php?page=categoryManage" class="nav__link nav-categoryManage">
                   <i class='bx bx-folder nav__icon' style="color: white"></i>
@@ -46,11 +50,6 @@
                   <i class='bx bx-user nav__icon' style="color: white"></i>
                   <span class="nav__name" style="color: white">Users</span>
                 </a>
-                <!-- <a href="index.php?page=siteManage" class="nav__link nav-siteManage">
-                  <i class="fas fa-cogs" style="color: black"></i>
-                  <span class="nav__name" style="color: black">Site Settings</span>
-                </a> -->
-                
             </div>
         </div>
     </nav>

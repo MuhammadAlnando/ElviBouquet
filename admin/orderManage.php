@@ -41,10 +41,16 @@
                 </thead>
                 <tbody>
                 <?php
-$sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC";
-$result = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_assoc($result)) {
-    $orderId = $row['orderId'];
+                // Ubah status order yang sudah lebih dari 1 jam dengan status 'Order Placed' menjadi 'Order Cancelled'
+                $sqlUpdate = "UPDATE `orders` SET `orderStatus` = 6 
+                              WHERE `orderStatus` = 0 
+                              AND `orderDate` < (NOW() - INTERVAL 1 HOUR)";
+                mysqli_query($conn, $sqlUpdate);
+
+                $sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC";
+                $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $orderId = $row['orderId'];
     $orderStatus = $row['orderStatus'];
     $deliveryMethod = $row['deliveryMethod'];
     $amount = $row['amount'];
