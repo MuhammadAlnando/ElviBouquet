@@ -178,7 +178,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon">+62</span>
                             </div>
-                            <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="basic-addon" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" value="<?php echo $phone ?>">
+                            <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="basic-addon" placeholder="Enter Your Phone Number" required pattern="[0-9]{13}" value="<?php echo $phone ?>">
                           </div>
                         </div>
                       </div>
@@ -300,7 +300,7 @@
   <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #748B6F">
+        <div class="modal-header" style="background-color: #2A403D">
           <h5 class="modal-title" id="history">Your Sent Message</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -308,7 +308,7 @@
         </div>
         <div class="modal-body" id="bd">
           <table class="table-striped table-bordered col-md-12 text-center">
-            <thead style="background-color: #2A403D; border-radius: 50px;">
+            <thead style="background-color: #2A403D; color: aliceblue; border-radius: 50px;">
               <tr>
                 <th>Contact Id</th>
                 <th>Order Id</th>

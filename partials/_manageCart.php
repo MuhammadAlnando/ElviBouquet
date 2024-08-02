@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addToCart'])) {
                         Swal.fire({
                             icon: "success",
                             title: "Success!",
-                            text: "Thanks for ordering with us. Your order id is ' . $orderId . '. Please upload proof of payment soon."
+                            text: "Thanks for ordering with us. Your order id is ' . $orderId . '. Please upload payment soon."
                         }).then(function() {
                             window.location.href = "http://localhost/bouquetElviOnline/viewOrder.php";
                         });

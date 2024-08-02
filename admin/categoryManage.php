@@ -32,7 +32,7 @@ $catResult = mysqli_query($conn, $catsql);
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" name="createCategory" class="btn btn-sm btn-primary col-sm-3 offset-md-4"> Create </button>
+                                    <button type="submit" name="createCategory" class="btn btn-sm btn-primary col-sm-3 offset-md-4" style="background-color:#2A403D; color:white; border:none"> Create </button>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ $catResult = mysqli_query($conn, $catsql);
                                         </td>
                                         <td class="text-center">
                                             <div class="row mx-auto" style="width:112px">
-                                            <button class="btn btn-sm btn-primary edit_cat" type="button" data-toggle="modal" data-target="#updateCat' .$catId. '">Edit</button>
+                                            <button class="btn btn-sm btn-primary edit_cat" type="button" data-toggle="modal" data-target="#updateCat' .$catId. '" style="background-color: #748B6F; color: white; border:none;">Edit</button>
                                             <form action="partials/_categoryManage.php" method="POST">
                                                 <button name="removeCategory" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
                                                 <input type="hidden" name="catId" value="'.$catId. '">
@@ -101,7 +101,7 @@ $catResult = mysqli_query($conn, $catsql);
 <div class="modal fade" id="updateCat<?php echo $catId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateCat<?php echo $catId; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #2A403D;">
+      <div class="modal-header" style="background-color: #2A403D; color:white;">
         <h5 class="modal-title" id="updateCat<?php echo $catId; ?>">Category Id: <b><?php echo $catId; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -129,7 +129,7 @@ $catResult = mysqli_query($conn, $catsql);
                 <textarea class="form-control" id="desc" name="desc" rows="2" required minlength="6"><?php echo $catDesc; ?></textarea>
             </div>
             <input type="hidden" id="catId" name="catId" value="<?php echo $catId; ?>">
-            <button type="submit" class="btn btn-success" name="updateCategory">Update</button>
+            <button type="submit" class="btn btn-success" name="updateCategory" style="background-color: #2A403D; color:white; border:none;">Update</button>
         </form>
       </div>
     </div>

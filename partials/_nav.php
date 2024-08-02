@@ -23,6 +23,7 @@ $count = $countRow['SUM(`itemQuantity`)'] ?? 0;
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2A403D;">
     <style>
+        
         /* CSS untuk navbar */
         .navbar-dark .navbar-nav .nav-link:hover {
             background-color: #ffffff; /* Warna ungu yang lebih gelap */

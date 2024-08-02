@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jul 2024 pada 16.24
+-- Waktu pembuatan: 21 Jul 2024 pada 08.07
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -19,8 +19,55 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `opd`
+-- Database: `webbouquetelvi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(21) NOT NULL,
+  `username` varchar(21) NOT NULL,
+  `firstName` varchar(21) NOT NULL,
+  `lastName` varchar(21) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `phone` bigint(20) NOT NULL,
+  `userType` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0=user\r\n1=admin',
+  `password` varchar(255) NOT NULL,
+  `joinDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `firstName`, `lastName`, `email`, `phone`, `userType`, `password`, `joinDate`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin@gmail.com', 1111111111, '1', '$2y$10$AAfxRFOYbl7FdN17rN3fgeiPu/xQrx6MnvRGzqjVHlGqHAM4d9T1i', '2021-04-11 11:40:58');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bouquet`
+--
+
+CREATE TABLE `bouquet` (
+  `bouquetId` int(12) NOT NULL,
+  `bouquetName` varchar(255) NOT NULL,
+  `bouquetPrice` int(12) NOT NULL,
+  `bouquetDesc` text NOT NULL,
+  `bouquetCategorieId` int(12) NOT NULL,
+  `bouquetPubDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `bouquet`
+--
+
+INSERT INTO `bouquet` (`bouquetId`, `bouquetName`, `bouquetPrice`, `bouquetDesc`, `bouquetCategorieId`, `bouquetPubDate`) VALUES
+(16, 'Ikan', 100000, 'duyung', 1, '2024-07-14 18:40:08');
 
 -- --------------------------------------------------------
 
@@ -40,10 +87,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`categorieId`, `categorieName`, `categorieDesc`, `categorieCreateDate`) VALUES
-(1, 'Bouquet Flower', 'Flowers make someone feel special', '2021-03-17 18:16:28'),
-(2, 'Bouquet Money', 'Money makes them happy!', '2021-03-17 18:17:14'),
-(3, 'Bouquet Snack', 'This belongs to who love eat', '2021-03-17 18:17:43'),
-(4, 'Baloon', 'For Greating!', '2021-03-17 18:19:10');
+(1, 'Flower Bouquet ', 'Flowera', '2024-07-14 16:55:29'),
+(2, 'Bouquet Balloon', 'balloon', '2024-07-14 18:12:17'),
+(3, 'Bouquet Money', 'money', '2024-07-16 11:21:34'),
+(4, 'Bouquet Snack', 'Snack', '2024-07-16 11:22:00'),
+(5, 'Graduation Bouquet', 'selamat', '2024-07-18 12:21:12'),
+(6, 'Hijab Bouquet', 'Hijab Bouquet', '2024-07-17 20:48:33');
 
 -- --------------------------------------------------------
 
@@ -123,47 +172,9 @@ CREATE TABLE `orderitems` (
 --
 
 INSERT INTO `orderitems` (`id`, `orderId`, `bouquetId`, `itemQuantity`) VALUES
-(1, 1, 12, 1),
-(2, 2, 14, 1),
-(3, 2, 12, 1),
-(4, 3, 12, 1),
-(5, 4, 12, 1),
-(6, 5, 12, 3),
-(7, 6, 14, 1),
-(8, 7, 14, 1),
-(9, 8, 14, 1),
-(10, 9, 12, 1),
-(11, 10, 12, 2),
-(12, 11, 14, 2),
-(13, 12, 14, 1),
-(14, 13, 14, 1),
-(15, 14, 12, 1),
-(16, 15, 12, 1),
-(17, 16, 12, 1),
-(18, 17, 12, 1),
-(19, 18, 12, 1),
-(20, 19, 12, 1),
-(21, 20, 12, 1),
-(22, 21, 12, 1),
-(23, 22, 12, 3),
-(24, 23, 12, 2),
-(25, 24, 12, 1),
-(26, 25, 12, 1),
-(27, 26, 12, 1),
-(28, 27, 12, 1),
-(29, 28, 12, 1),
-(30, 29, 12, 1),
-(31, 30, 12, 1),
-(32, 31, 12, 1),
-(33, 32, 12, 1),
-(34, 33, 12, 1),
-(35, 34, 12, 1),
-(36, 35, 12, 1),
-(37, 36, 12, 1),
-(38, 37, 12, 1),
-(39, 38, 12, 1),
-(40, 39, 12, 1),
-(41, 40, 12, 1);
+(1, 1, 16, 1),
+(2, 2, 16, 1),
+(3, 3, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -184,40 +195,18 @@ CREATE TABLE `orders` (
   `deliveryDate` date DEFAULT NULL,
   `deliveryTime` time DEFAULT NULL,
   `message` varchar(500) DEFAULT NULL,
-  `paymentMethod` varchar(255) DEFAULT NULL
+  `paymentMethod` varchar(255) DEFAULT NULL,
+  `proofFile` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `orders`
 --
 
-INSERT INTO `orders` (`orderId`, `userId`, `address`, `zipCode`, `phoneNo`, `amount`, `deliveryMethod`, `orderStatus`, `orderDate`, `deliveryDate`, `deliveryTime`, `message`, `paymentMethod`) VALUES
-(39, 2, 'haha,324234', 324234, 7963872672, 85000, 'delivery', '1', '2024-07-08 19:26:15', '2024-07-17', '09:00:00', 'mamam', 'transfer'),
-(40, 2, 'Tiban lama,423424', 423424, 7963872672, 85000, 'pickup', '0', '2024-07-09 08:22:50', '2024-07-18', '14:00:00', 'selamat ultah', 'transfer'),
-(41, 2, '21231323dssad,432423', 432423, 812345678, 0, 'delivery', '0', '2024-07-09 11:21:57', '2024-07-10', '14:00:00', '21wdd', 'transfer');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pizza`
---
-
-CREATE TABLE `pizza` (
-  `bouquetId` int(12) NOT NULL,
-  `bouquetName` varchar(255) NOT NULL,
-  `bouquetPrice` int(12) NOT NULL,
-  `bouquetDesc` text NOT NULL,
-  `bouquetCategorieId` int(12) NOT NULL,
-  `bouquetPubDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pizza`
---
-
-INSERT INTO `pizza` (`bouquetId`, `bouquetName`, `bouquetPrice`, `bouquetDesc`, `bouquetCategorieId`, `bouquetPubDate`) VALUES
-(12, 'Purple Flower', 85000, 'This one belongs to sprecial person\r\n\r\n', 1, '2021-03-17 21:29:41'),
-(14, 'Money 100 x 30', 3150000, 'Money total 3000000', 2, '2021-03-17 21:35:31');
+INSERT INTO `orders` (`orderId`, `userId`, `address`, `zipCode`, `phoneNo`, `amount`, `deliveryMethod`, `orderStatus`, `orderDate`, `deliveryDate`, `deliveryTime`, `message`, `paymentMethod`, `proofFile`) VALUES
+(1, 2, 'hahadasdasd,324234', 324234, 812345678, 100000, 'delivery', '0', '2024-07-16 12:11:09', '2024-07-19', '14:00:00', 'hihsadadsad', 'cash', 'img/proofs/Dashboard.png'),
+(2, 2, '21231323dssad,342342', 342342, 894634013, 100000, 'delivery', '1', '2024-07-16 12:27:21', '2024-07-17', '14:00:00', 'ewdwed', 'cash', 'img/proofs/ELVI BOUQUET (1) (1).jpg'),
+(3, 2, 'Devin,342432', 342432, 855724743, 100000, 'pickup', '4', '2024-07-18 12:53:16', '2024-07-20', '09:00:00', 'selamat', 'cash', 'img/proofs/0001-7115228857_20210903_113750_0000.png');
 
 -- --------------------------------------------------------
 
@@ -296,6 +285,13 @@ INSERT INTO `viewcart` (`cartItemId`, `bouquetId`, `itemQuantity`, `userId`, `ad
 --
 
 --
+-- Indeks untuk tabel `bouquet`
+--
+ALTER TABLE `bouquet`
+  ADD PRIMARY KEY (`bouquetId`);
+ALTER TABLE `bouquet` ADD FULLTEXT KEY `pizzaName` (`bouquetName`,`bouquetDesc`);
+
+--
 -- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
@@ -334,13 +330,6 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`orderId`);
 
 --
--- Indeks untuk tabel `pizza`
---
-ALTER TABLE `pizza`
-  ADD PRIMARY KEY (`bouquetId`);
-ALTER TABLE `pizza` ADD FULLTEXT KEY `bouquetName` (`bouquetName`,`bouquetDesc`);
-
---
 -- Indeks untuk tabel `sitedetail`
 --
 ALTER TABLE `sitedetail`
@@ -364,10 +353,16 @@ ALTER TABLE `viewcart`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `bouquet`
+--
+ALTER TABLE `bouquet`
+  MODIFY `bouquetId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `categorieId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `categorieId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `contact`
@@ -391,19 +386,13 @@ ALTER TABLE `deliverydetails`
 -- AUTO_INCREMENT untuk tabel `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT untuk tabel `pizza`
---
-ALTER TABLE `pizza`
-  MODIFY `bouquetId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `orderId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `sitedetail`

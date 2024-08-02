@@ -57,7 +57,20 @@ if ($adminloggedin) {
 
     $today = date('Y-m-d'); // Mendapatkan tanggal hari ini
     $sql_daily_sales = "
-        SELECT SUM(amount + IF(deliveryMethod = 'delivery', 15000, 0)) AS daily_sales 
+        SELECT SUM(amount + 
+            CASE
+                WHEN deliveryMethod = 'deliverybatamkota' THEN 20000
+                WHEN deliveryMethod = 'deliverybatuaji' THEN 20000
+                WHEN deliveryMethod = 'deliverybatuampar' THEN 15000
+                WHEN deliveryMethod = 'deliverybengkong' THEN 15000
+                WHEN deliveryMethod = 'deliverylubukbaja' THEN 15000
+                WHEN deliveryMethod = 'deliverynongsa' THEN 25000
+                WHEN deliveryMethod = 'deliverysagulung' THEN 20000
+                WHEN deliveryMethod = 'deliveryseibeduk' THEN 20000
+                WHEN deliveryMethod = 'deliverysekupang' THEN 10000
+                ELSE 0
+            END
+        ) AS daily_sales 
         FROM orders 
         WHERE DATE(orderDate) = '$today' AND orderStatus >= 1";
     $result_daily_sales = mysqli_query($conn, $sql_daily_sales);
@@ -69,7 +82,20 @@ if ($adminloggedin) {
 
     $month = date('Y-m'); // Mendapatkan bulan dan tahun bulan ini
     $sql_monthly_sales = "
-        SELECT SUM(amount + IF(deliveryMethod = 'delivery', 15000, 0)) AS monthly_sales 
+        SELECT SUM(amount + 
+            CASE
+                WHEN deliveryMethod = 'deliverybatamkota' THEN 20000
+                WHEN deliveryMethod = 'deliverybatuaji' THEN 20000
+                WHEN deliveryMethod = 'deliverybatuampar' THEN 15000
+                WHEN deliveryMethod = 'deliverybengkong' THEN 15000
+                WHEN deliveryMethod = 'deliverylubukbaja' THEN 15000
+                WHEN deliveryMethod = 'deliverynongsa' THEN 25000
+                WHEN deliveryMethod = 'deliverysagulung' THEN 20000
+                WHEN deliveryMethod = 'deliveryseibeduk' THEN 20000
+                WHEN deliveryMethod = 'deliverysekupang' THEN 10000
+                ELSE 0
+            END
+        ) AS monthly_sales 
         FROM orders 
         WHERE DATE_FORMAT(orderDate, '%Y-%m') = '$month' AND orderStatus >= 1";
     $result_monthly_sales = mysqli_query($conn, $sql_monthly_sales);
@@ -81,7 +107,20 @@ if ($adminloggedin) {
 
     $year = date('Y'); // Mendapatkan tahun ini
     $sql_yearly_sales = "
-        SELECT SUM(amount + IF(deliveryMethod = 'delivery', 15000, 0)) AS yearly_sales 
+        SELECT SUM(amount + 
+            CASE
+                WHEN deliveryMethod = 'deliverybatamkota' THEN 20000
+                WHEN deliveryMethod = 'deliverybatuaji' THEN 20000
+                WHEN deliveryMethod = 'deliverybatuampar' THEN 15000
+                WHEN deliveryMethod = 'deliverybengkong' THEN 15000
+                WHEN deliveryMethod = 'deliverylubukbaja' THEN 15000
+                WHEN deliveryMethod = 'deliverynongsa' THEN 25000
+                WHEN deliveryMethod = 'deliverysagulung' THEN 20000
+                WHEN deliveryMethod = 'deliveryseibeduk' THEN 20000
+                WHEN deliveryMethod = 'deliverysekupang' THEN 10000
+                ELSE 0
+            END
+        ) AS yearly_sales 
         FROM orders 
         WHERE DATE_FORMAT(orderDate, '%Y') = '$year' AND orderStatus >= 1";
     $result_yearly_sales = mysqli_query($conn, $sql_yearly_sales);
@@ -113,9 +152,9 @@ if ($adminloggedin) {
     ?>
 
     <div class="container-fluid mt-4">
-        <div class="row" style="margin-top: 100px;">
+        <div class="row" style="margin-top: 10px;">
             <div class="container-fluid mt-4">
-                <div class="row" style="margin-top: 100px;">
+                <div class="row" style="margin-top: 5px;">
                     <div class="col-md-4 mb-4">
                         <div class="card bg-danger text-white">
                             <div class="card-header">

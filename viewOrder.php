@@ -132,14 +132,16 @@
 <body>
     <?php include 'partials/_dbconnect.php'; ?>
     <?php include 'partials/_nav.php'; ?>
-    
+    <!-- <div class="text" style="margin-top:20px; margin-left:80px;">
+        <h6>only accepts payment via bank transfer</h6>
+    </div>-->
     <?php if ($loggedin): ?>
     <div class="container">
         <div class="table-wrapper" id="empty">
-            <div class="table-title" style="background-color: #2A403D;">
+            <div class="table-title" style="background-color: #2A403D; margin-top:-40px;">
                 <div class="row">
                     <div class="col-sm-4">
-                        <h2>Order <b>Details</b></h2>
+                        <h2>History Order</h2>
                     </div>
                     <div class="col-sm-8"></div>
                 </div>
@@ -151,11 +153,12 @@
                     <tr>
                         <th>Order Id</th>
                         <th>Address</th>
-                        <th>Phone No</th>
+                        <th>Amount</th>
                         
-                        <th>Delivery Date</th>     
-                        <th>Proof Upload</th>
-                        <th>Status</th>                      
+                        <th>Delivery Date</th> 
+                        <th>Status</th>      
+                        <th>Payment</th>
+                                            
                         <th>Items</th>
                         <th>Detail</th>
                     </tr>
@@ -173,22 +176,57 @@ while ($row = mysqli_fetch_assoc($result)) {
     // Ambil data order seperti yang sudah Anda lakukan sebelumnya
     $orderId = $row['orderId'];
     $address = $row['address'];
-    $phoneNo = $row['phoneNo'];
+    $amount = $row['amount'];
  
     $orderDate = $row['orderDate'];
     $deliveryDate = $row['deliveryDate'];
     $deliveryTime = $row['deliveryTime'];
     $paymentMethod = $row['paymentMethod'];
     $deliveryMethod = $row['deliveryMethod'];
+    $orderStatus = $row['orderStatus'];
+    // Define status descriptions
+    $statusDescriptions = array(
+        0 => 'Order Placed',
+        1 => 'Order Confirmed',
+        2 => 'Preparing your Order',
+        3 => 'Your order is on the way!',
+        4 => 'Order Delivered',
+        5 => 'Order Denied',
+        6 => 'Order Cancelled'
+    );
 
+      // Get the description for the current order status
+      $statusDescription = isset($statusDescriptions[$orderStatus]) ? $statusDescriptions[$orderStatus] : 'Unknown Status';
+   
+// Define an associative array with delivery methods and their corresponding fees
+$deliveryFees = array(
+    'deliverybatamkota' => 20000,
+    'deliverybatuaji' => 20000,
+    'deliverybatuampar' => 15000,
+    'deliverybengkong' => 15000,
+    'deliverylubukbaja' => 15000,
+    'deliverynongsa' => 25000,
+    'deliverysagulung' => 20000,
+    'deliveryseibeduk' => 20000,
+    'deliverysekupang' => 10000
+);
+
+// Check if the selected delivery method exists in the array and add the corresponding fee
+if (array_key_exists($deliveryMethod, $deliveryFees)) {
+    $amount += $deliveryFees[$deliveryMethod];
+} else {
+    // Handle the case where no valid delivery method is selected or default option
+    $amount += 0; // No additional charge for unspecified or default delivery methods
+}
     // ...
 
     // Tampilkan data order dalam tabel seperti yang sudah Anda implementasikan sebelumnya
 echo '<tr>
     <td>' . $orderId . '</td>
     <td>' . substr($address, 0, 20) . '</td>
-    <td>' . $phoneNo . '</td>
+    <td>' . $amount . '</td>
     <td>' . $deliveryDate . ' ' . $deliveryTime . '</td>
+    <td>' . $statusDescription . '</td>
     <td>';
 
 // Di dalam loop while untuk menampilkan data order
@@ -202,12 +240,11 @@ if (!empty($row['proofFile'])) {
                 <input type="file" class="form-control-file" id="proofFile' . $orderId . '" name="proofFile">
             </div>
             <input type="hidden" name="orderId" value="' . $orderId . '">
-            <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #2A403D;" disabled>Upload Proof</button>
+            <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #2A403D; margin-right:70px;" disabled>Upload Payment</button>
         </form>';
 }
 
 echo '</td>
-    <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
     <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#2A403D;" title="View Details"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
     <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
 </tr>';
@@ -226,7 +263,7 @@ echo '<div id="orderDetailModal' . $orderId . '" class="modal fade" role="dialog
                  
                     <p><strong>Address:</strong> ' . $address . '</p>
                 
-                    <p><strong>Phone Number:</strong> ' . $phoneNo . '</p>
+                    <p><strong>Amount:</strong> ' . $amount . '</p>
                     
                     <p><strong>Payment Method:</strong> ' . $paymentMethod . '</p>
                     <p><strong>Order Date:</strong> ' . $orderDate . '</p>
@@ -258,7 +295,7 @@ echo '<div id="uploadProofModal' . $orderId . '" class="modal fade" role="dialog
                             <input type="file" class="form-control-file" id="proofFile" name="proofFile">
                         </div>
                         <input type="hidden" name="orderId" value="' . $orderId . '">
-                        <button type="submit" class="btn btn-primary">Upload Proof</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -278,16 +315,16 @@ echo '<div id="uploadProofModal' . $orderId . '" class="modal fade" role="dialog
         <!-- Tampilkan pesan jika belum login -->
         <div class="container">
             <div class="alert alert-danger" style="background-color:#E44E5D; color:white;" role="alert">
-                Anda harus login untuk melihat halaman ini. <a href="login.php" class="alert-link" style="color:white;">Login disini.</a>
+            You must login to view this page <a href="login.php" class="alert-link" style="color:white;">Login Here</a>
             </div>
         </div>
     <?php endif; ?>
   
 
-    <?php 
+    <!-- <?php 
     include 'partials/_orderItemModal.php';
     include 'partials/_orderStatusModal.php';?> 
-    <?php require 'partials/_footer.php';?> 
+    <?php require 'partials/_footer.php';?>  -->
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

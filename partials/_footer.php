@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="text-right">
+    <!-- <div class="text-right">
         <p>Copyright © 2024 by <a href="#" style="color: black;" target="_blank" rel="noopener noreferrer">@KaaChan</a></p>
-    </div>
+    </div> -->
 

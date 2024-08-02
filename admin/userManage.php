@@ -1,11 +1,11 @@
 
 <div class="container-fluid" style="margin-top:98px">
 	
-	<div class="row">
+	<!--<div class="row">
         <div class="col-lg-12">
             <button class="btn btn-primary float-right btn-sm" style="background-color:#2A403D; border: none;" data-toggle="modal" data-target="#newUser"><i class="fa fa-plus"></i> New user</button>
         </div>
-	</div>
+	</div>-->
 	    <br>
 	<div class="row">
 		<div class="card col-lg-12">
@@ -112,7 +112,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon">+62</span>
                             </div>
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone No" required pattern="[0-9]{10}" maxlength="10">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone No" required pattern="[0-9]{12}" maxlength="12">
                         </div>
                     </div>
                     <div class="form-group col-md-6 my-0">
@@ -156,7 +156,7 @@
 <div class="modal fade" id="editUser<?php echo $Id; ?>" tabindex="-1" role="dialog" aria-labelledby="editUser<?php echo $Id; ?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #2A403D;">
+      <div class="modal-header" style="background-color: #2A403D; color:white;">
         <h5 class="modal-title" id="editUser<?php echo $Id; ?>">User Id: <b><?php echo $Id; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -166,12 +166,12 @@
             
             <div class="text-left my-2 row" style="border-bottom: 2px solid #dee2e6;">
                 <div class="form-group col-md-8">
-                    <form action="partials/_userManage.php" method="post" enctype="multipart/form-data">
+                    <!--<form action="partials/_userManage.php" method="post" enctype="multipart/form-data">
                         <b><label for="image">Profile Picture</label></b>
                         <input type="file" name="userimage" id="userimage" accept=".jpg" class="form-control" required style="border:none;">
                         <small id="Info" class="form-text text-muted mx-3">Please .jpg file upload.</small>
                         <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
-                        <button type="submit" class="btn btn-success mt-3" name="updateProfilePhoto">Update Img</button>
+                        <button type="submit" class="btn btn-success mt-3" name="updateProfilePhoto" style="background-color: #2A403D; color: white; border:none;">Update Img</button>
                     </form>         
                 </div>
                 <div class="form-group col-md-4">
@@ -179,7 +179,7 @@
                     <form action="partials/_userManage.php" method="post">
                         <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
                         <button type="submit" class="btn btn-success mt-2" name="removeProfilePhoto">Remove Img</button>
-                    </form>
+                    </form>-->
                 </div>
             </div>
             
@@ -209,7 +209,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon">+62</span>
                             </div>
-                            <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>" required pattern="[0-9]{10}" maxlength="10">
+                            <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>" required pattern="[0-9]{12}" maxlength="12">
                         </div>
                     </div>
                     <div class="form-group col-md-6 my-0">
@@ -233,7 +233,7 @@
                     </div>
                 </div>
                 <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
-                <button type="submit" name="editUser" class="btn btn-success">Update</button>
+                <button type="submit" name="editUser" class="btn btn-success" style="background-color: #2A403D; color: white; border:none;">Update</button>
             </form>
         </div>
     </div>

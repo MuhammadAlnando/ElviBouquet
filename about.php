@@ -47,55 +47,49 @@
                 
             </div>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="assets/img/partials/about.jpg" class="img-fluid" style="width: 80%; margin-left: 100px; margin-top: -70px;" alt="About Us Image">
-                </div>
-                <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <div class="row" style="display: flex;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.2998538167944!2d103.97047168391533!3d1.1048967870438695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98b84292219d7%3A0xf60567f26b182ad4!2sCluster%20Melati%20Residence!5e0!3m2!1sid!2sid!4v1722177100505!5m2!1sid!2sid" width="600" height="300" style="border:0; flex: 2;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div style="flex: 1; padding-left: 20px;">
+    <h5 class="card-title">Informasi Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li style="margin: 10px 0;"><i class="fas fa-map-marker-alt"></i> Perumahan Cluster Melati Recidence, Blok F #11. Tiban - Sekupang. Kota Batam</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-envelope"></i> elvibouquet@gmail.com</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-phone"></i> +62-812-7712-4001</li>
+                        <li style="margin: 10px 0;"><i class="fa fa-credit-card"></i> BCA: 0613285439 a/n Elvi</li>
+                        <li>Work Hours:<br>
+                            <b>Monday - Saturday <br>
+                            8am - 5pm</b></li>
+              
+    </ul>
+    </div>
+</div>
 
-                    <h3>Vision</h3>
-                    <p class="font-italic">
-                        To inspire and delight our customers with the beauty of flowers, creating a joyful and uplifting experience through our expertly crafted bouquets and exceptional service.
-                    </p>
-
-                    <h3>Mission</h3>
-                    <ul>
-                        <li><i class="icofont-check-circled"></i> To provide expert advice and creative solutions for all needs, from everyday bouquets to bespoke arrangements for special events.</li>
-                        <li><i class="icofont-check-circled"></i> To foster a culture of excellence and creativity within our team, encouraging continuous learning and professional growth.</li>
-                        <li><i class="icofont-check-circled"></i> To engage with our community through events.</li>
-                    </ul>
-                </div>
-            </div>
             <br>
             <div class="section-title">
                 <h2>FAQs</h2>
-                
-            </div>
-
+            </div?
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center" style="margin-bottom: -30px;">
                     <button class="btn btn-how-to-order collapsed" style="color: white; width:40rem;" type="button" data-toggle="collapse" data-target="#howToOrder" aria-expanded="false" aria-controls="howToOrder">
-                        How To Order
+                        Order
                     </button>
                     <div class="collapse" id="howToOrder">
                         <div class="card card-body">
-                            <h4>How does it all work?</h4>
                             <ul>
-                                <li><strong>We deliver bouquets all over Batam, starting from Rp 50.000 each.</strong></li>
-                                <li><strong>Will my bouquet look like the one in the catalogue?</strong></li>
-                                <p>The arrangement will be the same as in catalogue.</p>
-                                <li><strong>Can I request for specific bouquet to be / not to be in my bouquet?</strong></li>
-                                <p>If you have specific flowers you would like us to include in your bouquet, do reach out to us or leave a remark on the check out page! However, please note that as much as we’ll try our best to fulfill them, we are unable to guarantee they will be included. If you have specific bouquets you would like us to avoid, do also leave a remark on the checkout page! </p>
-                                <li><strong>What is included in my order?</strong></li>
-                                <p>Your order will include your bouquet and a message card. Fret not - invoices / receipts are not included in the delivery to the recipient. </p>
-                                <li><strong>Are the prices on the website nett?</strong></li>
+                                <p><H5><strong>We deliver bouquets all over Batam, starting from Rp 50.000 each.</strong></H5></p>
+                                <strong>Will my bouquet look like the one in the catalogue?</strong>
+                                <p>The arrangement will be the same as in catalogue.</p><br>
+                                <strong>Can I request for specific bouquet to be / not to be in my bouquet?</strong>
+                                <p>If you have specific flowers you would like us to include in your bouquet, do reach out to us or leave a remark on the check out page! However, please note that as much as we’ll try our best to fulfill them, we are unable to guarantee they will be included. If you have specific bouquets you would like us to avoid, do also leave a remark on the checkout page!</p><br>
+                                <strong>What is included in my order?</strong>
+                                <p>Your order will include your bouquet and a message card. Fret not - invoices / receipts are not included in the delivery to the recipient</p><br>
+                                <strong>Are the prices on the website nett?</strong>
                                 <p> Yes, the prices on the website are nett. </p>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <button class="btn btn-delivery collapsed" style="color: white; width:40rem;" type="button" data-toggle="collapse" data-target="#delivery" aria-expanded="false" aria-controls="delivery">
@@ -103,37 +97,33 @@
                     </button>
                     <div class="collapse" id="delivery">
                         <div class="card card-body">
-                            <h4>Do you accept walk-in purchases?</h4>
+                            <strong>Do you accept walk-in purchases?</strong>
                             <p>Strictly no walk-in purchase allowed. Please place an order in advance through the website.</p>
 
-                            <h4>Delivery time-slots & Order cut-off time</h4>
-                            <p>All orders comes with complimentary standard delivery. Standard delivery time-slots are as below:</p>
-                            <p><em>*Note: Minimum order one day before</em></p>
-                            <ul>
-                                <li>Delivery Slot 1: 9:00 AM - 12:00 PM</li>
-                                <li>Delivery Slot 2: 1:00 PM - 5:00 PM</li>
-                                <li>Delivery Slot 3: 6:00 PM - 9:00 PM</li>
-                            </ul>
+                            <strong>Delivery time-slots & Order cut-off time</strong>
+                            <p>All orders comes with complimentary standard delivery. Standard delivery time-slots are as below:<br>
+                                    Delivery Slot 1: 9:00 AM - 12:00 PM<br>
+                                    Delivery Slot 2: 1:00 PM - 5:00 PM<br
+                                <em>*Note: Minimum order one day before</em></p>
 
-                            <h4>Do you provide same-day delivery?</h4>
+                            <strong>Do you provide same-day delivery?</strong>
                             <p>We are no longer providing same-day delivery.</p>
 
-                            <h4>Can I specify a delivery time?</h4>
+                            <strong>Can I specify a delivery time?</strong>
                             <p>Unfortunately, we’re not able to do timed deliveries as our couriers go by the most efficient route of the day.</p>
 
-                            <h4>Delivery Areas</h4>
+                            <strong>Delivery Areas</strong>
                             <p>We deliver throughout Batam to homes, businesses, schools, etc. Please ensure your delivery address can be reached.</p>
 
-                            <h4>How do I know my flowers have been delivered?</h4>
+                            <strong>How do I know my flowers have been delivered?</strong>
                             <p>You will receive an update on the 'orders' page. Please check your order status for confirmation.</p>
 
-                            <h4>What happens if nobody is home to receive the bouquets?</h4>
+                            <strong>What happens if nobody is home to receive the bouquets?</strong>
                             <p>It is your responsibility to ensure the recipient or someone is available to receive the bouquet on the selected delivery date and time-slot (include the phone number). We will not be liable for any losses or damages to the arrangements if they were delivered intact.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <button class="btn btn-cancel-refund collapsed" style="color: white; width:40rem;" type="button" data-toggle="collapse" data-target="#cancelRefund" aria-expanded="false" aria-controls="cancelRefund">
@@ -141,10 +131,10 @@
                     </button>
                     <div class="collapse" id="cancelRefund">
                         <div class="card card-body">
-                            <h4>Help! There’s a problem with my order! What can I do?</h4>
+                            <strong>Help! There’s a problem with my order! What can I do?</strong>
                             <p>OK, don’t panic. First, contact us as soon as you can with your order number.</p>
 
-                            <h4>What if I'd like to cancel my order?</h4>
+                            <strong>What if I'd like to cancel my order?</strong>
                             <p>To make a cancellation, kindly contact us with your order number. All cancellations / refunds are subjected to a 20% administrative fee. Cancellations made less than 24 hours in advance will be subjected to a 50%.</p>
                         </div>
                     </div>

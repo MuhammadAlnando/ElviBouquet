@@ -101,9 +101,7 @@
             <i class="fa fa-user-shield" style="margin-top: 10px;"></i>
         </a>
     </div>
-    
 </div>
-
                 </form>
                 <p class="text-center mb-0">Don't have an account? <a href="signup.php" class="login-link">Sign up now</a>.</p>
                 
@@ -112,6 +110,6 @@
         
     </div>
 
-    <?php require 'partials/_footer.php'; ?>
+    
 </body>
 </html>

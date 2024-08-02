@@ -24,7 +24,7 @@
             <div class="nav__list">
                 <a href="index.php" class="nav__link nav-home">
                   <i class='bx bx-grid-alt nav__icon'  style="color: white"></i>
-                  <span class="nav__name" style="color: white">Home</span>
+                  <span class="nav__name" style="color: white">Dashboard</span>
                 </a>
                 <a href="index.php?page=orderManage" class="nav-orderManage nav__link ">
                   <i class='bx bx-bar-chart-alt-2 nav__icon' style="color: white"></i>
@@ -36,11 +36,11 @@
                 </a>
                 <a href="index.php?page=menuManage" class="nav__link nav-menuManage">
                   <i class='bx bx-message-square-detail nav__icon' style="color: white"></i>
-                  <span class="nav__name" style="color: white">Menu</span>
+                  <span class="nav__name" style="color: white">Item</span>
                 </a>
                 <a href="index.php?page=contactManage" class="nav__link nav-contactManage">
                   <i class="fas fa-hands-helping" style="color: white"></i>
-                  <span class="nav__name" style="color: white">contact Info</span>
+                  <span class="nav__name" style="color: white">Message</span>
                 </a>
                 <a href="index.php?page=userManage" class="nav__link nav-userManage">
                   <i class='bx bx-user nav__icon' style="color: white"></i>

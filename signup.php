@@ -65,9 +65,9 @@
                     <label for="phone" class="font-weight-bold">Phone No</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" style="background-color: #2A403D;" id="basic-addon">+62</span>
+                            <span class="input-group-text" style="background-color: #2A403D; color:white" id="basic-addon">+62</span>
                         </div>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" maxlength="10">
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{12}" maxlength="12">
                     </div>
                 </div>
                 <div class="form-group">
@@ -83,6 +83,6 @@
             <p class="text-center mb-0 mt-3">Already have an account? <a href="login.php" style="color: #2A403D;">Login here</a>.</p>
         </div>
     </div>
-<?php require 'partials/_footer.php' ?>
+
 </body>
 </html>

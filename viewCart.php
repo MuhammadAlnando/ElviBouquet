@@ -43,8 +43,8 @@ include 'partials/_dbconnect.php';
         ?>
         <div class="container" id="cont">
             <div class="row">
-                <div class="col-lg-12 text-center border rounded bg-light my-3">
-                    <h1>My Cart</h1>
+                <div class="col-lg-12 text-left border rounded bg-light my-3">
+                    <h3>My Cart</h3>
                 </div>
                 <div class="col-lg-8">
                     <div class="card wish-list mb-3">
@@ -106,39 +106,42 @@ include 'partials/_dbconnect.php';
                 <div class="col-lg-4">
                     <div class="card wish-list mb-3">
                         <div class="pt-4 border bg-light rounded p-3">
-                            <h5 class="mb-3 text-uppercase font-weight-bold text-center">Order summary</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">
-                                    Total Price<span id="totalPriceDisplay">Rp. <?php echo $totalPrice ?></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light">
-                                    Shipping<span id="shippingCharge">+Rp. 15,000</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-light">
-                                    <div>
-                                        <strong>The total amount of</strong>
-                                        <strong>
-                                            <p class="mb-0">(including Tax & Charge)</p>
-                                        </strong>
-                                    </div>
-                                    <span><strong id="totalAmountDisplay">Rp. <?php echo $totalPrice + 15000 ?></strong></span>
-                                </li>
-                            </ul>
+                        <h5 class="mb-3 text-uppercase font-weight-bold text-center">Order summary</h5>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">
+        Total Price<span id="totalPriceDisplay">Rp. <?php echo $totalPrice ?></span>
+    </li>
+    <!-- <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light">
+        Shipping<span id="shippingCharge">+Rp. 0</span>
+    </li> -->
+    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-light">
+        <div>
+            <strong>The total amount of</strong>
+            <strong>
+                <!-- <p class="mb-0">(including delivery)</p> -->
+            </strong>
+        </div>
+        <span><strong id="totalAmountDisplay">Rp. <?php echo $totalPrice?></strong></span>
+    </li>
+</ul>
+<!-- <div class="form-group">
+    <label for="deliveryOption">Delivery Option</label>
+    <select class="form-control" id="deliveryOption" name="deliveryOption">
+        <option value="pickup" selected>Pickup (Free)</option>
+        <option value="deliverybatamkota">Batam Kota (+Rp. 20,000)</option>
+        <option value="deliverybatuaji">Batu Aji (+Rp. 20,000)</option>
+        <option value="deliverybatuampar">Batu Ampar (+Rp. 15,000)</option>
+        <option value="deliverybengkong">Bengkong (+Rp. 15,000)</option>
+        <option value="deliverylubukbaja">Lubuk Baja (+Rp. 15,000)</option>
+        <option value="deliverynongsa">Nongsa (+Rp. 25,000)</option>
+        <option value="deliverysagulung">Sagulung (+Rp. 20,000)</option>
+        <option value="deliveryseibeduk">Sei Beduk (+Rp. 20,000)</option>
+        <option value="deliverysekupang">Sekupang (+Rp. 10,000)</option>
+    </select>
+</div> -->
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="deliveryOption" id="flexRadioDefault2" value="delivery" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Delivery (+Rp. 15,000)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="deliveryOption" id="flexRadioDefault1" value="pickup">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Pickup
-                                </label>
-                            </div>
-                            <br>
-                            <button type="button" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
+<br>
+<button type="button" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
 
                             <?php
                             // JavaScript to display alert if cart is empty
@@ -165,10 +168,11 @@ include 'partials/_dbconnect.php';
 
     <?php
     } else {
-        echo '<div class="container" style="min-height : 610px;">
-        <div class="alert alert-info my-3">
-            <font style="font-size:22px"><center>Before checkout you need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
-        </div></div>';
+        echo '<div class="container">
+        <div class="alert alert-danger" style="background-color:#E44E5D; color:white;" role="alert">
+        
+            <font style="font-size:15px">Before checkout you need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal" style="color: white;">Login</a></strong></font>
+            </div></div>';
     }
     ?>
     <?php require 'partials/_checkoutModal.php'; ?>
@@ -198,28 +202,58 @@ include 'partials/_dbconnect.php';
         }
 
         function setDeliveryMethod() {
-            var deliveryOption = $('input[name=deliveryOption]:checked').val();
-            $('#deliveryMethod').val(deliveryOption);
+    var deliveryOption = $('input[name=deliveryOption]:checked').val();
+    $('#deliveryMethod').val(deliveryOption);
+}
+
+$(document).ready(function () {
+    // Function to update total price and total amount based on delivery option
+    $('#deliveryOption').change(function () {
+        var deliveryCharge = 0;
+        switch (this.value) {
+            case 'deliverybatamkota':
+                deliveryCharge = 20000;
+                break;
+            case 'deliverybatuaji':
+                deliveryCharge = 20000;
+                break;
+            case 'deliverybatuampar':
+                deliveryCharge = 15000;
+                break;
+            case 'deliverybengkong':
+                deliveryCharge = 15000;
+                break;
+            case 'deliverylubukbaja':
+                deliveryCharge = 15000;
+                break;
+            case 'deliverynongsa':
+                deliveryCharge = 25000;
+                break;
+            case 'deliverysagulung':
+                deliveryCharge = 20000;
+                break;
+            case 'deliveryseibeduk':
+                deliveryCharge = 20000;
+                break;
+            case 'deliverysekupang':
+                deliveryCharge = 10000;
+                break;
+            default:
+                deliveryCharge = 0; // Assume 'pickup' or any other value has no charge
+                break;
         }
 
-        $(document).ready(function () {
-            // Function to update total price based on delivery option
-            $('input[type=radio][name=deliveryOption]').change(function () {
-                if (this.value == 'delivery') {
-                    var deliveryCharge = 15000; // Delivery charge
-                    var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
-                    var newTotalPrice = totalPrice + deliveryCharge;
-                    $('#totalPriceDisplay').text('Rp. ' + newTotalPrice);
-                    $('#shippingCharge').text('+Rp. 15,000');
-                    $('#totalAmountDisplay').text('Rp. ' + newTotalPrice);
-                } else {
-                    var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
-                    $('#totalPriceDisplay').text('Rp. ' + totalPrice);
-                    $('#shippingCharge').text('');
-                    $('#totalAmountDisplay').text('Rp. ' + totalPrice);
-                }
-            });
-        });
+        var totalPrice = <?php echo $totalPrice; ?>; // Previous total price from PHP
+        var newTotalAmount = totalPrice + deliveryCharge;
+
+        $('#totalPriceDisplay').text('Rp. ' + totalPrice.toLocaleString());
+        $('#shippingCharge').text(deliveryCharge > 0 ? '+Rp. ' + deliveryCharge.toLocaleString() : 'Free');
+        $('#totalAmountDisplay').text('Rp. ' + newTotalAmount.toLocaleString());
+    });
+});
+
+
+    
     </script>
 </body>
 

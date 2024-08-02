@@ -2,24 +2,22 @@
     .btn-danger-gradiant {
         background: linear-gradient(to right, #ff4d7e 0%, #ff6a5b 100%);
     }
-
     .btn-danger-gradiant:hover {
         background: linear-gradient(to right, #ff6a5b 0%, #ff4d7e 100%);
     }
 </style>
-<div>
+
 <div class="modal-header" style="background-color: #2A403D; color: #fff; border-bottom: none; margin-top: 80px; border-radius: 10px;">
-<button type="button" class="btn btn-danger border-0 py-2 px-3" style="background-color: #C3CBD6; color: black;" data-toggle="modal" data-target="#history">
-        <span> HISTORY <i class="ti-arrow-right"></i></span>
+    <button type="button" class="btn btn-danger border-0 py-2 px-3" style="background-color: #748B6F; color: white;" data-toggle="modal" data-target="#history">
+        <span> History <i class="ti-arrow-right"></i></span>
     </button>
-  </div>
-    
 </div>
-<div class="container-fluid" id='empty'>	
+
+<div class="container-fluid" id='empty'>    
     <div class="row">
         <div class="card col-lg-12">
             <div class="card-body">
-                <table class="table-striped table-bordered col-md-12 text-center">
+                <table class="table table-striped table-bordered col-md-12 text-center">
                     <thead style="background-color: #2A403D; color: white">
                         <tr>
                             <th>Id</th>
@@ -31,79 +29,80 @@
                             <th>Datetime</th>
                             <th>Image</th>
                             <th>Reply</th>
-                            <th>Action</th> <!-- Kolom baru untuk tombol Lihat Pesan -->
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT * FROM contact"; 
-                            $result = mysqli_query($conn, $sql);
-                            $count = 0;
-                            while($row = mysqli_fetch_assoc($result)) {
-                                $contactId = $row['contactId'];
-                                $userId = $row['userId'];
-                                $email = $row['email'];
-                                $phoneNo = $row['phoneNo'];
-                                $orderId = $row['orderId'];
-                                $message = $row['message'];
-                                $time = $row['time'];
-                                $image = '../assets/img/contact/' . $row['image']; // Adjust path as per your project structure
-                                $count++;
+                        include 'partials/_dbconnect.php'; // Ensure this file is correctly included
 
-                                echo '<tr>
-                                        <td>' . $contactId . '</td>
-                                        <td>' . $userId . '</td>
-                                        <td>' . $email . '</td>
-                                        <td>' . $phoneNo . '</td>
-                                        <td>' . $orderId . '</td>
-                                        <td>' . $message . '</td>
-                                        <td>' . $time . '</td>
-                                        <td><a href="#" data-toggle="modal" data-target="#viewImage' . $contactId . '"><img src="' . $image . '" alt="contact image" style="width: 100px; height: auto;"></a></td>
-                                        <td class="text-center">
-                                            <button class="btn btn-sm btn-primary" style="background-color: #2A403D; border: none;" type="button" data-toggle="modal" data-target="#reply' . $contactId . '">Reply</button>
-                                        </td>
-                                        <td class="text-center">
-                                            <button class="btn btn-sm btn-info" style="background-color: #2A403D; border: none;" type="button" data-toggle="modal" data-target="#viewMessage' . $contactId . '">View Message</button>
-                                        </td>
-                                    </tr>';
-                            }
-                            if ($count == 0) {
-                                echo '<script>
-                                        document.getElementById("notempty").innerHTML = 
-                                            \'<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> 
-                                                You have not received any message!
-                                            </div>\';
-                                        document.getElementById("empty").innerHTML = "";
-                                      </script>';
-                            }
+                        $sql = "SELECT * FROM contact"; 
+                        $result = mysqli_query($conn, $sql);
+                        $count = 0;
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $contactId = $row['contactId'];
+                            $userId = $row['userId'];
+                            $email = $row['email'];
+                            $phoneNo = $row['phoneNo'];
+                            $orderId = $row['orderId'];
+                            $message = $row['message'];
+                            $time = $row['time'];
+                            $image = '../assets/img/contact/' . $row['image']; // Adjust path as per your project structure
+                            $count++;
+
+                            echo '<tr>
+                                    <td>' . $contactId . '</td>
+                                    <td>' . $userId . '</td>
+                                    <td>' . $email . '</td>
+                                    <td>' . $phoneNo . '</td>
+                                    <td>' . $orderId . '</td>
+                                    <td>' . $message . '</td>
+                                    <td>' . $time . '</td>
+                                    <td><a href="#" data-toggle="modal" data-target="#viewImage' . $contactId . '"><img src="' . $image . '" alt="contact image" style="width: 100px; height: auto;"></a></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-primary" style="background-color: #2A403D; border: none;" type="button" data-toggle="modal" data-target="#reply' . $contactId . '">Reply</button>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-info" style="background-color: #2A403D; border: none;" type="button" data-toggle="modal" data-target="#viewMessage' . $contactId . '">View Message</button>
+                                    </td>
+                                </tr>';
+                        }
+                        if ($count == 0) {
+                            echo '<script>
+                                    document.getElementById("notempty").innerHTML = 
+                                        \'<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> 
+                                            You have not received any message!
+                                        </div>\';
+                                    document.getElementById("empty").innerHTML = "";
+                                  </script>';
+                        }
                         ?>
                     </tbody>
                 </table>
-                
             </div>
         </div>
     </div>
 </div>
 
 <?php 
-    $contactsql = "SELECT * FROM `contact`";
-    $contactResult = mysqli_query($conn, $contactsql);
-    while ($contactRow = mysqli_fetch_assoc($contactResult)) {
-        $contactId = $contactRow['contactId'];
-        $Id = $contactRow['userId'];
-        $email = $contactRow['email'];
-        $phoneNo = $contactRow['phoneNo'];
-        $orderId = $contactRow['orderId'];
-        $message = $contactRow['message'];
-        $time = $contactRow['time'];
-        $image = '../assets/img/contact/' . $contactRow['image']; // Adjust path as per your project structure
+$contactsql = "SELECT * FROM `contact`";
+$contactResult = mysqli_query($conn, $contactsql);
+while ($contactRow = mysqli_fetch_assoc($contactResult)) {
+    $contactId = $contactRow['contactId'];
+    $Id = $contactRow['userId'];
+    $email = $contactRow['email'];
+    $phoneNo = $contactRow['phoneNo'];
+    $orderId = $contactRow['orderId'];
+    $message = $contactRow['message'];
+    $time = $contactRow['time'];
+    $image = '../assets/img/contact/' . $contactRow['image']; // Adjust path as per your project structure
 ?>
 
 <!-- Reply Modal -->
 <div class="modal fade" id="reply<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="reply<?php echo $contactId; ?>" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #2A403D;">
+            <div class="modal-header" style="background-color: #2A403D; color: white;">
                 <h5 class="modal-title" id="reply<?php echo $contactId; ?>">Reply (Contact Id: <?php echo $contactId; ?>)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -117,7 +116,7 @@
                     </div>
                     <input type="hidden" id="contactId" name="contactId" value="<?php echo $contactId; ?>">
                     <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
-                    <button type="submit" class="btn btn-success" name="contactReply">Reply</button>
+                    <button type="submit" class="btn btn-success" name="contactReply" style="background-color: #2A403D; color: white; border: none;">Reply</button>
                 </form>
             </div>
         </div>
@@ -128,7 +127,7 @@
 <div class="modal fade" id="viewMessage<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="viewMessage<?php echo $contactId; ?>" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #2A403D;">
+            <div class="modal-header" style="background-color: #2A403D; color:white;">
                 <h5 class="modal-title" id="viewMessage<?php echo $contactId; ?>">View Message (Contact Id: <?php echo $contactId; ?>)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -137,11 +136,11 @@
             <div class="modal-body">
                 <p><?php echo $message; ?></p>
                 <?php if (!empty($image)) : ?>
-                            <p><strong>Image:</strong></p>
-                            <a href="#" data-toggle="modal" data-target="#viewImage<?php echo $contactId; ?>">
-                                <img src="<?php echo $image; ?>" alt="contact image" style="width: 100%; max-width: 300px; height: auto;">
-                            </a>
-                        <?php endif; ?>
+                    <p><strong>Image:</strong></p>
+                    <a href="#" data-toggle="modal" data-target="#viewImage<?php echo $contactId; ?>">
+                        <img src="<?php echo $image; ?>" alt="contact image" style="width: 100%; max-width: 300px; height: auto;">
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -165,22 +164,22 @@
 </div>
 
 <?php
-    }
+}
 ?>
 
 <!-- History Modal -->
 <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(187 188 189);">
+            <div class="modal-header" style="background-color: #2A403D; color: white;">
                 <h5 class="modal-title" id="history">Your Sent Message</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body" id="notReply">
-                <table class="table-striped table-bordered col-md-12 text-center">
-                    <thead style="background-color: #2A403D;">
+                <table class="table table-striped table-bordered col-md-12 text-center">
+                    <thead style="background-color: #2A403D; color: white">
                         <tr>
                             <th>Contact Id</th>
                             <th>Reply Message</th>
@@ -189,30 +188,30 @@
                     </thead>
                     <tbody>
                     <?php 
-                        $sql = "SELECT * FROM `contactreply`"; 
-                        $result = mysqli_query($conn, $sql);
-                        $totalReply = 0;
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $contactId = $row['contactId'];
-                            $message = $row['message'];
-                            $datetime = $row['datetime'];
-                            $totalReply++;
+                    $sql = "SELECT * FROM `contactreply`"; 
+                    $result = mysqli_query($conn, $sql);
+                    $totalReply = 0;
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $contactId = $row['contactId'];
+                        $message = $row['message'];
+                        $datetime = $row['datetime'];
+                        $totalReply++;
 
-                            echo '<tr>
-                                    <td>' . $contactId . '</td>
-                                    <td>' . $message . '</td>
-                                    <td>' . $datetime . '</td>
-                                  </tr>';
-                        }    
+                        echo '<tr>
+                                <td>' . $contactId . '</td>
+                                <td>' . $message . '</td>
+                                <td>' . $datetime . '</td>
+                              </tr>';
+                    }    
 
-                        if ($totalReply == 0) {
-                            echo '<script>
-                                    document.getElementById("notReply").innerHTML = 
-                                        \'<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> 
-                                            You have not replied to any message!
-                                        </div>\';
-                                  </script>';
-                        }   
+                    if ($totalReply == 0) {
+                        echo '<script>
+                                document.getElementById("notReply").innerHTML = 
+                                    \'<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> 
+                                        You have not replied to any message!
+                                    </div>\';
+                              </script>';
+                    }   
                     ?>
                     </tbody>
                 </table>

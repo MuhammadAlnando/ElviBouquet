@@ -104,7 +104,7 @@
                                         <span class="input-group-text" id="basic-addon">+62</span>
                                     </div>
                                     <input type="tel" class="form-control" id="phone" name="phone"
-                                        placeholder="Enter Your Phone Number" required pattern="[0-9]{10}"
+                                        placeholder="Enter Your Phone Number" required pattern="[0-9]{12}"
                                         maxlength="10" value="<?php echo $phone ?>">
                                 </div>
                             </div>

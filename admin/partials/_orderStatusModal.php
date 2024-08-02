@@ -54,7 +54,7 @@
                 <div class="text-left my-2 row">
                     <div class="form-group col-md-6">
                         <b><label for="phone">Phone No</label></b>
-                        <input class="form-control" id="phone" name="phone" value="<?php echo $deliveryBoyPhoneNo; ?>" type="tel" required pattern="[0-9]{10}">
+                        <input class="form-control" id="phone" name="phone" value="<?php echo $deliveryBoyPhoneNo; ?>" type="tel" required pattern="[0-9]{12}">
                     </div>
                     <div class="form-group col-md-6">
                         <b><label for="catId">Estimate Time(minute)</label></b>
