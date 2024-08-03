@@ -1,5 +1,4 @@
 <?php
-header("Cache-Control: no-cache, must-revalidate");
 $catsql = "SELECT * FROM `categories`";
 $catResult = mysqli_query($conn, $catsql);
 ?>
