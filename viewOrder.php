@@ -196,7 +196,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     );
 
       // Get the description for the current order status
-      $statusDescription = isset($statusDescriptions[$orderStatus]) ? $statusDescriptions[$orderStatus] : 'Unknown Status';
+      $statusDescription = isset($statusDescriptions[$orderStatus]) ? $statusDescriptions[$orderStatus] : 'Please Upload Payment First';
    
 // Define an associative array with delivery methods and their corresponding fees
 $deliveryFees = array(
@@ -221,6 +221,7 @@ if (array_key_exists($deliveryMethod, $deliveryFees)) {
     // ...
 
     // Tampilkan data order dalam tabel seperti yang sudah Anda implementasikan sebelumnya
+// Tampilkan data order dalam tabel seperti yang sudah Anda implementasikan sebelumnya
 echo '<tr>
     <td>' . $orderId . '</td>
     <td>' . substr($address, 0, 20) . '</td>
@@ -229,25 +230,28 @@ echo '<tr>
     <td>' . $statusDescription . '</td>
     <td>';
 
-// Di dalam loop while untuk menampilkan data order
-if (!empty($row['proofFile'])) {
-    echo '<img src="' . $row['proofFile'] . '" width="100" height="100" alt="Proof Image">';
-} else {
-    // Tampilkan form upload jika belum ada bukti pembayaran
-    echo '<form id="uploadForm' . $orderId . '" class="uploadForm" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="proofFile"></label>
-                <input type="file" class="form-control-file" id="proofFile' . $orderId . '" name="proofFile">
-            </div>
-            <input type="hidden" name="orderId" value="' . $orderId . '">
-            <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #2A403D; margin-right:70px;" disabled>Upload Payment</button>
-        </form>';
+// Hanya tampilkan form upload jika status bukan 5 (Order Denied) atau 6 (Order Cancelled)
+if ($orderStatus != 5 && $orderStatus != 6) {
+    if (!empty($row['proofFile'])) {
+        echo '<img src="' . $row['proofFile'] . '" width="100" height="100" alt="Proof Image">';
+    } else {
+        // Tampilkan form upload jika belum ada bukti pembayaran
+        echo '<form id="uploadForm' . $orderId . '" class="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="proofFile"></label>
+                    <input type="file" class="form-control-file" id="proofFile' . $orderId . '" name="proofFile">
+                </div>
+                <input type="hidden" name="orderId" value="' . $orderId . '">
+                <button type="submit" class="btn btn-primary uploadProofBtn" style="background-color: #2A403D; margin-right:70px;" disabled>Upload Payment</button>
+            </form>';
+    }
 }
 
 echo '</td>
     <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#2A403D;" title="View Details"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
     <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
 </tr>';
+
 
 // Modal Detail Pesanan
 echo '<div id="orderDetailModal' . $orderId . '" class="modal fade" role="dialog">

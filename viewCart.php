@@ -141,7 +141,7 @@ include 'partials/_dbconnect.php';
 </div> -->
 
 <br>
-<button type="button" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Go to Checkout</button>
+<button type="button" class="btn btn-primary btn-block" style="background-color: #2A403D; border:none; color: white;" data-toggle="modal" data-target="#checkoutModal" onclick="setDeliveryMethod();" <?php if ($checkoutDisabled) echo 'disabled'; ?>>Order</button>
 
                             <?php
                             // JavaScript to display alert if cart is empty

@@ -82,7 +82,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" style="background-color: #C3CBD6; color:black;" data-dismiss="modal">Cancel</button>
                         <input type="hidden" name="amount" value="<?php echo $totalPrice ?>">
-                        <button type="submit" form="checkoutForm" name="checkout" class="btn btn-success" style="background-color:#2A403D; color:white;">Order</button>
+                        <button type="submit" form="checkoutForm" name="checkout" class="btn btn-success" style="background-color:#2A403D; color:white;">Checkout</button>
                     </div>
                 </form>
             </div>

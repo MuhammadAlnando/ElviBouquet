@@ -2,27 +2,35 @@
 if ($adminloggedin) {
     require 'partials/_dbconnect.php';
 
-    // Query to get the total number of orders with status >= 1
-    $sql_orders = "SELECT COUNT(*) AS total_orders FROM orders WHERE orderStatus >= 1";
-    if ($stmt = mysqli_prepare($conn, $sql_orders)) {
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $total_orders);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt);
-    } else {
-        die('Error: ' . mysqli_error($conn));
+    if (!function_exists('getOrderCounts')) {
+        function getOrderCounts($conn) {
+            $orderCounts = ['total' => 0, 'new' => 0];
+
+            $sql_orders = "SELECT COUNT(*) AS total_orders FROM orders WHERE orderStatus >= 1 AND isRead = FALSE";
+            if ($stmt = mysqli_prepare($conn, $sql_orders)) {
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_bind_result($stmt, $orderCounts['total']);
+                mysqli_stmt_fetch($stmt);
+                mysqli_stmt_close($stmt);
+            } else {
+                die('Error: ' . mysqli_error($conn));
+            }
+
+            $sql_new_orders = "SELECT COUNT(*) AS new_orders FROM orders WHERE orderStatus = 1 AND isRead = FALSE"; // Assuming status 1 is for new orders
+            if ($stmt = mysqli_prepare($conn, $sql_new_orders)) {
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_bind_result($stmt, $orderCounts['new']);
+                mysqli_stmt_fetch($stmt);
+                mysqli_stmt_close($stmt);
+            } else {
+                die('Error: ' . mysqli_error($conn));
+            }
+
+            return $orderCounts;
+        }
     }
 
-    // Query to get the number of new orders with status = 1
-    $sql_new_orders = "SELECT COUNT(*) AS new_orders FROM orders WHERE orderStatus = 1"; // Assuming status 1 is for new orders
-    if ($stmt = mysqli_prepare($conn, $sql_new_orders)) {
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $newOrders);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt);
-    } else {
-        die('Error: ' . mysqli_error($conn));
-    }
+    $orderCounts = getOrderCounts($conn);
 ?>
 <header class="header" id="header">
     <div class="header__toggle">
@@ -31,7 +39,7 @@ if ($adminloggedin) {
     <div class="notification">
         <button id="notificationBell" class="btn btn-light">
             <i class="fas fa-bell"></i>
-            <span id="notificationCount" class="badge bg-danger" style="color: white"><?php echo $total_orders; ?></span>
+            
         </button>
     </div>
 
@@ -60,7 +68,7 @@ if ($adminloggedin) {
                 <a href="index.php?page=orderManage" class="nav-orderManage nav__link">
                     <i class='bx bx-bar-chart-alt-2 nav__icon' style="color: white"></i>
                     <span class="nav__name" style="color: white">Orders
-                        <?php if ($newOrders > 0) { ?>
+                        <?php if ($orderCounts['new'] > 0) { ?>
                             <span style="color: red; font-weight: bold;">(new)</span>
                         <?php } ?>
                     </span>
@@ -86,25 +94,42 @@ if ($adminloggedin) {
     </nav>
 </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home'; ?>
-    $('.nav-<?php echo $page; ?>').addClass('active');
-
     $(document).ready(function() {
+        updateNotificationCount();
+
         $('#notificationBell').click(function(event) {
             event.preventDefault();
             handleNotificationClick();
         });
+
+        // Polling for new notifications every 5 seconds
+        setInterval(updateNotificationCount, 5000);
     });
+
+    function updateNotificationCount() {
+        $.ajax({
+            url: 'get_notification_count.php', // PHP file to get the notification count
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if(response.count) {
+                    $('#notificationCount').text(response.count);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    }
 
     function handleNotificationClick() {
         $.ajax({
-            url: 'update_notification_count.php',
+            url: 'update_notification_count.php', // PHP file to update the notification count
             method: 'POST',
             data: { action: 'reset' },
             success: function(response) {
-                console.log(response);  // Debugging output
                 $('#notificationCount').text('0');
                 // Optional: Redirect to orderNotification.php
                 window.location.href = 'index.php?page=orderNotification';
@@ -115,6 +140,7 @@ if ($adminloggedin) {
         });
     }
 </script>
+
 <?php
 }
 ?>

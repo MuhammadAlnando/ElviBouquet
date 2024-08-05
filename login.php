@@ -44,13 +44,11 @@
             background-color: #2A403D;
             border: none;
             color: white;
-            width:350px;
+            width: 350px;
             margin-right: 10px;
         }
         .btn-primary:hover {
-           
             background-color: #2A403D;
-         
             color: white;
         }
         .btn-admin {
@@ -58,8 +56,6 @@
             background-color: white;
             border: 1px solid #2A403D;
             color: #2A403D;
-            
-            
         }
         .btn-admin:hover {
             background-color: #2A403D;
@@ -79,8 +75,17 @@
             <h2>Welcome to Elvi Bouquet!</h2>
             <div class="login-form">
                 <h2>Login</h2>
-                <?php if (isset($loginError)): ?>
-                    <div class="alert alert-danger"><?= $loginError ?></div>
+                <!-- Menampilkan notifikasi kesalahan -->
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="alert alert-danger">
+                        <?php 
+                            if ($_GET['error'] == 'wrongpassword') {
+                                echo '"Incorrect password. Please try again."';
+                            } else if ($_GET['error'] == 'nouser') {
+                                echo 'Username not found. Please try again.';
+                            }
+                        ?>
+                    </div>
                 <?php endif; ?>
                 <form action="partials/_handleLogin.php" method="post">
                     <div class="form-group">
@@ -89,27 +94,21 @@
                     <div class="form-group">
                         <input type="password" name="loginpassword" class="form-control" placeholder="Password" required>
                     </div>
-                    <div class="form-group">
-                        
-                    </div>
+                    <div class="form-group"></div>
                     <div class="d-flex">
-                    <div class="form-group mt-3">
-    <button type="submit" class="btn btn-primary">Login</button>
-    </div>
-    <div class="form-group mt-3 me-2">
-        <a href="admin/login.php" class="btn btn-admin">
-            <i class="fa fa-user-shield" style="margin-top: 10px;"></i>
-        </a>
-    </div>
-</div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                        <div class="form-group mt-3 me-2">
+                            <a href="admin/login.php" class="btn btn-admin">
+                                <i class="fa fa-user-shield" style="margin-top: 10px;"></i>
+                            </a>
+                        </div>
+                    </div>
                 </form>
                 <p class="text-center mb-0">Don't have an account? <a href="signup.php" class="login-link">Sign up now</a>.</p>
-                
             </div>
         </div>
-        
     </div>
-
-    
 </body>
 </html>

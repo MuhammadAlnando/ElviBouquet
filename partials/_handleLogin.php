@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     if ($num == 1){
-        $row=mysqli_fetch_assoc($result);
+        $row = mysqli_fetch_assoc($result);
         $userId = $row['id'];
         if (password_verify($password, $row['password'])){ 
             session_start();
@@ -17,13 +17,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['userId'] = $userId;
             header("location: /bouquetElviOnline/index.php?loginsuccess=true");
             exit();
-        } 
-        else{
-            header("location: /bouquetElviOnline/index.php?loginsuccess=false");
+        } else {
+            header("location: /bouquetElviOnline/login.php?error=wrongpassword");
+            exit();
         }
-    } 
-    else{
-        header("location: /bouquetElviOnline/index.php?loginsuccess=false");
+    } else {
+        header("location: /bouquetElviOnline/login.php?error=nouser");
+        exit();
     }
 }    
 ?>

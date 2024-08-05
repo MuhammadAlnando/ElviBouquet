@@ -5,7 +5,6 @@
                 <div class="col-sm-4">
                     <h2>Order <b>Details</b></h2>
                 </div>
-                
                 <div class="col-sm-8">
                     <a href="" class="btn btn-primary" style="background-color: #748B6F; color: white;"><i class="material-icons">&#xE863;</i> <span>Refresh List</span></a>
                 </div>
@@ -29,9 +28,7 @@
                 <thead style="background-color: #2A403D; color: white;">
                     <tr>
                         <th>Order Id</th>
-                        
                         <th>Address</th>
-                        
                         <th>Amount</th>
                         <th>Delivery Date</th>
                         <th>Payment</th>
@@ -51,71 +48,81 @@
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     $orderId = $row['orderId'];
-    $orderStatus = $row['orderStatus'];
-    $deliveryMethod = $row['deliveryMethod'];
-    $amount = $row['amount'];
-    $proofFile = $row['proofFile']; // Mengambil nilai proofFile dari database
-    $statusOptions = [
-        0 => 'Order Placed',
-        1 => 'Order Confirmed',
-        2 => 'Preparing your Order',
-        3 => 'Your order is on the way!',
-        4 => 'Order Delivered',
-        5 => 'Order Denied',
-        6 => 'Order Cancelled'
-    ];
+                    $orderStatus = $row['orderStatus'];
+                    $deliveryMethod = $row['deliveryMethod'];
+                    $amount = $row['amount'];
+                    $proofFile = $row['proofFile']; // Mengambil nilai proofFile dari database
+                    $statusOptions = [
+                        0 => 'Order Placed',
+                        1 => 'Order Confirmed',
+                        2 => 'Preparing your Order',
+                        3 => 'Your order is on the way!',
+                        4 => 'Order Delivered',
+                        5 => 'Order Denied',
+                        6 => 'Order Cancelled'
+                    ];
 
-    // Calculate additional fee based on delivery method
-    $deliveryCharges = [
-        'deliverybatamkota' => 20000,
-        'deliverybatuaji' => 20000,
-        'deliverybatuampar' => 15000,
-        'deliverybengkong' => 15000,
-        'deliverylubukbaja' => 15000,
-        'deliverynongsa' => 25000,
-        'deliverysagulung' => 20000,
-        'deliveryseibeduk' => 20000,
-        'deliverysekupang' => 10000
-    ];
-    $amount += isset($deliveryCharges[$deliveryMethod]) ? $deliveryCharges[$deliveryMethod] : 0;
+                    // Calculate additional fee based on delivery method
+                    $deliveryCharges = [
+                        'deliverybatamkota' => 20000,
+                        'deliverybatuaji' => 20000,
+                        'deliverybatuampar' => 15000,
+                        'deliverybengkong' => 15000,
+                        'deliverylubukbaja' => 15000,
+                        'deliverynongsa' => 25000,
+                        'deliverysagulung' => 20000,
+                        'deliveryseibeduk' => 20000,
+                        'deliverysekupang' => 10000
+                    ];
+                    $amount += isset($deliveryCharges[$deliveryMethod]) ? $deliveryCharges[$deliveryMethod] : 0;
 
-    echo '<tr>
-        <td>' . $orderId . '</td>
-        <td>' . $row['address'] . '</td>
-        <td>' . $amount . '</td>
-        <td>' . $row['deliveryDate'] . ' ' . $row['deliveryTime'] . '</td>
-        <td>';
-    if ($proofFile != '') {
-        echo '<img src="../' . $proofFile . '" alt="Proof Image" style="max-width: 100px; max-height: 100px;">';
-    } else {
-        echo 'No Proof Image';
-    }
-    echo '</td>
-        <td>';
-    if ($proofFile != '') {
-        // Jika bukti pembayaran ada, tampilkan dropdown perubahan status
-        echo '<form action="partials/_orderManage.php" method="post" style="margin: 0;">
-            <input type="hidden" name="orderId" value="' . $orderId . '">
-            <select name="status" class="form-control" onchange="this.form.submit()">
-                <option value="" disabled selected>Change Status</option>';
-        foreach ($statusOptions as $value => $text) {
-            $selected = $value == $orderStatus ? 'selected' : '';
-            echo '<option value="' . $value . '" ' . $selected . '>' . $text . '</option>';
-        }
-        echo '</select>
-            <input type="hidden" name="updateStatus" value="1">
-        </form>';
-    } else {
-        // Jika bukti pembayaran belum ada, tampilkan pesan
-        echo '<span class="text-danger">Upload payment proof to change status</span>';
-    }
-    echo '</td>
-        <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons">&#xE5C8;</i></a></td>
-    </tr>';
-}
-?>
+                    echo '<tr>
+                        <td>' . $orderId . '</td>
+                        <td>' . $row['address'] . '</td>
+                        <td>' . $amount . '</td>
+                        <td>' . $row['deliveryDate'] . ' ' . $row['deliveryTime'] . '</td>
+                        <td>';
+                    if ($proofFile != '') {
+                        echo '<img src="../' . $proofFile . '" alt="Proof Image" style="max-width: 100px; max-height: 100px;">';
+                    } else {
+                        echo 'No Proof Image';
+                    }
+                    echo '</td>
+                        <td>';
+                    if ($proofFile != '') {
+                        // Jika bukti pembayaran ada, tampilkan dropdown perubahan status dengan semua opsi
+                        echo '<form action="partials/_orderManage.php" method="post" style="margin: 0;">
+                            <input type="hidden" name="orderId" value="' . $orderId . '">
+                            <select name="status" class="form-control" onchange="this.form.submit()">
+                                <option value="" disabled selected>Change Status</option>';
+                        foreach ($statusOptions as $value => $text) {
+                            $selected = $value == $orderStatus ? 'selected' : '';
+                            echo '<option value="' . $value . '" ' . $selected . '>' . $text . '</option>';
+                        }
+                        echo '</select>
+                            <input type="hidden" name="updateStatus" value="1">
+                        </form>';
+                    } else {
+                        // Jika bukti pembayaran belum ada, tampilkan dropdown dengan opsi terbatas
+                        echo '<form action="partials/_orderManage.php" method="post" style="margin: 0;">
+                            <input type="hidden" name="orderId" value="' . $orderId . '">
+                            <select name="status" class="form-control" onchange="this.form.submit()">
+                                <option value="" disabled selected>Change Status</option>';
+                        // Hanya tampilkan 'Order Denied' dan 'Order Cancelled'
+                        echo '<option value="5" ' . ($orderStatus == 5 ? 'selected' : '') . '>Order Denied</option>';
+                        echo '<option value="6" ' . ($orderStatus == 6 ? 'selected' : '') . '>Order Cancelled</option>';
+                        echo '</select>
+                            <input type="hidden" name="updateStatus" value="1">
+                        </form>';
+                    }
+                    echo '</td>';
 
-                    <!-- Modal -->
+                    echo '<td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons">&#xE5C8;</i></a></td>
+                    </tr>';
+                }
+                ?>
+
+                <!-- Modal -->
                     <?php
                     // Ensure that the modal HTML is correctly placed outside the loop
                     $result->data_seek(0); // Reset the result pointer
