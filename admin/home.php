@@ -54,7 +54,6 @@ if ($adminloggedin) {
     }
     $row_contact = mysqli_fetch_assoc($result_contact);
     $total_contact = $row_contact['total_contact'];
-
     $today = date('Y-m-d'); // Mendapatkan tanggal hari ini
     $sql_daily_sales = "
         SELECT SUM(amount + 
@@ -72,14 +71,15 @@ if ($adminloggedin) {
             END
         ) AS daily_sales 
         FROM orders 
-        WHERE DATE(orderDate) = '$today' AND orderStatus >= 1";
+        WHERE DATE(orderDate) = '$today' 
+        AND orderStatus IN (2, 3, 4, 5)";
     $result_daily_sales = mysqli_query($conn, $sql_daily_sales);
     if (!$result_daily_sales) {
         die('Error: ' . mysqli_error($conn));
     }
     $row_daily_sales = mysqli_fetch_assoc($result_daily_sales);
     $daily_sales = $row_daily_sales['daily_sales'];
-
+    
     $month = date('Y-m'); // Mendapatkan bulan dan tahun bulan ini
     $sql_monthly_sales = "
         SELECT SUM(amount + 
@@ -97,14 +97,15 @@ if ($adminloggedin) {
             END
         ) AS monthly_sales 
         FROM orders 
-        WHERE DATE_FORMAT(orderDate, '%Y-%m') = '$month' AND orderStatus >= 1";
+        WHERE DATE_FORMAT(orderDate, '%Y-%m') = '$month' 
+        AND orderStatus IN (2, 3, 4, 5)";
     $result_monthly_sales = mysqli_query($conn, $sql_monthly_sales);
     if (!$result_monthly_sales) {
         die('Error: ' . mysqli_error($conn));
     }
     $row_monthly_sales = mysqli_fetch_assoc($result_monthly_sales);
     $monthly_sales = $row_monthly_sales['monthly_sales'];
-
+    
     $year = date('Y'); // Mendapatkan tahun ini
     $sql_yearly_sales = "
         SELECT SUM(amount + 
@@ -122,13 +123,15 @@ if ($adminloggedin) {
             END
         ) AS yearly_sales 
         FROM orders 
-        WHERE DATE_FORMAT(orderDate, '%Y') = '$year' AND orderStatus >= 1";
+        WHERE DATE_FORMAT(orderDate, '%Y') = '$year' 
+        AND orderStatus IN (2, 3, 4, 5)";
     $result_yearly_sales = mysqli_query($conn, $sql_yearly_sales);
     if (!$result_yearly_sales) {
         die('Error: ' . mysqli_error($conn));
     }
     $row_yearly_sales = mysqli_fetch_assoc($result_yearly_sales);
     $yearly_sales = $row_yearly_sales['yearly_sales'];
+    
 ?>
 <!doctype html>
 <html lang="en">
