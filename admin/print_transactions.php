@@ -27,7 +27,7 @@ switch ($period) {
 $sql = "
     SELECT * FROM orders 
     WHERE orderDate BETWEEN '$start_date' AND '$end_date' 
-    AND orderStatus IN (1, 2, 3, 4)
+    AND orderStatus IN (2, 3, 4, 5)
 ";
 $result = mysqli_query($conn, $sql);
 if (!$result) {

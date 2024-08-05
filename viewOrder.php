@@ -160,7 +160,8 @@
                         <th>Payment</th>
                                             
                         <th>Items</th>
-                        <th>Detail</th>
+                    
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -230,12 +231,12 @@ echo '<tr>
     <td>' . $statusDescription . '</td>
     <td>';
 
-// Hanya tampilkan form upload jika status bukan 5 (Order Denied) atau 6 (Order Cancelled)
+// Display payment proof or upload form based on the status
 if ($orderStatus != 5 && $orderStatus != 6) {
     if (!empty($row['proofFile'])) {
         echo '<img src="' . $row['proofFile'] . '" width="100" height="100" alt="Proof Image">';
     } else {
-        // Tampilkan form upload jika belum ada bukti pembayaran
+        // Display upload form if payment proof is not available
         echo '<form id="uploadForm' . $orderId . '" class="uploadForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="proofFile"></label>
@@ -249,8 +250,16 @@ if ($orderStatus != 5 && $orderStatus != 6) {
 
 echo '</td>
     <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" style="color:#2A403D;" title="View Details"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
-    <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="view" style="color:#2A403D;"><i class="material-icons" style="color:#2A403D;">&#xE5C8;</i></a></td>
-</tr>';
+    <td><a href="#" data-toggle="modal" data-target="#orderDetailModal' . $orderId . '" class="btn btn-primary" style="background-color: #2A403D; color:white; margin-bottom: 5px; width: 73px;">Detail</a>';
+
+// Only display the "Delete" button if the status is 0
+if ($orderStatus == 0 && empty($row['proofFile'])) {
+    echo '<a href="javascript:void(0);" class="btn btn-danger deleteOrder" style="background-color: red; color: white;" data-id="' . $orderId . '">Delete</a></td>';
+} else {
+    echo '</td>'; // Empty cell if no delete button is displayed
+}
+
+echo '</tr>';
 
 
 // Modal Detail Pesanan
@@ -337,7 +346,8 @@ echo '<div id="uploadProofModal' . $orderId . '" class="modal fade" role="dialog
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>         
     <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-oP2lDJ3neGNoFZXyec3HGn/O/7tf8F0uGvtz/r/oZ0I=" crossorigin="anonymous"></script>
+
     <script>
 $(document).ready(function() {
     $('.uploadForm').on('change', '.form-control-file', function() {
@@ -380,6 +390,29 @@ $(document).ready(function() {
             }
         });
     });
+    // Handle delete action
+    $('.deleteOrder').on('click', function() {
+    const orderId = $(this).data('id');
+    if (confirm('Are you sure you want to delete this order?')) {
+        $.ajax({
+            url: 'delete_order.php',
+            type: 'POST',
+            data: { orderId: orderId },
+            dataType: 'json', // Pastikan format respons diharapkan JSON
+            success: function(response) {
+                if (response.success) {
+                    location.reload(); // Refresh halaman setelah penghapusan sukses
+                } else {
+                    $('#notifContainer').html('<div class="alert alert-danger">' + response.message + '</div>');
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#notifContainer').html('<div class="alert alert-danger">An error occurred: ' + error + '</div>');
+            }
+        });
+    }
+});
+
 });
 
 
