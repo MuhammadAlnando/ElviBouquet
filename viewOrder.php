@@ -254,7 +254,7 @@ echo '</td>
 
 // Only display the "Delete" button if the status is 0
 if ($orderStatus == 0 && empty($row['proofFile'])) {
-    echo '<a href="javascript:void(0);" class="btn btn-danger deleteOrder" style="background-color: red; color: white;" data-id="' . $orderId . '">Delete</a></td>';
+    echo '<a href="javascript:void(0);" class="btn btn-danger deleteOrder" style="background-color: #E44E5D; color: white;" data-id="' . $orderId . '">Cancel</a></td>';
 } else {
     echo '</td>'; // Empty cell if no delete button is displayed
 }

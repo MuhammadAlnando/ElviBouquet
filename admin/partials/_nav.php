@@ -37,11 +37,12 @@ if ($adminloggedin) {
         <i class='bx bx-menu' style="color: black" id="header-toggle"></i>
     </div>
     <div class="notification">
-        <button id="notificationBell" class="btn btn-light">
-            <i class="fas fa-bell"></i>
-            
-        </button>
-    </div>
+    <button id="notificationBell" class="btn btn-light">
+        <i class="fas fa-bell"></i>
+        <span id="notificationDot" style="display: none; color: red;">&#9679;</span>
+    </button>
+</div>
+
 
     <!-- Form Logout -->
     <form action="partials/_logout.php" method="POST" id="logoutForm">
@@ -68,9 +69,6 @@ if ($adminloggedin) {
                 <a href="index.php?page=orderManage" class="nav-orderManage nav__link">
                     <i class='bx bx-bar-chart-alt-2 nav__icon' style="color: white"></i>
                     <span class="nav__name" style="color: white">Orders
-                        <?php if ($orderCounts['new'] > 0) { ?>
-                            <span style="color: red; font-weight: bold;">(new)</span>
-                        <?php } ?>
                     </span>
                 </a>
                 <a href="index.php?page=categoryManage" class="nav__link nav-categoryManage">
@@ -114,8 +112,10 @@ if ($adminloggedin) {
             method: 'GET',
             dataType: 'json',
             success: function(response) {
-                if(response.count) {
-                    $('#notificationCount').text(response.count);
+                if (response.count > 0) {
+                    $('#notificationDot').show();
+                } else {
+                    $('#notificationDot').hide();
                 }
             },
             error: function(xhr, status, error) {
@@ -130,7 +130,7 @@ if ($adminloggedin) {
             method: 'POST',
             data: { action: 'reset' },
             success: function(response) {
-                $('#notificationCount').text('0');
+                $('#notificationDot').hide();
                 // Optional: Redirect to orderNotification.php
                 window.location.href = 'index.php?page=orderNotification';
             },

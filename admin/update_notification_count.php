@@ -1,19 +1,12 @@
 <?php
 require 'partials/_dbconnect.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] === 'reset') {
-        // Update the status of orders where orderStatus = 1 to 0 and set isRead to TRUE
-        $sql = "UPDATE orders SET orderStatus = 0, isRead = TRUE WHERE orderStatus = 1";
-        if (mysqli_query($conn, $sql)) {
-            echo 'Notification count reset';
-        } else {
-            echo 'Error: ' . mysqli_error($conn);
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'reset') {
+    $sql_update = "UPDATE orders SET isRead = TRUE WHERE orderStatus >= 1 AND isRead = FALSE";
+    if (mysqli_query($conn, $sql_update)) {
+        echo json_encode(['status' => 'success']);
     } else {
-        echo 'Invalid action';
+        echo json_encode(['status' => 'error', 'message' => mysqli_error($conn)]);
     }
-} else {
-    echo 'Invalid request method';
 }
 ?>
